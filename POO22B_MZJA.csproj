@@ -46,14 +46,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="src\Clases\CCliente.cs" />
+    <Compile Include="src\Clases\CError.cs" />
+    <Compile Include="src\Clases\CParticula.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\CParticula.Designer.cs">
+      <DependentUpon>CParticula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Clases\CPelota.cs" />
+    <Compile Include="src\Clases\CPersona.cs" />
+    <Compile Include="src\Componentes\FlatButton\FlatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Componentes\FlatButton\FlatButton.Designer.cs">
+      <DependentUpon>FlatButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Componentes\NavigationContainer\NavigationBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Componentes\NavigationContainer\NavigationBar.Designer.cs">
+      <DependentUpon>NavigationBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Componentes\Panel\TabPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Componentes\Panel\TabPanel.Designer.cs">
+      <DependentUpon>TabPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Componentes\ToggleButton\FlatToggleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Componentes\ToggleButton\FlatToggleButton.Designer.cs">
+      <DependentUpon>FlatToggleButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\DlgPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="src\DlgPrincipal.Designer.cs">
+      <DependentUpon>DlgPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Utils\ColorUtils.cs" />
+    <EmbeddedResource Include="src\Clases\CParticula.resx">
+      <DependentUpon>CParticula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Componentes\FlatButton\FlatButton.resx">
+      <DependentUpon>FlatButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Componentes\NavigationContainer\NavigationBar.resx">
+      <DependentUpon>NavigationBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Componentes\Panel\TabPanel.resx">
+      <DependentUpon>TabPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Componentes\ToggleButton\FlatToggleButton.resx">
+      <DependentUpon>FlatToggleButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\DlgPrincipal.resx">
+      <DependentUpon>DlgPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +115,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -75,6 +129,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\Resources\bars-solid.png" />
+    <Content Include="src\Resources\document-32px.png" />
+    <Content Include="src\Resources\fa-cog.png" />
+    <Content Include="src\Resources\Icecube.png" />
+    <Content Include="src\Resources\Saul.gif" />
+    <Content Include="src\Resources\Saul.jpg" />
+    <Content Include="src\Resources\SaulSound.wav" />
+    <Content Include="src\Resources\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
