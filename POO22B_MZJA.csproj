@@ -134,6 +134,12 @@
     <Content Include="src\Resources\bars-solid.png" />
     <Content Include="src\Resources\document-32px.png" />
     <Content Include="src\Resources\fa-cog.png" />
+    <None Include="src\Resources\icecube-left.png" />
+    <None Include="src\Resources\icecube-leftdown.png" />
+    <None Include="src\Resources\icecube-leftup.png" />
+    <None Include="src\Resources\Icecube-right.png" />
+    <None Include="src\Resources\icecube-rightdown.png" />
+    <None Include="src\Resources\icecube-rightop.png" />
     <Content Include="src\Resources\Icecube.png" />
     <Content Include="src\Resources\Saul.gif" />
     <Content Include="src\Resources\Saul.jpg" />

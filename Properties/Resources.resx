@@ -130,6 +130,24 @@
   <data name="icecube" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Resources\Icecube.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icecube_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\icecube-left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icecube_leftdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\icecube-leftdown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icecube_leftup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\icecube-leftup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icecube_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\Icecube-right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icecube_rightdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\icecube-rightdown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icecube_rightop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\icecube-rightop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="saul" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Resources\Saul.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
