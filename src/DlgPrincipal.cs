@@ -25,6 +25,7 @@ namespace POO22B_MZJA
         // |  Atributos                                                       |
         // +------------------------------------------------------------------+
         private List<Thread> Procesos;
+        private List<Image> Imagenes;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
@@ -36,7 +37,21 @@ namespace POO22B_MZJA
             CheckForIllegalCrossThreadCalls = false;
 
             Procesos = new List<Thread>();
+            Imagenes = new List<Image>();
 
+        }
+
+        // +------------------------------------------------------------------+
+        // |  Cargar recursos del proyecto                                    |
+        // +------------------------------------------------------------------+
+        private void DlgPrincipal_Load(object sender, EventArgs e)
+        {
+            Imagenes.Add(Properties.Resources.icecube_leftup);
+            Imagenes.Add(Properties.Resources.icecube_left);
+            Imagenes.Add(Properties.Resources.icecube_leftdown);
+            Imagenes.Add(Properties.Resources.icecube_rightop);
+            Imagenes.Add(Properties.Resources.Icecube_right);
+            Imagenes.Add(Properties.Resources.icecube_rightdown);
         }
 
         // +------------------------------------------------------------------+
@@ -47,17 +62,11 @@ namespace POO22B_MZJA
             CParticula Particula;
             Thread Proceso;
 
-            Particula = new CParticula(new Random().Next(1, 3))
+            Particula = new CParticula(10,10, PnlP2Container)
             {
                 Name = "Particle",
-                BackColor = ColorUtils.GetRandomColor(),
                 Image = Properties.Resources.icecube,
-                Location = new Point(10, 10),
-                Size = new Size(32, 32),
             };
-
-            PnlP2Container.Controls.Add(Particula);
-            Particula.BringToFront();
 
             Proceso = new Thread(() =>
             {
@@ -104,6 +113,7 @@ namespace POO22B_MZJA
 
                     if (X >= PnlP2Container.Width - 32) // 32 is offset;
                     {
+                        Particula.Image = Imagenes[0];
                         RumboEste = false;
                         RumboOeste = true;
                     }
@@ -140,5 +150,6 @@ namespace POO22B_MZJA
             }
         }
 
+        
     }
 }
