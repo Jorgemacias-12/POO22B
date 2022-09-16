@@ -51,7 +51,7 @@ namespace POO22B_MZJA.src.Clases
         }
 
         // +------------------------------------------------------------------+
-        // | Comienza el funcionamiento del dron     |   
+        // | Comienza el funcionamiento del dron                              |   
         // +------------------------------------------------------------------+
         public void Enciende()
         {
