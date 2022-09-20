@@ -1,4 +1,5 @@
 ﻿using POO22B_MZJA.src.Utils;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace POO22B_MZJA.src.Clases
@@ -40,9 +41,7 @@ namespace POO22B_MZJA.src.Clases
             Este = true;
             Oeste = false;
             Velocidad = 2;
-
-            BackColor = ColorUtils.GetRandomColor();
-            Location = new System.Drawing.Point(XBase, YBase);
+            BackColor = Color.White;
             Size = new System.Drawing.Size(32, 32);
 
             Base.Controls.Add(this);
@@ -55,7 +54,8 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         public void Enciende()
         {
-            // TODO
+            BackColor = ColorUtils.GetRandomColor();
+            Location = new System.Drawing.Point(XBase, YBase);
         }
 
         // +------------------------------------------------------------------+
@@ -63,7 +63,7 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         public void Eleva(int Altura)
         {
-
+            this.Altura = Altura;
         }
 
         // +------------------------------------------------------------------+
@@ -81,12 +81,66 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         // | Cambiar rumbo de la particula                                    |   
         // +------------------------------------------------------------------+
-        public void Desplaza(bool Norte, bool Sur, bool Este, bool Oeste)
+        public void Desplaza()
         {
-            this.Norte = Norte;
-            this.Sur = Sur;
-            this.Este = Este;
-            this.Oeste = Oeste;
+
+            // Posición inicial
+            int X;
+            int Y;
+
+            X = this.Location.X;
+            Y = this.Location.Y;
+
+            // Calcula desplazamiento
+
+            if (Norte)
+            {
+                Y -= 1;
+            }
+
+            if (Sur)
+            {
+                Y += 1;
+            }
+
+            if (Este)
+            {
+                X += 1;
+            }
+
+            if (Oeste)
+            {
+                X -= 1;
+            }
+
+            if (X <= 0)
+            {
+                this.Oeste = false;
+                this.Este = true;
+            }
+
+            if (Y <= 0)
+            {
+                this.Sur = true;
+                this.Norte = false;
+            }
+
+            if (X >= Base.Width - 32) // 32 is offset;
+            {
+                this.Este = false;
+                this.Oeste = true;
+            }
+
+            if (Y >= Base.Height - 32)
+            {
+                this.Sur = false;
+                this.Norte = true;
+            }
+
+
+            // Actualización de posición
+            Location = new System.Drawing.Point(X, Y);
+
         }
 
         // +------------------------------------------------------------------+

@@ -62,77 +62,28 @@ namespace POO22B_MZJA
             CParticula Particula;
             Thread Proceso;
 
-            Particula = new CParticula(10,10, PnlP2Container)
+            Particula = new CParticula(10, 10, PnlP2Container)
             {
                 Name = "Particle",
                 Image = Properties.Resources.icecube,
             };
 
+            Thread.Sleep(500);
+
+            Refresh();
+
+            Particula.Enciende();
+
+            Thread.Sleep(500);
+
             Proceso = new Thread(() =>
             {
 
-                bool RumboNorte = false;
-                bool RumboSur = true;
-                bool RumboEste = true;
-                bool RumboOeste = false;
-
-                int X;
-                int Y;
-
-                X = Particula.Location.X;
-                Y = Particula.Location.Y;
-
                 while (true)
                 {
-
-                    if (RumboNorte)
-                    {
-                        Y -= 1;
-                    }
-
-                    if (RumboSur)
-                    {
-                        Y += 1;
-                    }
-
-                    if (RumboEste)
-                    {
-                        X += 1;
-                    }
-
-                    if (RumboOeste)
-                    {
-                        X -= 1;
-                    }
-
-                    if (X <= 0)
-                    {
-                        RumboOeste = false;
-                        RumboEste = true;
-                    }
-
-                    if (X >= PnlP2Container.Width - 32) // 32 is offset;
-                    {
-                        Particula.Image = Imagenes[0];
-                        RumboEste = false;
-                        RumboOeste = true;
-                    }
-
-                    if (Y >= PnlP2Container.Height - 32)
-                    {
-                        RumboSur = false;
-                        RumboNorte = true;
-                    }
-
-                    if (Y <= 0)
-                    {
-                        RumboSur = true;
-                        RumboNorte = false;
-                    }
+                    Particula.Desplaza();
 
                     Thread.Sleep(2);
-
-                    Particula.Location = new Point(X, Y);
 
                 }
             });
@@ -150,6 +101,6 @@ namespace POO22B_MZJA
             }
         }
 
-        
+
     }
 }
