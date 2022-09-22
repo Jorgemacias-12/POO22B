@@ -1,5 +1,7 @@
 ﻿using POO22B_MZJA.src.Utils;
+using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace POO22B_MZJA.src.Clases
@@ -14,48 +16,94 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         // | Atributos                                                        |   
         // +------------------------------------------------------------------+
+
+        // Atributos de la base (coordenadas)
         private int XBase;
         private int YBase;
+
+        // Atributos del área de vuelo (contendor)
+        private Control AreaVuelo;
+
+        // Atributos de navegación
         private int Altura;
-        public int Velocidad;
         private bool Norte;
         private bool Sur;
         private bool Este;
         private bool Oeste;
-        private Control Base;
+        private int Velocidad;
+
+        // Atributos de control (particula)
+        public bool Encendido;
+        public bool RegresarABase;
+
+        // Atributos de ejecución (runtime)
+        Thread Proceso;
 
         // +------------------------------------------------------------------+
         // | Constructor                                                      |   
         // +------------------------------------------------------------------+
-        public CParticula(int XBase, int YBase, Control Base) : base()
+        public CParticula(int XBase, int YBase, Control AreaVuelo) : base()
         {
             InitializeComponent();
 
+            // Inicializa atributos de la base
             this.XBase = XBase;
             this.YBase = YBase;
-            this.Base = Base;
 
+            // Inicializa atributos del área de vuelo
+            this.AreaVuelo = AreaVuelo;
+            AreaVuelo.Controls.Add(this);
+
+            // Inicializa atributos de navegación
             Altura = 0;
             Norte = false;
             Sur = true;
             Este = true;
             Oeste = false;
-            Velocidad = 2;
-            BackColor = Color.White;
-            Size = new System.Drawing.Size(32, 32);
+            Velocidad = 0;
 
-            Base.Controls.Add(this);
-            this.BringToFront();
+            // Incializa atributos de control.
+            Encendido = false;
+            RegresarABase = false;
+
+            // Incializa atributos de ejecución.
+            Proceso = null;
+
+            // Construye el dron.
+            Location = new Point(this.XBase, this.YBase);
+            BackColor = Color.White;
+            Name = "Particula";
+            Size = new Size(32, 32);
+            BringToFront();
+
+            // Asigna método clic
+            Click += EnClic;
 
         }
+
 
         // +------------------------------------------------------------------+
         // | Comienza el funcionamiento del dron                              |   
         // +------------------------------------------------------------------+
         public void Enciende()
         {
-            BackColor = ColorUtils.GetRandomColor();
-            Location = new System.Drawing.Point(XBase, YBase);
+            Thread Proceso;
+            Color ColorAleatorio;
+
+            // Particula se colorea.
+            ColorAleatorio = ColorUtils.GetRandomColor();
+
+            // Enciende el dron después de un segundo.
+
+            Proceso = new Thread(() =>
+            {
+                Thread.Sleep(1000);
+                BackColor = ColorAleatorio;
+                Encendido = true;
+            });
+
+            Proceso.Start();
+
         }
 
         // +------------------------------------------------------------------+
@@ -67,88 +115,105 @@ namespace POO22B_MZJA.src.Clases
         }
 
         // +------------------------------------------------------------------+
-        // | Desplaza la particula cambiando rumbo y velocidad                |   
+        // | Desplaza la particula a una velocidad determinada                |   
         // +------------------------------------------------------------------+
-        public void Desplaza(bool Norte, bool Sur, bool Este, bool Oeste, int Velocidad)
+        public void Desplaza(int Velocidad)
         {
-            this.Norte = Norte;
-            this.Sur = Sur;
-            this.Este = Este;
-            this.Oeste = Oeste;
-            this.Velocidad = Velocidad;
-        }
-
-        // +------------------------------------------------------------------+
-        // | Cambiar rumbo de la particula                                    |   
-        // +------------------------------------------------------------------+
-        public void Desplaza()
-        {
-
             // Posición inicial
             int X;
             int Y;
 
-            X = this.Location.X;
-            Y = this.Location.Y;
+            this.Velocidad = Velocidad;
 
-            // Calcula desplazamiento
+            // Desplaza la particula por tiempo indefinido
+            // NOTA: Se utiliza un hilo de ejecución, el cual deberá
+            // ser  finalizazdo al término del programa.
 
-            if (Norte)
+            Proceso = new Thread(() =>
             {
-                Y -= 1;
-            }
+                while (true)
+                {
+                    if (Encendido)
+                    {
+                        // Posición inical.
+                        X = Location.X;
+                        Y = Location.Y;
 
-            if (Sur)
-            {
-                Y += 1;
-            }
+                        // Calcula desplazamiento
 
-            if (Este)
-            {
-                X += 1;
-            }
+                        if (Norte)
+                        {
+                            Y -= 1;
+                        }
 
-            if (Oeste)
-            {
-                X -= 1;
-            }
+                        if (Sur)
+                        {
+                            Y += 1;
+                        }
 
-            if (X <= 0)
-            {
-                this.Oeste = false;
-                this.Este = true;
-            }
+                        if (Este)
+                        {
+                            X += 1;
+                        }
 
-            if (Y <= 0)
-            {
-                this.Sur = true;
-                this.Norte = false;
-            }
+                        if (Oeste)
+                        {
+                            X -= 1;
+                        }
 
-            if (X >= Base.Width - 32) // 32 is offset;
-            {
-                this.Este = false;
-                this.Oeste = true;
-            }
+                        // Determinar rebote
 
-            if (Y >= Base.Height - 32)
-            {
-                this.Sur = false;
-                this.Norte = true;
-            }
+                        if (X <= 0)
+                        {
+                            this.Oeste = false;
 
+                            if (!RegresarABase)
+                            {
+                                this.Este = true;
+                            }
 
-            // Actualización de posición
-            Location = new System.Drawing.Point(X, Y);
+                        }
+                        
+                        if (Y <= 0)
+                        {
+                            this.Norte = false;
+                            
+                            if (!RegresarABase)
+                            {
+                                this.Sur = true;
+                            }
 
+                        }
+
+                        if (X >= AreaVuelo.Width - Width)
+                        {
+                            this.Oeste = true;
+                            this.Este = false;
+                        }
+
+                        if (Y >= AreaVuelo.Height - Height)
+                        {
+                            this.Norte = true;
+                            this.Sur = false;
+                        }
+
+                        // Posición final 
+                        Location = new Point(X, Y);
+                        Thread.Sleep(this.Velocidad);
+
+                    }
+                }
+            });
+
+            Proceso.Start();
         }
 
         // +------------------------------------------------------------------+
-        // | Cambiar la velocidad de la particula                             |   
+        // | Termina la partícula                                             |   
         // +------------------------------------------------------------------+
-        public void Desplaza(int Velocidad)
+        public void Termina()
         {
-            this.Velocidad = Velocidad;
+            Proceso.Abort();
         }
 
         // +------------------------------------------------------------------+
@@ -166,5 +231,27 @@ namespace POO22B_MZJA.src.Clases
 
         }
 
+        // +------------------------------------------------------------------+
+        // | Ejecuta cuando haces clic                                        |   
+        // +------------------------------------------------------------------+
+        private void EnClic(object sender, EventArgs e)
+        {
+
+            if (Location.X <= 0 && Location.Y <= 0) 
+            {
+                RegresarABase = false;
+            }
+            else
+            {
+                Norte = true;
+                Sur = false;
+                Este = false;
+                Oeste = true;
+
+                RegresarABase = true;
+
+            }
+
+        }
     }
 }

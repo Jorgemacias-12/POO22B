@@ -24,7 +24,7 @@ namespace POO22B_MZJA
         // +------------------------------------------------------------------+
         // |  Atributos                                                       |
         // +------------------------------------------------------------------+
-        private List<Thread> Procesos;
+        private List<CParticula> Particulas;
         private List<Image> Imagenes;
 
         // +------------------------------------------------------------------+
@@ -36,7 +36,7 @@ namespace POO22B_MZJA
 
             CheckForIllegalCrossThreadCalls = false;
 
-            Procesos = new List<Thread>();
+            Particulas = new List<CParticula>();
             Imagenes = new List<Image>();
 
         }
@@ -60,44 +60,24 @@ namespace POO22B_MZJA
         private void FBtnPD_Click(object sender, EventArgs e)
         {
             CParticula Particula;
-            Thread Proceso;
 
-            Particula = new CParticula(10, 10, PnlP2Container)
-            {
-                Name = "Particle",
-                Image = Properties.Resources.icecube,
-            };
-
-            Thread.Sleep(500);
-
-            Refresh();
-
+            Particula = new CParticula(10, 10, PnlP2Container);
             Particula.Enciende();
+            Particula.Eleva(10);
+            Particula.Desplaza(1);
 
-            Thread.Sleep(500);
-
-            Proceso = new Thread(() =>
-            {
-
-                while (true)
-                {
-                    Particula.Desplaza();
-
-                    Thread.Sleep(2);
-
-                }
-            });
-
-            Proceso.Start();
-            Procesos.Add(Proceso);
+            Particulas.Add(Particula);
 
         }
 
+        // +------------------------------------------------------------------+
+        // |  Diálogo cerrándose.                                             |
+        // +------------------------------------------------------------------+
         private void DlgPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            foreach (Thread Proceso in Procesos)
+            foreach (CParticula Particula in Particulas)
             {
-                Proceso.Abort();
+                Particula.Termina();
             }
         }
 
