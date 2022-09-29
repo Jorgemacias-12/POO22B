@@ -33,8 +33,9 @@ namespace POO22B_MZJA.src.Clases
         private int Velocidad;
 
         // Atributos de control (particula)
-        public bool Encendido;
-        public bool RegresarABase;
+        private bool Encendido;
+        private bool RegresarABase;
+        private ToolTip ToolTipNombre;
 
         // Atributos de ejecución (runtime)
         Thread Proceso;
@@ -45,6 +46,10 @@ namespace POO22B_MZJA.src.Clases
         public CParticula(int XBase, int YBase, Control AreaVuelo) : base()
         {
             InitializeComponent();
+
+            int Contador;
+
+            Contador = 0;
 
             // Inicializa atributos de la base
             this.XBase = XBase;
@@ -65,6 +70,8 @@ namespace POO22B_MZJA.src.Clases
             // Incializa atributos de control.
             Encendido = false;
             RegresarABase = false;
+            ToolTipNombre = new ToolTip();
+            Contador++;
 
             // Incializa atributos de ejecución.
             Proceso = null;
@@ -78,6 +85,15 @@ namespace POO22B_MZJA.src.Clases
 
             // Asigna método clic
             Click += EnClic;
+
+            // Asignación de atributos de la particula
+            ToolTipNombre.AutoPopDelay = 5000;
+            ToolTipNombre.InitialDelay = 1000;
+            ToolTipNombre.ReshowDelay = 500;
+            ToolTipNombre.ShowAlways = true;
+
+            // Añadir tooltip a la particula
+            ToolTipNombre.SetToolTip(this, $"{Contador}");
 
         }
 
@@ -104,6 +120,7 @@ namespace POO22B_MZJA.src.Clases
 
             Proceso.Start();
 
+            // Incrementar contador de instancias
         }
 
         // +------------------------------------------------------------------+

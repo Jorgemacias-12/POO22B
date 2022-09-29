@@ -56,6 +56,12 @@
     </Compile>
     <Compile Include="src\Clases\CPelota.cs" />
     <Compile Include="src\Clases\CPersona.cs" />
+    <Compile Include="src\Clases\DlgMonitorParticula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Clases\DlgMonitorParticula.Designer.cs">
+      <DependentUpon>DlgMonitorParticula.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Componentes\FlatButton\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <Compile Include="src\Utils\ColorUtils.cs" />
     <EmbeddedResource Include="src\Clases\CParticula.resx">
       <DependentUpon>CParticula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Clases\DlgMonitorParticula.resx">
+      <DependentUpon>DlgMonitorParticula.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Componentes\FlatButton\FlatButton.resx">
       <DependentUpon>FlatButton.cs</DependentUpon>
@@ -146,5 +155,6 @@
     <Content Include="src\Resources\SaulSound.wav" />
     <Content Include="src\Resources\user.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

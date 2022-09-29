@@ -104,9 +104,9 @@ namespace POO22B_MZJA
 
         }
 
-        private void LblParticulas_Click(object sender, EventArgs e)
+        private void FBtnP2PX_Click(object sender, EventArgs e)
         {
-            LblParticulas.Text = $"{Particulas.Count}";
+            new DlgMonitorParticula(Particulas).Show();
         }
     }
 }

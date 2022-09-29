@@ -54,7 +54,6 @@
             this.PnlTopbar = new System.Windows.Forms.Panel();
             this.FBtnOptions = new POO22B_MZJA.src.FButton.FlatButton();
             this.FBtnSidebar = new POO22B_MZJA.src.FButton.FlatButton();
-            this.LblParticulas = new System.Windows.Forms.Label();
             this.PnlAppContainer.SuspendLayout();
             this.TpbPractices.SuspendLayout();
             this.TbpPractice2.SuspendLayout();
@@ -136,7 +135,6 @@
             // PnlP2Navigation
             // 
             this.PnlP2Navigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(95)))), ((int)(((byte)(92)))));
-            this.PnlP2Navigation.Controls.Add(this.LblParticulas);
             this.PnlP2Navigation.Controls.Add(this.FBtnPD);
             this.PnlP2Navigation.Controls.Add(this.FBtnPY);
             this.PnlP2Navigation.Controls.Add(this.FBtnP2PX);
@@ -188,8 +186,9 @@
             this.FBtnP2PX.Name = "FBtnP2PX";
             this.FBtnP2PX.Size = new System.Drawing.Size(95, 49);
             this.FBtnP2PX.TabIndex = 0;
-            this.FBtnP2PX.Text = "PX";
+            this.FBtnP2PX.Text = "M";
             this.FBtnP2PX.UseVisualStyleBackColor = true;
+            this.FBtnP2PX.Click += new System.EventHandler(this.FBtnP2PX_Click);
             // 
             // TbpPractice3
             // 
@@ -397,17 +396,6 @@
             this.FBtnSidebar.TabIndex = 0;
             this.FBtnSidebar.UseVisualStyleBackColor = true;
             // 
-            // LblParticulas
-            // 
-            this.LblParticulas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.LblParticulas.Location = new System.Drawing.Point(0, 147);
-            this.LblParticulas.Name = "LblParticulas";
-            this.LblParticulas.Size = new System.Drawing.Size(95, 25);
-            this.LblParticulas.TabIndex = 3;
-            this.LblParticulas.Text = "Count: ";
-            this.LblParticulas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.LblParticulas.Click += new System.EventHandler(this.LblParticulas_Click);
-            // 
             // DlgPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -461,7 +449,6 @@
         private src.FButton.FlatButton FBtnP2PX;
         private src.FButton.FlatButton FBtnPD;
         private src.FButton.FlatButton FBtnPY;
-        private System.Windows.Forms.Label LblParticulas;
     }
 }
 
