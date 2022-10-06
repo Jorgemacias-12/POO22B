@@ -46,15 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Clases\CAnimal.cs" />
-    <Compile Include="src\Clases\CBacteria.cs" />
+    <Compile Include="src\Clases\CAnimal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\CBacteria.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Clases\CCliente.cs" />
-    <Compile Include="src\Clases\CCordado.cs" />
+    <Compile Include="src\Clases\CCordado.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Clases\CError.cs" />
-    <Compile Include="src\Clases\CHominidae.cs" />
-    <Compile Include="src\Clases\CHomoSapien.cs" />
-    <Compile Include="src\Clases\CHongo.cs" />
-    <Compile Include="src\Clases\CMammalia.cs" />
+    <Compile Include="src\Clases\CHominidae.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\CHomoSapien.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\CHongo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\CMammalia.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Clases\CParticula.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -63,10 +77,18 @@
     </Compile>
     <Compile Include="src\Clases\CPelota.cs" />
     <Compile Include="src\Clases\CPersona.cs" />
-    <Compile Include="src\Clases\CPrimate.cs" />
-    <Compile Include="src\Clases\CProctistas.cs" />
-    <Compile Include="src\Clases\CSerVivo.cs" />
-    <Compile Include="src\Clases\CVegetal.cs" />
+    <Compile Include="src\Clases\CPrimate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\CProctistas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\CSerVivo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\CVegetal.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Clases\DlgMonitorParticula.cs">
       <SubType>Form</SubType>
     </Compile>

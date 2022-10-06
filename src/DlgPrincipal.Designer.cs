@@ -39,6 +39,11 @@
             this.FBtnP2PX = new POO22B_MZJA.src.FButton.FlatButton();
             this.TbpPractice3 = new System.Windows.Forms.TabPage();
             this.TbpPractice4 = new System.Windows.Forms.TabPage();
+            this.PnlP4AreaAmbiental = new System.Windows.Forms.Panel();
+            this.FlpP4Reinos = new System.Windows.Forms.FlowLayoutPanel();
+            this.PnlP4Topbar = new System.Windows.Forms.Panel();
+            this.FlpP4Seresvivos = new System.Windows.Forms.FlowLayoutPanel();
+            this.FBtnP4SerVivo = new POO22B_MZJA.src.FButton.FlatButton();
             this.TbpPractice5 = new System.Windows.Forms.TabPage();
             this.TbpPractice6 = new System.Windows.Forms.TabPage();
             this.TbpPractice7 = new System.Windows.Forms.TabPage();
@@ -58,6 +63,8 @@
             this.TpbPractices.SuspendLayout();
             this.TbpPractice2.SuspendLayout();
             this.PnlP2Navigation.SuspendLayout();
+            this.TbpPractice4.SuspendLayout();
+            this.FlpP4Seresvivos.SuspendLayout();
             this.PnlSidebar.SuspendLayout();
             this.PnlInfoArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PbxInfoIcon)).BeginInit();
@@ -203,12 +210,67 @@
             // TbpPractice4
             // 
             this.TbpPractice4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.TbpPractice4.Controls.Add(this.PnlP4AreaAmbiental);
+            this.TbpPractice4.Controls.Add(this.FlpP4Reinos);
+            this.TbpPractice4.Controls.Add(this.PnlP4Topbar);
+            this.TbpPractice4.Controls.Add(this.FlpP4Seresvivos);
             this.TbpPractice4.Location = new System.Drawing.Point(4, 34);
             this.TbpPractice4.Margin = new System.Windows.Forms.Padding(4);
             this.TbpPractice4.Name = "TbpPractice4";
             this.TbpPractice4.Size = new System.Drawing.Size(1344, 738);
             this.TbpPractice4.TabIndex = 3;
             this.TbpPractice4.Text = "Practice 4";
+            // 
+            // PnlP4AreaAmbiental
+            // 
+            this.PnlP4AreaAmbiental.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
+            this.PnlP4AreaAmbiental.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PnlP4AreaAmbiental.Location = new System.Drawing.Point(134, 202);
+            this.PnlP4AreaAmbiental.Name = "PnlP4AreaAmbiental";
+            this.PnlP4AreaAmbiental.Size = new System.Drawing.Size(1210, 536);
+            this.PnlP4AreaAmbiental.TabIndex = 3;
+            // 
+            // FlpP4Reinos
+            // 
+            this.FlpP4Reinos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(255)))), ((int)(((byte)(213)))));
+            this.FlpP4Reinos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FlpP4Reinos.Location = new System.Drawing.Point(134, 102);
+            this.FlpP4Reinos.Name = "FlpP4Reinos";
+            this.FlpP4Reinos.Size = new System.Drawing.Size(1210, 100);
+            this.FlpP4Reinos.TabIndex = 2;
+            // 
+            // PnlP4Topbar
+            // 
+            this.PnlP4Topbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.PnlP4Topbar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PnlP4Topbar.Location = new System.Drawing.Point(134, 0);
+            this.PnlP4Topbar.Name = "PnlP4Topbar";
+            this.PnlP4Topbar.Size = new System.Drawing.Size(1210, 102);
+            this.PnlP4Topbar.TabIndex = 1;
+            // 
+            // FlpP4Seresvivos
+            // 
+            this.FlpP4Seresvivos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(131)))), ((int)(((byte)(255)))));
+            this.FlpP4Seresvivos.Controls.Add(this.FBtnP4SerVivo);
+            this.FlpP4Seresvivos.Dock = System.Windows.Forms.DockStyle.Left;
+            this.FlpP4Seresvivos.Location = new System.Drawing.Point(0, 0);
+            this.FlpP4Seresvivos.Name = "FlpP4Seresvivos";
+            this.FlpP4Seresvivos.Size = new System.Drawing.Size(134, 738);
+            this.FlpP4Seresvivos.TabIndex = 0;
+            // 
+            // FBtnP4SerVivo
+            // 
+            this.FBtnP4SerVivo.AutoSize = true;
+            this.FBtnP4SerVivo.FlatAppearance.BorderSize = 0;
+            this.FBtnP4SerVivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FBtnP4SerVivo.HoverColor = System.Drawing.Color.Empty;
+            this.FBtnP4SerVivo.Location = new System.Drawing.Point(3, 3);
+            this.FBtnP4SerVivo.Name = "FBtnP4SerVivo";
+            this.FBtnP4SerVivo.Size = new System.Drawing.Size(125, 63);
+            this.FBtnP4SerVivo.TabIndex = 0;
+            this.FBtnP4SerVivo.Text = "Ser vivo";
+            this.FBtnP4SerVivo.UseVisualStyleBackColor = true;
+            this.FBtnP4SerVivo.Click += new System.EventHandler(this.FBtnP4SerVivo_Click);
             // 
             // TbpPractice5
             // 
@@ -413,6 +475,9 @@
             this.TpbPractices.ResumeLayout(false);
             this.TbpPractice2.ResumeLayout(false);
             this.PnlP2Navigation.ResumeLayout(false);
+            this.TbpPractice4.ResumeLayout(false);
+            this.FlpP4Seresvivos.ResumeLayout(false);
+            this.FlpP4Seresvivos.PerformLayout();
             this.PnlSidebar.ResumeLayout(false);
             this.PnlInfoArea.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PbxInfoIcon)).EndInit();
@@ -449,6 +514,11 @@
         private src.FButton.FlatButton FBtnP2PX;
         private src.FButton.FlatButton FBtnPD;
         private src.FButton.FlatButton FBtnPY;
+        private System.Windows.Forms.FlowLayoutPanel FlpP4Seresvivos;
+        private System.Windows.Forms.Panel PnlP4Topbar;
+        private System.Windows.Forms.FlowLayoutPanel FlpP4Reinos;
+        private System.Windows.Forms.Panel PnlP4AreaAmbiental;
+        private src.FButton.FlatButton FBtnP4SerVivo;
     }
 }
 

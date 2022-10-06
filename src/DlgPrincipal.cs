@@ -26,6 +26,7 @@ namespace POO22B_MZJA
         // +------------------------------------------------------------------+
         private List<CParticula> Particulas;
         private List<Image> Imagenes;
+        private List<CSerVivo> SeresVivos;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
@@ -38,6 +39,8 @@ namespace POO22B_MZJA
 
             Particulas = new List<CParticula>();
             Imagenes = new List<Image>();
+
+            SeresVivos = new List<CSerVivo>();
 
         }
 
@@ -107,6 +110,19 @@ namespace POO22B_MZJA
         private void FBtnP2PX_Click(object sender, EventArgs e)
         {
             new DlgMonitorParticula(Particulas).Show();
+        }
+
+        private void FBtnP4SerVivo_Click(object sender, EventArgs e)
+        {
+            // Utilizar clase
+            CSerVivo SerVivo;
+
+            SerVivo = new CSerVivo(this.PnlP4AreaAmbiental, 10, 10);
+            SerVivo.Nacer();
+            SerVivo.Desplazar(1);
+
+            SeresVivos.Add(SerVivo);
+
         }
     }
 }
