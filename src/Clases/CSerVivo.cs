@@ -35,7 +35,7 @@ namespace POO22B_MZJA.src.Clases
         private int YNacimiento;
 
         // Atributos del áre de desplazamiento
-        private Control AreaDesplazamiento;
+        protected Control AreaDesplazamiento;
 
         private bool Norte;
         private bool Sur;
