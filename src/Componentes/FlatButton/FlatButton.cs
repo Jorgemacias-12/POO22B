@@ -13,7 +13,7 @@ namespace POO22B_MZJA.src.FButton
 {
     public partial class FlatButton : Button
     {
-        [   
+        [
          Browsable(true),
          Category("Appearance"),
          Description("Color to be applied when cursor is on the button")
@@ -22,7 +22,25 @@ namespace POO22B_MZJA.src.FButton
         {
             get; set;
         }
-        
+
+        [Browsable(true)]
+        [Category("Appearance")]
+        [Description("Allow to enable visual styles on hover")]
+        public bool HoverEnabled
+        {
+            get; set;
+        }
+
+        [Browsable(true)]
+        [Category("Appearance")]
+        [Description("Color applied to the border of the button")]
+        public Color BorderColor
+        {
+            get; set;
+        }
+
+
+
         // TODO: implement the code commented in antoher new component
         // called FToggleButton
 
@@ -53,24 +71,29 @@ namespace POO22B_MZJA.src.FButton
         private void InitProperties()
         {
             FlatStyle = FlatStyle.Flat;
-            FlatAppearance.BorderSize = 0;
+            FlatAppearance.BorderColor = BorderColor;
         }
 
         protected override void OnMouseEnter(EventArgs e)
         {
             base.OnMouseEnter(e);
-            OldColor = BackColor;
-            BackColor = HoverColor;
-            Cursor = Cursors.Hand;
+            if (HoverEnabled)
+            {
+                OldColor = BackColor;
+                BackColor = HoverColor;
+                Cursor = Cursors.Hand;
+            }
         }
 
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
-
-            BackColor = OldColor;
+            if (HoverEnabled)
+            {
+                BackColor = OldColor;
+            }
         }
-        
+
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
