@@ -79,9 +79,11 @@ namespace POO22B_MZJA.src.Clases
             // Incializa atributos de ejecución.
             ProcesoVida = null;
 
-            // Construye el dron.
+            // Propiedades del Ser Vivo.
             Location = new Point(this.XNacimiento, this.YNacimiento);
-            BackColor = Color.Black;
+            FlatAppearance.BorderColor = Color.White;
+            FlatAppearance.BorderSize = 1;
+            BackColor = Color.White;
             Name = "Particula";
             Size = new Size(32, 32);
             BringToFront();
