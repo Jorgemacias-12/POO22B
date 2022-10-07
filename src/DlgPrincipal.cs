@@ -124,5 +124,15 @@ namespace POO22B_MZJA
             SeresVivos.Add(SerVivo);
 
         }
+
+        private void FBtnGVegetal_Click(object sender, EventArgs e)
+        {
+            CVegetal Vegetal;
+
+            Vegetal = new CVegetal(PnlP4AreaAmbiental, 10, 10);
+            Vegetal.Nacer();
+            Vegetal.Crecer();
+
+        }
     }
 }
