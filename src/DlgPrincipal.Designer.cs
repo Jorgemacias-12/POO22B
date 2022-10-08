@@ -232,7 +232,7 @@
             // 
             // FlpP4Reinos
             // 
-            this.FlpP4Reinos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(114)))), ((int)(((byte)(255)))));
+            this.FlpP4Reinos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.FlpP4Reinos.Controls.Add(this.FBtnGVegetal);
             this.FlpP4Reinos.Controls.Add(this.FBtnGAnimal);
             this.FlpP4Reinos.Dock = System.Windows.Forms.DockStyle.Top;
@@ -245,11 +245,12 @@
             // FBtnGVegetal
             // 
             this.FBtnGVegetal.AutoSize = true;
-            this.FBtnGVegetal.BackColor = System.Drawing.Color.Transparent;
+            this.FBtnGVegetal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(114)))), ((int)(((byte)(255)))));
             this.FBtnGVegetal.BorderColor = System.Drawing.Color.Empty;
             this.FBtnGVegetal.Dock = System.Windows.Forms.DockStyle.Left;
             this.FBtnGVegetal.FlatAppearance.BorderSize = 0;
             this.FBtnGVegetal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FBtnGVegetal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.FBtnGVegetal.HoverColor = System.Drawing.Color.Empty;
             this.FBtnGVegetal.HoverEnabled = false;
             this.FBtnGVegetal.Location = new System.Drawing.Point(77, 0);
@@ -264,11 +265,12 @@
             // FBtnGAnimal
             // 
             this.FBtnGAnimal.AutoSize = true;
-            this.FBtnGAnimal.BackColor = System.Drawing.Color.Transparent;
+            this.FBtnGAnimal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(114)))), ((int)(((byte)(255)))));
             this.FBtnGAnimal.BorderColor = System.Drawing.Color.Empty;
             this.FBtnGAnimal.Dock = System.Windows.Forms.DockStyle.Left;
             this.FBtnGAnimal.FlatAppearance.BorderSize = 0;
             this.FBtnGAnimal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FBtnGAnimal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.FBtnGAnimal.HoverColor = System.Drawing.Color.Empty;
             this.FBtnGAnimal.HoverEnabled = false;
             this.FBtnGAnimal.Location = new System.Drawing.Point(0, 0);
@@ -291,7 +293,7 @@
             // 
             // PnlP4Generator
             // 
-            this.PnlP4Generator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(41)))), ((int)(((byte)(53)))));
+            this.PnlP4Generator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.PnlP4Generator.Controls.Add(this.FBtnP4SerVivo);
             this.PnlP4Generator.Dock = System.Windows.Forms.DockStyle.Left;
             this.PnlP4Generator.Location = new System.Drawing.Point(0, 0);
@@ -302,11 +304,12 @@
             // FBtnP4SerVivo
             // 
             this.FBtnP4SerVivo.AutoSize = true;
-            this.FBtnP4SerVivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(61)))), ((int)(((byte)(220)))), ((int)(((byte)(151)))));
+            this.FBtnP4SerVivo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(114)))), ((int)(((byte)(255)))));
             this.FBtnP4SerVivo.BorderColor = System.Drawing.Color.Empty;
             this.FBtnP4SerVivo.Dock = System.Windows.Forms.DockStyle.Top;
             this.FBtnP4SerVivo.FlatAppearance.BorderSize = 0;
             this.FBtnP4SerVivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FBtnP4SerVivo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.FBtnP4SerVivo.HoverColor = System.Drawing.Color.Empty;
             this.FBtnP4SerVivo.HoverEnabled = false;
             this.FBtnP4SerVivo.Location = new System.Drawing.Point(0, 0);
@@ -315,7 +318,7 @@
             this.FBtnP4SerVivo.Size = new System.Drawing.Size(99, 58);
             this.FBtnP4SerVivo.TabIndex = 0;
             this.FBtnP4SerVivo.Text = "Ser vivo";
-            this.FBtnP4SerVivo.UseVisualStyleBackColor = true;
+            this.FBtnP4SerVivo.UseVisualStyleBackColor = false;
             this.FBtnP4SerVivo.Click += new System.EventHandler(this.FBtnP4SerVivo_Click);
             // 
             // TbpPractice5
