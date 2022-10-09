@@ -1,5 +1,6 @@
 ﻿using POO22B_MZJA.src.Clases;
 using POO22B_MZJA.src.Utils;
+using POO22B_MZJA.src.Utils.GUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -134,5 +135,16 @@ namespace POO22B_MZJA
             Vegetal.Crecer();
 
         }
+
+        private void FBtnGAnimal_Click(object sender, EventArgs e)
+        {
+            CAnimal Animal;
+
+            Animal = new CAnimal(PnlP4AreaAmbiental, 10, 10);
+            Animal.Nacer();
+            Animal.Desplazar(1);
+            SeresVivos.Add(Animal);
+        }
+
     }
 }
