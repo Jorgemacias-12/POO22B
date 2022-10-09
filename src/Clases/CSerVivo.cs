@@ -201,13 +201,12 @@ namespace POO22B_MZJA.src.Clases
                         // Posición final 
                         Location = new Point(X, Y);
                         Thread.Sleep(this.Velocidad);
-
                     }
                 }
             });
 
             ProcesoVida.Start();
-
+            
         }
 
         protected override void Dispose(bool disposing)

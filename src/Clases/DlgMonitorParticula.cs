@@ -44,8 +44,6 @@ namespace POO22B_MZJA.src.Clases
 
         private void FBtnActualizar_Click(object sender, EventArgs e)
         {
-
-
             DgvMonitor.Rows.Clear();
             for (int i = 0; i < Particulas.Count; i++)
             {
@@ -64,7 +62,7 @@ namespace POO22B_MZJA.src.Clases
             }
             
             LblTotalParticulas.Text = $"En este momento hay {DgvMonitor.Rows.Count} particulas activas";
-
+            DgvMonitor.Refresh();
         }
 
         private void FBtnAutomatico_Click(object sender, EventArgs e)
