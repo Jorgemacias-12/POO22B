@@ -25,17 +25,13 @@ namespace POO22B_MZJA.src.Utils
 
         public static Color GenerateColorShade(string ColorName)
         {
-            const int MAX = 150;
-            const int MIN = 20;
-            const int OFFSET = 1;
-
             int generatedNumber;
             Color ShadeColor;
 
             // Fallback color
-            ShadeColor = Color.White;
+            ShadeColor = Color.Transparent;
 
-            generatedNumber = (int)Math.Floor(Rand.NextDouble() * (MAX - MIN + OFFSET)) + MIN;
+            generatedNumber = Rand.Next(50, 150);
 
             switch (ColorName)
             {
@@ -51,6 +47,11 @@ namespace POO22B_MZJA.src.Utils
             }
 
             return ShadeColor;
+        }
+
+        public static Color GetColor(string hex)
+        {
+            return ColorTranslator.FromHtml(hex);
         }
 
     }
