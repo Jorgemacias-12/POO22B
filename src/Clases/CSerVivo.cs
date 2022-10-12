@@ -42,21 +42,16 @@ namespace POO22B_MZJA.src.Clases
         protected Control AreaDesplazamiento;
 
         // Atributos de dirección
-        private bool Norte;
-        private bool Sur;
-        private bool Este;
-        private bool Oeste;
-        private int Velocidad;
-
-        // Atributos de color
-        int R;
-        int G;
-        int B;
+        protected bool Norte;
+        protected bool Sur;
+        protected bool Este;
+        protected bool Oeste;
+        protected int Velocidad;
 
         // Atributos de control
-        public bool Nacio;
-        private bool RegresarACasa;
-        public bool Muerto;
+        protected bool Nacio;
+        protected bool RegresarACasa;
+        protected bool Muerto;
 
         // Atributos de ejecución
         private Thread ProcesoVida;
@@ -123,12 +118,9 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         // |  Método virtual para colorear a un ser vivo                      |
         // +------------------------------------------------------------------+
-        public virtual void Colorear(out int R, out int G, out int B) 
+        public virtual Color Colorear() 
         {
-            // Fallback color
-            R = 255;
-            G = 255;
-            B = 255;
+            return ColorUtils.GetRandomColor();
         }
 
         // +------------------------------------------------------------------+
@@ -140,7 +132,7 @@ namespace POO22B_MZJA.src.Clases
             Color ColorAleatorio;
 
             // Particula se colorea.
-            ColorAleatorio = ColorUtils.GetRandomColor();
+            ColorAleatorio = Colorear();
 
             // Enciende el dron después de un segundo.
 
