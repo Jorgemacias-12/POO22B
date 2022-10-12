@@ -25,7 +25,8 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CPersona(Control AreaDesplazamiento, int XNacimiento, int YNacimiento) : base(AreaDesplazamiento, XNacimiento, YNacimiento)
+        public CPersona(Control AreaDesplazamiento, int XNacimiento, int YNacimiento) :
+            base(AreaDesplazamiento, XNacimiento, YNacimiento)
         {
             //this.Genero = Genero;
             //this.FechaNacimiento = FechaNacimiento;
@@ -75,7 +76,7 @@ namespace POO22B_MZJA.src.Clases
             int X;
             int Y;
 
-            ProcesoVida = new Thread( () =>
+            ProcesoVida = new Thread(() =>
             {
                 while (!Muerto)
                 {
