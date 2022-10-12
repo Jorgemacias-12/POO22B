@@ -154,7 +154,7 @@ namespace POO22B_MZJA.src.Clases
             Proceso.Start();
         }
 
-        public void Desplazar(int Velocidad)
+        public virtual void Desplazar(int Velocidad)
         {
             // Variables de posición inicial
             int X;
