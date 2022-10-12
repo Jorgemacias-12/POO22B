@@ -130,6 +130,7 @@ namespace POO22B_MZJA
         {
             CVegetal Vegetal;
 
+            // Change constructor to rand pos
             Vegetal = new CVegetal(PnlP4AreaAmbiental, 10, 10);
             Vegetal.Nacer();
             Vegetal.Crecer();
@@ -146,5 +147,12 @@ namespace POO22B_MZJA
             SeresVivos.Add(Animal);
         }
 
+        private void FBtnPersona_Click(object sender, EventArgs e)
+        {
+            CPersona Persona;
+
+            Persona = new CPersona(PnlP4AreaAmbiental, PnlP4AreaAmbiental.Width / 2, PnlP4AreaAmbiental.Height / 2);
+            Persona.Nacer();
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace POO22B_MZJA.src.Clases
     // |  Clase que representa un error                                   |
     // |  MZJA 01/09/22.                                                  |
     // +------------------------------------------------------------------+
-    public class CCliente : CPersona
+    public class CCliente
     {
 
         // +------------------------------------------------------------------+
@@ -23,7 +23,7 @@ namespace POO22B_MZJA.src.Clases
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
         public CCliente(int Genero, DateTime FechaNacimiento, string Nacionalidad, string CodigoCliente)
-            : base(Genero, FechaNacimiento, Nacionalidad)
+            
         {
             this.CodigoCliente = CodigoCliente;
             Saldo = 0;

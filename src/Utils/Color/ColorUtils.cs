@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace POO22B_MZJA.src.Utils
@@ -52,6 +53,32 @@ namespace POO22B_MZJA.src.Utils
         public static Color GetColor(string hex)
         {
             return ColorTranslator.FromHtml(hex);
+        }
+
+        public static Color GetPersonColor()
+        {
+            Color SkinColor;
+            List<Color> SkinColors;
+            int GeneratedIndex;
+
+            SkinColors = new List<Color>();
+
+            SkinColors.Add(GetColor("#f3efee"));
+            SkinColors.Add(GetColor("#efe6dd"));
+            SkinColors.Add(GetColor("#ebd4c6"));
+            SkinColors.Add(GetColor("#d7b6a5"));
+            SkinColors.Add(GetColor("#9e7967"));
+
+            GeneratedIndex = Rand.Next(0, 5);
+
+            SkinColor = SkinColors[GeneratedIndex];
+
+            return SkinColor;
+        }
+
+        public void Desplazar()
+        {
+            Thread ProcesoDesplazar; 
         }
 
     }

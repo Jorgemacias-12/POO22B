@@ -30,7 +30,7 @@ namespace POO22B_MZJA.src.Clases
             Text = "A";
         }
 
-        public new void Nacer()
+        public void Nacer()
         {
             Thread Proceso;
             Color ColorAnimal;

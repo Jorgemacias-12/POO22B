@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.PnlAppContainer = new System.Windows.Forms.Panel();
-            this.PnlSidebar = new System.Windows.Forms.Panel();
-            this.LblTabIndicator = new System.Windows.Forms.Label();
-            this.PnlInfoArea = new System.Windows.Forms.Panel();
-            this.LblInfoText = new System.Windows.Forms.Label();
-            this.PbxInfoIcon = new System.Windows.Forms.PictureBox();
-            this.PnlTopbar = new System.Windows.Forms.Panel();
             this.TpbPractices = new POO22B_MZJA.src.TabPanel.TabPanel();
             this.TbpPractice1 = new System.Windows.Forms.TabPage();
             this.TbpPractice2 = new System.Windows.Forms.TabPage();
@@ -58,20 +52,27 @@
             this.TbpPractice8 = new System.Windows.Forms.TabPage();
             this.TbpPractice9 = new System.Windows.Forms.TabPage();
             this.TbpPractice10 = new System.Windows.Forms.TabPage();
+            this.PnlSidebar = new System.Windows.Forms.Panel();
             this.PnlNavPractices = new POO22B_MZJA.src.NavigationBar.NavigationBar();
+            this.LblTabIndicator = new System.Windows.Forms.Label();
+            this.PnlInfoArea = new System.Windows.Forms.Panel();
+            this.LblInfoText = new System.Windows.Forms.Label();
+            this.PbxInfoIcon = new System.Windows.Forms.PictureBox();
+            this.PnlTopbar = new System.Windows.Forms.Panel();
             this.FBtnOptions = new POO22B_MZJA.src.FButton.FlatButton();
             this.FBtnSidebar = new POO22B_MZJA.src.FButton.FlatButton();
+            this.FBtnPersona = new POO22B_MZJA.src.FButton.FlatButton();
             this.PnlAppContainer.SuspendLayout();
-            this.PnlSidebar.SuspendLayout();
-            this.PnlInfoArea.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PbxInfoIcon)).BeginInit();
-            this.PnlTopbar.SuspendLayout();
             this.TpbPractices.SuspendLayout();
             this.TbpPractice2.SuspendLayout();
             this.PnlP2Navigation.SuspendLayout();
             this.TbpPractice4.SuspendLayout();
             this.FlpP4Reinos.SuspendLayout();
             this.PnlP4Generator.SuspendLayout();
+            this.PnlSidebar.SuspendLayout();
+            this.PnlInfoArea.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PbxInfoIcon)).BeginInit();
+            this.PnlTopbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlAppContainer
@@ -83,75 +84,10 @@
             this.PnlAppContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlAppContainer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PnlAppContainer.Location = new System.Drawing.Point(0, 0);
+            this.PnlAppContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PnlAppContainer.Name = "PnlAppContainer";
-            this.PnlAppContainer.Size = new System.Drawing.Size(1264, 681);
+            this.PnlAppContainer.Size = new System.Drawing.Size(1685, 838);
             this.PnlAppContainer.TabIndex = 0;
-            // 
-            // PnlSidebar
-            // 
-            this.PnlSidebar.Controls.Add(this.PnlNavPractices);
-            this.PnlSidebar.Controls.Add(this.PnlInfoArea);
-            this.PnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PnlSidebar.Location = new System.Drawing.Point(0, 50);
-            this.PnlSidebar.Name = "PnlSidebar";
-            this.PnlSidebar.Size = new System.Drawing.Size(250, 631);
-            this.PnlSidebar.TabIndex = 1;
-            // 
-            // LblTabIndicator
-            // 
-            this.LblTabIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblTabIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTabIndicator.Location = new System.Drawing.Point(61, 0);
-            this.LblTabIndicator.Name = "LblTabIndicator";
-            this.LblTabIndicator.Size = new System.Drawing.Size(1142, 50);
-            this.LblTabIndicator.TabIndex = 1;
-            this.LblTabIndicator.Text = "Práctica 1";
-            this.LblTabIndicator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // PnlInfoArea
-            // 
-            this.PnlInfoArea.Controls.Add(this.LblInfoText);
-            this.PnlInfoArea.Controls.Add(this.PbxInfoIcon);
-            this.PnlInfoArea.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PnlInfoArea.Location = new System.Drawing.Point(0, 0);
-            this.PnlInfoArea.Name = "PnlInfoArea";
-            this.PnlInfoArea.Size = new System.Drawing.Size(250, 52);
-            this.PnlInfoArea.TabIndex = 0;
-            // 
-            // LblInfoText
-            // 
-            this.LblInfoText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LblInfoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblInfoText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(193)))), ((int)(((byte)(179)))));
-            this.LblInfoText.Location = new System.Drawing.Point(61, 0);
-            this.LblInfoText.Name = "LblInfoText";
-            this.LblInfoText.Size = new System.Drawing.Size(189, 52);
-            this.LblInfoText.TabIndex = 1;
-            this.LblInfoText.Text = "JAMZ";
-            this.LblInfoText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // PbxInfoIcon
-            // 
-            this.PbxInfoIcon.BackgroundImage = global::POO22B_MZJA.Properties.Resources.icecube;
-            this.PbxInfoIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PbxInfoIcon.Dock = System.Windows.Forms.DockStyle.Left;
-            this.PbxInfoIcon.Location = new System.Drawing.Point(0, 0);
-            this.PbxInfoIcon.Name = "PbxInfoIcon";
-            this.PbxInfoIcon.Size = new System.Drawing.Size(61, 52);
-            this.PbxInfoIcon.TabIndex = 0;
-            this.PbxInfoIcon.TabStop = false;
-            // 
-            // PnlTopbar
-            // 
-            this.PnlTopbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(102)))));
-            this.PnlTopbar.Controls.Add(this.LblTabIndicator);
-            this.PnlTopbar.Controls.Add(this.FBtnOptions);
-            this.PnlTopbar.Controls.Add(this.FBtnSidebar);
-            this.PnlTopbar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PnlTopbar.Location = new System.Drawing.Point(0, 0);
-            this.PnlTopbar.Name = "PnlTopbar";
-            this.PnlTopbar.Size = new System.Drawing.Size(1264, 50);
-            this.PnlTopbar.TabIndex = 0;
             // 
             // TpbPractices
             // 
@@ -166,20 +102,22 @@
             this.TpbPractices.Controls.Add(this.TbpPractice9);
             this.TpbPractices.Controls.Add(this.TbpPractice10);
             this.TpbPractices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TpbPractices.Location = new System.Drawing.Point(250, 50);
+            this.TpbPractices.Location = new System.Drawing.Point(333, 62);
+            this.TpbPractices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TpbPractices.Name = "TpbPractices";
             this.TpbPractices.SelectedIndex = 0;
-            this.TpbPractices.Size = new System.Drawing.Size(1014, 631);
+            this.TpbPractices.Size = new System.Drawing.Size(1352, 776);
             this.TpbPractices.TabIndex = 2;
             this.TpbPractices.TabsBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             // 
             // TbpPractice1
             // 
             this.TbpPractice1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.TbpPractice1.Location = new System.Drawing.Point(4, 29);
+            this.TbpPractice1.Location = new System.Drawing.Point(4, 34);
+            this.TbpPractice1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbpPractice1.Name = "TbpPractice1";
-            this.TbpPractice1.Padding = new System.Windows.Forms.Padding(3);
-            this.TbpPractice1.Size = new System.Drawing.Size(1006, 598);
+            this.TbpPractice1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbpPractice1.Size = new System.Drawing.Size(1344, 738);
             this.TbpPractice1.TabIndex = 0;
             this.TbpPractice1.Text = "Practice 1";
             // 
@@ -188,19 +126,21 @@
             this.TbpPractice2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.TbpPractice2.Controls.Add(this.PnlP2Container);
             this.TbpPractice2.Controls.Add(this.PnlP2Navigation);
-            this.TbpPractice2.Location = new System.Drawing.Point(4, 29);
+            this.TbpPractice2.Location = new System.Drawing.Point(4, 34);
+            this.TbpPractice2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbpPractice2.Name = "TbpPractice2";
-            this.TbpPractice2.Padding = new System.Windows.Forms.Padding(3);
-            this.TbpPractice2.Size = new System.Drawing.Size(1006, 598);
+            this.TbpPractice2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TbpPractice2.Size = new System.Drawing.Size(1344, 739);
             this.TbpPractice2.TabIndex = 1;
             this.TbpPractice2.Text = "Practice 2";
             // 
             // PnlP2Container
             // 
             this.PnlP2Container.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlP2Container.Location = new System.Drawing.Point(3, 3);
+            this.PnlP2Container.Location = new System.Drawing.Point(4, 4);
+            this.PnlP2Container.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PnlP2Container.Name = "PnlP2Container";
-            this.PnlP2Container.Size = new System.Drawing.Size(929, 592);
+            this.PnlP2Container.Size = new System.Drawing.Size(1241, 731);
             this.PnlP2Container.TabIndex = 0;
             // 
             // PnlP2Navigation
@@ -210,9 +150,10 @@
             this.PnlP2Navigation.Controls.Add(this.FBtnPY);
             this.PnlP2Navigation.Controls.Add(this.FBtnP2PX);
             this.PnlP2Navigation.Dock = System.Windows.Forms.DockStyle.Right;
-            this.PnlP2Navigation.Location = new System.Drawing.Point(932, 3);
+            this.PnlP2Navigation.Location = new System.Drawing.Point(1245, 4);
+            this.PnlP2Navigation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PnlP2Navigation.Name = "PnlP2Navigation";
-            this.PnlP2Navigation.Size = new System.Drawing.Size(71, 592);
+            this.PnlP2Navigation.Size = new System.Drawing.Size(95, 731);
             this.PnlP2Navigation.TabIndex = 1;
             // 
             // FBtnPD
@@ -223,9 +164,10 @@
             this.FBtnPD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FBtnPD.HoverColor = System.Drawing.Color.Empty;
             this.FBtnPD.HoverEnabled = false;
-            this.FBtnPD.Location = new System.Drawing.Point(0, 80);
+            this.FBtnPD.Location = new System.Drawing.Point(0, 98);
+            this.FBtnPD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FBtnPD.Name = "FBtnPD";
-            this.FBtnPD.Size = new System.Drawing.Size(71, 40);
+            this.FBtnPD.Size = new System.Drawing.Size(95, 49);
             this.FBtnPD.TabIndex = 2;
             this.FBtnPD.Text = "PD";
             this.FBtnPD.UseVisualStyleBackColor = true;
@@ -239,9 +181,10 @@
             this.FBtnPY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FBtnPY.HoverColor = System.Drawing.Color.Empty;
             this.FBtnPY.HoverEnabled = false;
-            this.FBtnPY.Location = new System.Drawing.Point(0, 40);
+            this.FBtnPY.Location = new System.Drawing.Point(0, 49);
+            this.FBtnPY.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FBtnPY.Name = "FBtnPY";
-            this.FBtnPY.Size = new System.Drawing.Size(71, 40);
+            this.FBtnPY.Size = new System.Drawing.Size(95, 49);
             this.FBtnPY.TabIndex = 1;
             this.FBtnPY.Text = "PY";
             this.FBtnPY.UseVisualStyleBackColor = true;
@@ -256,8 +199,9 @@
             this.FBtnP2PX.HoverColor = System.Drawing.Color.Empty;
             this.FBtnP2PX.HoverEnabled = false;
             this.FBtnP2PX.Location = new System.Drawing.Point(0, 0);
+            this.FBtnP2PX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FBtnP2PX.Name = "FBtnP2PX";
-            this.FBtnP2PX.Size = new System.Drawing.Size(71, 40);
+            this.FBtnP2PX.Size = new System.Drawing.Size(95, 49);
             this.FBtnP2PX.TabIndex = 0;
             this.FBtnP2PX.Text = "M";
             this.FBtnP2PX.UseVisualStyleBackColor = true;
@@ -266,9 +210,10 @@
             // TbpPractice3
             // 
             this.TbpPractice3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.TbpPractice3.Location = new System.Drawing.Point(4, 29);
+            this.TbpPractice3.Location = new System.Drawing.Point(4, 34);
+            this.TbpPractice3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbpPractice3.Name = "TbpPractice3";
-            this.TbpPractice3.Size = new System.Drawing.Size(1006, 598);
+            this.TbpPractice3.Size = new System.Drawing.Size(1344, 739);
             this.TbpPractice3.TabIndex = 2;
             this.TbpPractice3.Text = "Practice 3";
             // 
@@ -279,9 +224,10 @@
             this.TbpPractice4.Controls.Add(this.FlpP4Reinos);
             this.TbpPractice4.Controls.Add(this.PnlP4Topbar);
             this.TbpPractice4.Controls.Add(this.PnlP4Generator);
-            this.TbpPractice4.Location = new System.Drawing.Point(4, 29);
+            this.TbpPractice4.Location = new System.Drawing.Point(4, 34);
+            this.TbpPractice4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbpPractice4.Name = "TbpPractice4";
-            this.TbpPractice4.Size = new System.Drawing.Size(1006, 598);
+            this.TbpPractice4.Size = new System.Drawing.Size(1344, 738);
             this.TbpPractice4.TabIndex = 3;
             this.TbpPractice4.Text = "Practice 4";
             // 
@@ -289,10 +235,10 @@
             // 
             this.PnlP4AreaAmbiental.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.PnlP4AreaAmbiental.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlP4AreaAmbiental.Location = new System.Drawing.Point(99, 164);
-            this.PnlP4AreaAmbiental.Margin = new System.Windows.Forms.Padding(2);
+            this.PnlP4AreaAmbiental.Location = new System.Drawing.Point(132, 202);
+            this.PnlP4AreaAmbiental.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PnlP4AreaAmbiental.Name = "PnlP4AreaAmbiental";
-            this.PnlP4AreaAmbiental.Size = new System.Drawing.Size(907, 434);
+            this.PnlP4AreaAmbiental.Size = new System.Drawing.Size(1212, 536);
             this.PnlP4AreaAmbiental.TabIndex = 3;
             // 
             // FlpP4Reinos
@@ -301,10 +247,10 @@
             this.FlpP4Reinos.Controls.Add(this.FBtnGVegetal);
             this.FlpP4Reinos.Controls.Add(this.FBtnGAnimal);
             this.FlpP4Reinos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FlpP4Reinos.Location = new System.Drawing.Point(99, 83);
-            this.FlpP4Reinos.Margin = new System.Windows.Forms.Padding(2);
+            this.FlpP4Reinos.Location = new System.Drawing.Point(132, 102);
+            this.FlpP4Reinos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FlpP4Reinos.Name = "FlpP4Reinos";
-            this.FlpP4Reinos.Size = new System.Drawing.Size(907, 81);
+            this.FlpP4Reinos.Size = new System.Drawing.Size(1212, 100);
             this.FlpP4Reinos.TabIndex = 2;
             // 
             // FBtnGVegetal
@@ -318,10 +264,10 @@
             this.FBtnGVegetal.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.FBtnGVegetal.HoverColor = System.Drawing.Color.Empty;
             this.FBtnGVegetal.HoverEnabled = false;
-            this.FBtnGVegetal.Location = new System.Drawing.Point(77, 0);
-            this.FBtnGVegetal.Margin = new System.Windows.Forms.Padding(2);
+            this.FBtnGVegetal.Location = new System.Drawing.Point(109, 0);
+            this.FBtnGVegetal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FBtnGVegetal.Name = "FBtnGVegetal";
-            this.FBtnGVegetal.Size = new System.Drawing.Size(77, 81);
+            this.FBtnGVegetal.Size = new System.Drawing.Size(119, 100);
             this.FBtnGVegetal.TabIndex = 2;
             this.FBtnGVegetal.Text = "Vegetal";
             this.FBtnGVegetal.UseVisualStyleBackColor = false;
@@ -339,9 +285,9 @@
             this.FBtnGAnimal.HoverColor = System.Drawing.Color.Empty;
             this.FBtnGAnimal.HoverEnabled = false;
             this.FBtnGAnimal.Location = new System.Drawing.Point(0, 0);
-            this.FBtnGAnimal.Margin = new System.Windows.Forms.Padding(2);
+            this.FBtnGAnimal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FBtnGAnimal.Name = "FBtnGAnimal";
-            this.FBtnGAnimal.Size = new System.Drawing.Size(77, 81);
+            this.FBtnGAnimal.Size = new System.Drawing.Size(109, 100);
             this.FBtnGAnimal.TabIndex = 1;
             this.FBtnGAnimal.Text = "Animal";
             this.FBtnGAnimal.UseVisualStyleBackColor = false;
@@ -351,20 +297,22 @@
             // 
             this.PnlP4Topbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
             this.PnlP4Topbar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PnlP4Topbar.Location = new System.Drawing.Point(99, 0);
-            this.PnlP4Topbar.Margin = new System.Windows.Forms.Padding(2);
+            this.PnlP4Topbar.Location = new System.Drawing.Point(132, 0);
+            this.PnlP4Topbar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PnlP4Topbar.Name = "PnlP4Topbar";
-            this.PnlP4Topbar.Size = new System.Drawing.Size(907, 83);
+            this.PnlP4Topbar.Size = new System.Drawing.Size(1212, 102);
             this.PnlP4Topbar.TabIndex = 1;
             // 
             // PnlP4Generator
             // 
             this.PnlP4Generator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.PnlP4Generator.Controls.Add(this.FBtnPersona);
             this.PnlP4Generator.Controls.Add(this.FBtnP4SerVivo);
             this.PnlP4Generator.Dock = System.Windows.Forms.DockStyle.Left;
             this.PnlP4Generator.Location = new System.Drawing.Point(0, 0);
+            this.PnlP4Generator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PnlP4Generator.Name = "PnlP4Generator";
-            this.PnlP4Generator.Size = new System.Drawing.Size(99, 598);
+            this.PnlP4Generator.Size = new System.Drawing.Size(132, 738);
             this.PnlP4Generator.TabIndex = 0;
             // 
             // FBtnP4SerVivo
@@ -379,9 +327,9 @@
             this.FBtnP4SerVivo.HoverColor = System.Drawing.Color.Empty;
             this.FBtnP4SerVivo.HoverEnabled = false;
             this.FBtnP4SerVivo.Location = new System.Drawing.Point(0, 0);
-            this.FBtnP4SerVivo.Margin = new System.Windows.Forms.Padding(2);
+            this.FBtnP4SerVivo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FBtnP4SerVivo.Name = "FBtnP4SerVivo";
-            this.FBtnP4SerVivo.Size = new System.Drawing.Size(99, 58);
+            this.FBtnP4SerVivo.Size = new System.Drawing.Size(132, 71);
             this.FBtnP4SerVivo.TabIndex = 0;
             this.FBtnP4SerVivo.Text = "Ser vivo";
             this.FBtnP4SerVivo.UseVisualStyleBackColor = false;
@@ -390,56 +338,73 @@
             // TbpPractice5
             // 
             this.TbpPractice5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.TbpPractice5.Location = new System.Drawing.Point(4, 29);
+            this.TbpPractice5.Location = new System.Drawing.Point(4, 34);
+            this.TbpPractice5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbpPractice5.Name = "TbpPractice5";
-            this.TbpPractice5.Size = new System.Drawing.Size(1006, 598);
+            this.TbpPractice5.Size = new System.Drawing.Size(1344, 739);
             this.TbpPractice5.TabIndex = 4;
             this.TbpPractice5.Text = "Practice 5";
             // 
             // TbpPractice6
             // 
             this.TbpPractice6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.TbpPractice6.Location = new System.Drawing.Point(4, 29);
+            this.TbpPractice6.Location = new System.Drawing.Point(4, 34);
+            this.TbpPractice6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbpPractice6.Name = "TbpPractice6";
-            this.TbpPractice6.Size = new System.Drawing.Size(1006, 598);
+            this.TbpPractice6.Size = new System.Drawing.Size(1344, 739);
             this.TbpPractice6.TabIndex = 5;
             this.TbpPractice6.Text = "Practice 6";
             // 
             // TbpPractice7
             // 
             this.TbpPractice7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.TbpPractice7.Location = new System.Drawing.Point(4, 29);
+            this.TbpPractice7.Location = new System.Drawing.Point(4, 34);
+            this.TbpPractice7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbpPractice7.Name = "TbpPractice7";
-            this.TbpPractice7.Size = new System.Drawing.Size(1006, 598);
+            this.TbpPractice7.Size = new System.Drawing.Size(1344, 739);
             this.TbpPractice7.TabIndex = 6;
             this.TbpPractice7.Text = "Practice 7";
             // 
             // TbpPractice8
             // 
             this.TbpPractice8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.TbpPractice8.Location = new System.Drawing.Point(4, 29);
+            this.TbpPractice8.Location = new System.Drawing.Point(4, 34);
+            this.TbpPractice8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbpPractice8.Name = "TbpPractice8";
-            this.TbpPractice8.Size = new System.Drawing.Size(1006, 598);
+            this.TbpPractice8.Size = new System.Drawing.Size(1344, 739);
             this.TbpPractice8.TabIndex = 7;
             this.TbpPractice8.Text = "Practice 8";
             // 
             // TbpPractice9
             // 
             this.TbpPractice9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.TbpPractice9.Location = new System.Drawing.Point(4, 29);
+            this.TbpPractice9.Location = new System.Drawing.Point(4, 34);
+            this.TbpPractice9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbpPractice9.Name = "TbpPractice9";
-            this.TbpPractice9.Size = new System.Drawing.Size(1006, 598);
+            this.TbpPractice9.Size = new System.Drawing.Size(1344, 739);
             this.TbpPractice9.TabIndex = 8;
             this.TbpPractice9.Text = "Practice 9";
             // 
             // TbpPractice10
             // 
             this.TbpPractice10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.TbpPractice10.Location = new System.Drawing.Point(4, 29);
+            this.TbpPractice10.Location = new System.Drawing.Point(4, 34);
+            this.TbpPractice10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TbpPractice10.Name = "TbpPractice10";
-            this.TbpPractice10.Size = new System.Drawing.Size(1006, 598);
+            this.TbpPractice10.Size = new System.Drawing.Size(1344, 739);
             this.TbpPractice10.TabIndex = 9;
             this.TbpPractice10.Text = "Practice 10";
+            // 
+            // PnlSidebar
+            // 
+            this.PnlSidebar.Controls.Add(this.PnlNavPractices);
+            this.PnlSidebar.Controls.Add(this.PnlInfoArea);
+            this.PnlSidebar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PnlSidebar.Location = new System.Drawing.Point(0, 62);
+            this.PnlSidebar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PnlSidebar.Name = "PnlSidebar";
+            this.PnlSidebar.Size = new System.Drawing.Size(333, 776);
+            this.PnlSidebar.TabIndex = 1;
             // 
             // PnlNavPractices
             // 
@@ -457,14 +422,76 @@
             this.PnlNavPractices.ItemIcon = global::POO22B_MZJA.Properties.Resources.document;
             this.PnlNavPractices.ItemPrefixName = "Práctica";
             this.PnlNavPractices.ItemWidth = 0;
-            this.PnlNavPractices.Location = new System.Drawing.Point(0, 52);
+            this.PnlNavPractices.Location = new System.Drawing.Point(0, 64);
+            this.PnlNavPractices.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PnlNavPractices.Name = "PnlNavPractices";
             this.PnlNavPractices.NumberOfItems = 10;
-            this.PnlNavPractices.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.PnlNavPractices.Size = new System.Drawing.Size(250, 579);
+            this.PnlNavPractices.Padding = new System.Windows.Forms.Padding(13, 0, 13, 0);
+            this.PnlNavPractices.Size = new System.Drawing.Size(333, 712);
             this.PnlNavPractices.TabContentContainer = this.TpbPractices;
             this.PnlNavPractices.TabIndex = 1;
             this.PnlNavPractices.WrapContents = false;
+            // 
+            // LblTabIndicator
+            // 
+            this.LblTabIndicator.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LblTabIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTabIndicator.Location = new System.Drawing.Point(81, 0);
+            this.LblTabIndicator.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblTabIndicator.Name = "LblTabIndicator";
+            this.LblTabIndicator.Size = new System.Drawing.Size(1523, 62);
+            this.LblTabIndicator.TabIndex = 1;
+            this.LblTabIndicator.Text = "Práctica 1";
+            this.LblTabIndicator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PnlInfoArea
+            // 
+            this.PnlInfoArea.Controls.Add(this.LblInfoText);
+            this.PnlInfoArea.Controls.Add(this.PbxInfoIcon);
+            this.PnlInfoArea.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PnlInfoArea.Location = new System.Drawing.Point(0, 0);
+            this.PnlInfoArea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PnlInfoArea.Name = "PnlInfoArea";
+            this.PnlInfoArea.Size = new System.Drawing.Size(333, 64);
+            this.PnlInfoArea.TabIndex = 0;
+            // 
+            // LblInfoText
+            // 
+            this.LblInfoText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LblInfoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblInfoText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(193)))), ((int)(((byte)(179)))));
+            this.LblInfoText.Location = new System.Drawing.Point(81, 0);
+            this.LblInfoText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LblInfoText.Name = "LblInfoText";
+            this.LblInfoText.Size = new System.Drawing.Size(252, 64);
+            this.LblInfoText.TabIndex = 1;
+            this.LblInfoText.Text = "JAMZ";
+            this.LblInfoText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PbxInfoIcon
+            // 
+            this.PbxInfoIcon.BackgroundImage = global::POO22B_MZJA.Properties.Resources.icecube;
+            this.PbxInfoIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PbxInfoIcon.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PbxInfoIcon.Location = new System.Drawing.Point(0, 0);
+            this.PbxInfoIcon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PbxInfoIcon.Name = "PbxInfoIcon";
+            this.PbxInfoIcon.Size = new System.Drawing.Size(81, 64);
+            this.PbxInfoIcon.TabIndex = 0;
+            this.PbxInfoIcon.TabStop = false;
+            // 
+            // PnlTopbar
+            // 
+            this.PnlTopbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(102)))));
+            this.PnlTopbar.Controls.Add(this.LblTabIndicator);
+            this.PnlTopbar.Controls.Add(this.FBtnOptions);
+            this.PnlTopbar.Controls.Add(this.FBtnSidebar);
+            this.PnlTopbar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PnlTopbar.Location = new System.Drawing.Point(0, 0);
+            this.PnlTopbar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PnlTopbar.Name = "PnlTopbar";
+            this.PnlTopbar.Size = new System.Drawing.Size(1685, 62);
+            this.PnlTopbar.TabIndex = 0;
             // 
             // FBtnOptions
             // 
@@ -475,9 +502,10 @@
             this.FBtnOptions.HoverColor = System.Drawing.Color.Empty;
             this.FBtnOptions.HoverEnabled = false;
             this.FBtnOptions.Image = global::POO22B_MZJA.Properties.Resources.fa_cog;
-            this.FBtnOptions.Location = new System.Drawing.Point(1203, 0);
+            this.FBtnOptions.Location = new System.Drawing.Point(1604, 0);
+            this.FBtnOptions.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FBtnOptions.Name = "FBtnOptions";
-            this.FBtnOptions.Size = new System.Drawing.Size(61, 50);
+            this.FBtnOptions.Size = new System.Drawing.Size(81, 62);
             this.FBtnOptions.TabIndex = 2;
             this.FBtnOptions.UseVisualStyleBackColor = true;
             // 
@@ -491,28 +519,46 @@
             this.FBtnSidebar.HoverEnabled = false;
             this.FBtnSidebar.Image = global::POO22B_MZJA.Properties.Resources.bars_solid;
             this.FBtnSidebar.Location = new System.Drawing.Point(0, 0);
+            this.FBtnSidebar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FBtnSidebar.Name = "FBtnSidebar";
-            this.FBtnSidebar.Size = new System.Drawing.Size(61, 50);
+            this.FBtnSidebar.Size = new System.Drawing.Size(81, 62);
             this.FBtnSidebar.TabIndex = 0;
             this.FBtnSidebar.UseVisualStyleBackColor = true;
             // 
+            // FBtnPersona
+            // 
+            this.FBtnPersona.AutoSize = true;
+            this.FBtnPersona.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(114)))), ((int)(((byte)(255)))));
+            this.FBtnPersona.BorderColor = System.Drawing.Color.Empty;
+            this.FBtnPersona.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FBtnPersona.FlatAppearance.BorderSize = 0;
+            this.FBtnPersona.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FBtnPersona.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.FBtnPersona.HoverColor = System.Drawing.Color.Empty;
+            this.FBtnPersona.HoverEnabled = false;
+            this.FBtnPersona.Location = new System.Drawing.Point(0, 71);
+            this.FBtnPersona.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FBtnPersona.Name = "FBtnPersona";
+            this.FBtnPersona.Size = new System.Drawing.Size(132, 100);
+            this.FBtnPersona.TabIndex = 3;
+            this.FBtnPersona.Text = "Persona";
+            this.FBtnPersona.UseVisualStyleBackColor = false;
+            this.FBtnPersona.Click += new System.EventHandler(this.FBtnPersona_Click);
+            // 
             // DlgPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.PnlAppContainer);
-            this.MinimumSize = new System.Drawing.Size(800, 599);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1061, 726);
             this.Name = "DlgPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "JAMZ - POO22B";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DlgPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.DlgPrincipal_Load);
             this.PnlAppContainer.ResumeLayout(false);
-            this.PnlSidebar.ResumeLayout(false);
-            this.PnlInfoArea.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PbxInfoIcon)).EndInit();
-            this.PnlTopbar.ResumeLayout(false);
             this.TpbPractices.ResumeLayout(false);
             this.TbpPractice2.ResumeLayout(false);
             this.PnlP2Navigation.ResumeLayout(false);
@@ -521,6 +567,10 @@
             this.FlpP4Reinos.PerformLayout();
             this.PnlP4Generator.ResumeLayout(false);
             this.PnlP4Generator.PerformLayout();
+            this.PnlSidebar.ResumeLayout(false);
+            this.PnlInfoArea.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PbxInfoIcon)).EndInit();
+            this.PnlTopbar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -560,6 +610,7 @@
         private System.Windows.Forms.Panel PnlP4Generator;
         private src.FButton.FlatButton FBtnGAnimal;
         private src.FButton.FlatButton FBtnGVegetal;
+        private src.FButton.FlatButton FBtnPersona;
     }
 }
 

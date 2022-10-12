@@ -34,14 +34,24 @@ namespace POO22B_MZJA.src.Clases
         private int XNacimiento;
         private int YNacimiento;
 
+        // Limites de crecimiento
+        protected int LimiteAncho;
+        protected int LimiteAlto;
+
         // Atributos del áre de desplazamiento
         protected Control AreaDesplazamiento;
 
+        // Atributos de dirección
         private bool Norte;
         private bool Sur;
         private bool Este;
         private bool Oeste;
         private int Velocidad;
+
+        // Atributos de color
+        int R;
+        int G;
+        int B;
 
         // Atributos de control
         public bool Nacio;
@@ -55,6 +65,22 @@ namespace POO22B_MZJA.src.Clases
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
         public CSerVivo(Control AreaDesplazamiento, int XNacimiento, int YNacimiento)
+        {
+            Constructor(AreaDesplazamiento, XNacimiento, YNacimiento);
+        }
+
+        // +------------------------------------------------------------------+
+        // |  Constructor                                                     |
+        // +------------------------------------------------------------------+
+        public CSerVivo(Control AreaDesplazamiento)
+        {
+            Constructor(AreaDesplazamiento, 0, 0);
+        }
+
+        // +------------------------------------------------------------------+
+        // |  Contiene el funcionamiento de inicialización                    |
+        // +------------------------------------------------------------------+
+        private void Constructor(Control AreaDesplazamiento, int XNacimiento, int YNacimiento)
         {
             // Inicializa atributos de la base
             this.XNacimiento = XNacimiento;
@@ -87,7 +113,6 @@ namespace POO22B_MZJA.src.Clases
             Name = "Particula";
             Size = new Size(32, 32);
             BringToFront();
-
         }
 
         // +------------------------------------------------------------------+
@@ -96,9 +121,20 @@ namespace POO22B_MZJA.src.Clases
         public virtual void Crecer() { }
 
         // +------------------------------------------------------------------+
+        // |  Método virtual para colorear a un ser vivo                      |
+        // +------------------------------------------------------------------+
+        public virtual void Colorear(out int R, out int G, out int B) 
+        {
+            // Fallback color
+            R = 255;
+            G = 255;
+            B = 255;
+        }
+
+        // +------------------------------------------------------------------+
         // | Comienza el proceso de nacimiento                                |   
         // +------------------------------------------------------------------+
-        public void Nacer()
+        public virtual void Nacer()
         {
             Thread Proceso;
             Color ColorAleatorio;

@@ -29,6 +29,8 @@ namespace POO22B_MZJA.src.Clases
             // Definir crecimiento máximo del vegetal
             CrecimientoMaximo.X = random.Next(1, 250);
             CrecimientoMaximo.X = random.Next(1, 150);
+
+            Text = "V";
         }
 
         public new void Nacer()
@@ -69,7 +71,7 @@ namespace POO22B_MZJA.src.Clases
             H = 0;
 
             // Definir tasa de crecimiento
-            TasaCrecimiento = random.Next(1, 10);
+            TasaCrecimiento = random.Next(1, 5);
 
             ProcesoCrecimiento = new Thread(() =>
             {
