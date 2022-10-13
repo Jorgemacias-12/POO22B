@@ -160,18 +160,6 @@ namespace POO22B_MZJA
 
         }
 
-        private void TpbPractices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            Debug.WriteLine($"{SeresVivos.Count} - {TpbPractices.SelectedTab}");
-
-            while(SeresVivos.Count != 0 && 
-                  TpbPractices.SelectedTab == TpbPractices.TabPages["TpgPractice4"])
-            {
-                PnlP4AreaAmbiental.Refresh();
-            }
-        }
-
         private void PnlNavPractices_Paint(object sender, PaintEventArgs e)
         {
             Control Component;

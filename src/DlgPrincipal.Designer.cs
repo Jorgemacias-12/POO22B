@@ -107,7 +107,6 @@
             this.TpbPractices.Size = new System.Drawing.Size(1014, 631);
             this.TpbPractices.TabIndex = 2;
             this.TpbPractices.TabsBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.TpbPractices.SelectedIndexChanged += new System.EventHandler(this.TpbPractices_SelectedIndexChanged);
             // 
             // TbpPractice1
             // 
