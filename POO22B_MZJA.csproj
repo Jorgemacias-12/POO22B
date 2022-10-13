@@ -76,7 +76,9 @@
       <DependentUpon>CParticula.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Clases\CPelota.cs" />
-    <Compile Include="src\Clases\CPersona.cs" />
+    <Compile Include="src\Clases\CPersona.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Clases\CPrimate.cs">
       <SubType>Component</SubType>
     </Compile>
