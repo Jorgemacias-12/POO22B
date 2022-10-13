@@ -53,8 +53,6 @@ namespace POO22B_MZJA.src.Clases
                 Nacio = true;
             });
 
-            Proceso.Priority = ThreadPriority.Lowest;
-
             Proceso.Start();
         }
 
