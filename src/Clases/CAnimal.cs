@@ -30,13 +30,20 @@ namespace POO22B_MZJA.src.Clases
             Text = "A";
         }
 
-        public void Nacer()
+        public override Color Colorear()
         {
+            return ColorUtils.GenerateColorShade("red");
+        }
+
+        public override void Nacer()
+        {
+            base.Nacer();
+
             Thread Proceso;
             Color ColorAnimal;
 
             // Ser vivo obtiene su color
-            ColorAnimal = ColorUtils.GenerateColorShade("red");
+            ColorAnimal = Colorear();
 
             // El Vegetal nace después de un tiempo
 
@@ -45,6 +52,8 @@ namespace POO22B_MZJA.src.Clases
                 BackColor = ColorAnimal;
                 Nacio = true;
             });
+
+            Proceso.Priority = ThreadPriority.Lowest;
 
             Proceso.Start();
         }

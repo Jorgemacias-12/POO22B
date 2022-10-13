@@ -28,28 +28,37 @@ namespace POO22B_MZJA.src.Clases
         public CPersona(Control AreaDesplazamiento, int XNacimiento, int YNacimiento) :
             base(AreaDesplazamiento, XNacimiento, YNacimiento)
         {
-            //this.Genero = Genero;
-            //this.FechaNacimiento = FechaNacimiento;
-            //this.Nacionalidad = Nacionalidad;
+            Constructor();
+        }
 
-            //Nombre = "";
-            //Etnia = 0;
+        public CPersona(Control AreaDesplazamiento) : base(AreaDesplazamiento, 0, 0)
+        {
+            Constructor();
+        }
 
-            // Inicializar random
-
+        private void Constructor()
+        {
             random = new Random();
+
+            Text = "P";
 
         }
 
-        public void Nacer()
+        public override Color Colorear()
+        {
+            return ColorUtils.GetPersonColor();
+        }
+
+        public override void Nacer()
         {
             Thread Proceso;
             Color ColorDePiel;
             int X;
             int Y;
 
-            // Persona obtiene su color de piel
-            ColorDePiel = ColorUtils.GetPersonColor();
+            // Persona obtiene su color de piel 
+            // Refact this to a virtual method
+            ColorDePiel = Colorear();
 
             Proceso = new Thread(() =>
             {
@@ -57,8 +66,8 @@ namespace POO22B_MZJA.src.Clases
                 Nacio = true;
 
                 // El vegetal tiene un punto aleatorio para nacer
-                X = random.Next(10, AreaDesplazamiento.Width);
-                Y = random.Next(10, AreaDesplazamiento.Height);
+                X = random.Next(10, AreaDesplazamiento.Width / 2);
+                Y = random.Next(10, AreaDesplazamiento.Height / 2);
 
                 // Aplicar la posición
                 Location = new Point(X, Y);
@@ -69,7 +78,7 @@ namespace POO22B_MZJA.src.Clases
 
         }
 
-        public void Desplazar()
+        public override void Desplazar(int Velocidad)
         {
             Thread ProcesoVida;
 
@@ -86,30 +95,7 @@ namespace POO22B_MZJA.src.Clases
                         X = Location.X;
                         Y = Location.Y;
 
-                        // Calcula desplazamiento
-
-                        if (Norte)
-                        {
-                            Y -= 1;
-                        }
-
-                        if (Sur)
-                        {
-                            Y += 1;
-                        }
-
-                        if (Este)
-                        {
-                            X += 1;
-                        }
-
-                        if (Oeste)
-                        {
-                            X -= 1;
-                        }
-
-                        // Determinar rebote
-
+                        // Evitar que las personas salgan del ecosistema
                         if (X <= 0)
                         {
                             this.Oeste = false;
@@ -144,9 +130,33 @@ namespace POO22B_MZJA.src.Clases
                             this.Sur = false;
                         }
 
+                        // Calcula desplazamiento
+
+                        if (Norte)
+                        {
+                            Y -= 1;
+                        }
+
+                        if (Sur)
+                        {
+                            Y += 1;
+                        }
+
+                        if (Este)
+                        {
+                            X += 1;
+                        }
+
+                        if (Oeste)
+                        {
+                            X -= 1;
+                        }
+
+
+
                         // Posición final 
                         Location = new Point(X, Y);
-                        Thread.Sleep(this.Velocidad);
+                        Thread.Sleep(Velocidad);
                     }
                 }
             });

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace POO22B_MZJA.src.Clases
     public class CSerVivo : FButton.FlatButton
     {
         // TODO: implementar método de movimiento en clase Animal
-        
+
         /*
          * 1 -> DlgPractica 4
          * 2 -> CSerVivo
@@ -52,9 +53,15 @@ namespace POO22B_MZJA.src.Clases
         protected bool Nacio;
         protected bool RegresarACasa;
         protected bool Muerto;
+        protected int Hambre;
+        protected int ComidaIngerida;
+        private Random Rand;
 
         // Atributos de ejecución
         private Thread ProcesoVida;
+        private Thread ProcesoCansancio;
+        private Thread ProcesoComer;
+        private Thread ProcesoMuerte;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
@@ -80,6 +87,9 @@ namespace POO22B_MZJA.src.Clases
             // Inicializa atributos de la base
             this.XNacimiento = XNacimiento;
             this.YNacimiento = YNacimiento;
+
+            // Inicializar random
+            Rand = new Random();
 
             // Inicializa atributos del ecosistema
             this.AreaDesplazamiento = AreaDesplazamiento;
@@ -108,6 +118,18 @@ namespace POO22B_MZJA.src.Clases
             Name = "Particula";
             Size = new Size(32, 32);
             BringToFront();
+
+            // Accionar cuando hacemos clic en el
+            Click += CSerVivo_Click;
+
+        }
+
+        // +------------------------------------------------------------------+
+        // | El ser vivo                                                      |   
+        // +------------------------------------------------------------------+
+        private void CSerVivo_Click(object sender, EventArgs e)
+        {
+            Comer();
         }
 
         // +------------------------------------------------------------------+
@@ -118,7 +140,7 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         // |  Método virtual para colorear a un ser vivo                      |
         // +------------------------------------------------------------------+
-        public virtual Color Colorear() 
+        public virtual Color Colorear()
         {
             return ColorUtils.GetRandomColor();
         }
@@ -131,19 +153,55 @@ namespace POO22B_MZJA.src.Clases
             Thread Proceso;
             Color ColorAleatorio;
 
-            // Particula se colorea.
+            // Ser vivo obteiene su color de piel.
             ColorAleatorio = Colorear();
 
-            // Enciende el dron después de un segundo.
+            // El ser vivo nace.
 
             Proceso = new Thread(() =>
             {
                 Thread.Sleep(1500);
                 BackColor = ColorAleatorio;
+
+                // Inicializar variables de vitalidad
                 Nacio = true;
+                Muerto = false;
+                Hambre = 0;
+                ComidaIngerida = 0;
+
+                // Ser vivo comienza a cansarse
+                Cansarse();
+
+
             });
 
             Proceso.Start();
+        }
+
+        // +------------------------------------------------------------------+
+        // | Genera un numéro aleátorio de hambre y lo va acumula             |   
+        // +------------------------------------------------------------------+
+        protected virtual void Cansarse()
+        {
+            ProcesoCansancio = new Thread(() =>
+            {
+                while (!Muerto && Nacio && Hambre <= 300)
+                {
+                    Thread.Sleep(500);
+
+                    Hambre += Rand.Next(1, 50);
+
+                    MessageBox.Show($"Hambre generada {Hambre}");
+
+                }
+
+                // Morir si la hambre acumulada es mayor a 300
+                Morir();
+
+            });
+
+            ProcesoCansancio.Start();
+
         }
 
         public virtual void Desplazar(int Velocidad)
@@ -164,6 +222,7 @@ namespace POO22B_MZJA.src.Clases
                 {
                     if (Nacio)
                     {
+
                         // Posición inical.
                         X = Location.X;
                         Y = Location.Y;
@@ -234,7 +293,53 @@ namespace POO22B_MZJA.src.Clases
             });
 
             ProcesoVida.Start();
-            
+
+        }
+
+        public virtual void Comer()
+        {
+            // Generar cada segundo incrementar una variable de hambre
+            ProcesoComer = new Thread(() =>
+            {
+
+                int ComidaEncontrada;
+
+                ComidaEncontrada = 0;
+
+                ComidaEncontrada = Rand.Next(1, 50);
+
+                if (ComidaEncontrada < 0)
+                {
+                    ComidaEncontrada = 0;
+                }
+
+                ComidaIngerida += ComidaEncontrada;
+
+                Hambre -= ComidaEncontrada;
+
+                MessageBox.Show(
+                    $"Debug info: Comida Encontrada: {ComidaEncontrada}, Hambre: {Hambre}, Muerto? {Muerto} " +
+                    $"Comida Ingerida: {ComidaIngerida}");
+
+            });
+
+            ProcesoComer.Start();
+
+        }
+
+        public virtual void Morir()
+        {
+            ProcesoMuerte = new Thread(() =>
+            {
+                Text = "Dead";
+                BackColor = ColorUtils.GetColor("#ff4d4d");
+                Thread.Sleep(1000);
+                AreaDesplazamiento.Update();
+                Muerto = true;
+                Dispose();
+            });
+
+            ProcesoMuerte.Start();
         }
 
         protected override void Dispose(bool disposing)

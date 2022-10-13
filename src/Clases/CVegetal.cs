@@ -8,6 +8,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Runtime.CompilerServices;
+using System.Windows.Forms.VisualStyles;
 
 namespace POO22B_MZJA.src.Clases
 {
@@ -27,10 +29,23 @@ namespace POO22B_MZJA.src.Clases
             FlatAppearance.BorderSize = 0;
 
             // Definir crecimiento máximo del vegetal
-            CrecimientoMaximo.X = random.Next(1, 250);
-            CrecimientoMaximo.X = random.Next(1, 150);
+            CrecimientoMaximo.X = random.Next(1, 100);
+            CrecimientoMaximo.X = random.Next(1, 100);
 
             Text = "V";
+
+            Click += CVegetal_Click;
+
+        }
+
+        private void CVegetal_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        public override Color Colorear()
+        {
+            return ColorUtils.GenerateColorShade("green");
         }
 
         public new void Nacer()
@@ -41,7 +56,7 @@ namespace POO22B_MZJA.src.Clases
             int Y;
 
             // Vegetal obtiene su color
-            ColorVegetal = ColorUtils.GenerateColorShade("green");
+            ColorVegetal = Colorear();
             
             Proceso = new Thread(() =>
             {
@@ -49,8 +64,8 @@ namespace POO22B_MZJA.src.Clases
                 Nacio = true;
 
                 // El vegetal tiene un punto aleatorio para nacer
-                X = random.Next(10, AreaDesplazamiento.Width - CrecimientoMaximo.X);
-                Y = random.Next(10, AreaDesplazamiento.Height - CrecimientoMaximo.Y);
+                X = random.Next(10, AreaDesplazamiento.Width - CrecimientoMaximo.X - Width);
+                Y = random.Next(10, AreaDesplazamiento.Height - CrecimientoMaximo.Y - Height);
 
                 // Aplicar la posición
                 Location = new Point(X, Y);
