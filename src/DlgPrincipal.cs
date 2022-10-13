@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,6 @@ namespace POO22B_MZJA
         // |  Atributos                                                       |
         // +------------------------------------------------------------------+
         private List<CParticula> Particulas;
-        private List<Image> Imagenes;
         private List<CSerVivo> SeresVivos;
 
         // +------------------------------------------------------------------+
@@ -39,7 +39,6 @@ namespace POO22B_MZJA
             CheckForIllegalCrossThreadCalls = false;
 
             Particulas = new List<CParticula>();
-            Imagenes = new List<Image>();
 
             SeresVivos = new List<CSerVivo>();
 
@@ -50,12 +49,10 @@ namespace POO22B_MZJA
         // +------------------------------------------------------------------+
         private void DlgPrincipal_Load(object sender, EventArgs e)
         {
-            Imagenes.Add(Properties.Resources.icecube_leftup);
-            Imagenes.Add(Properties.Resources.icecube_left);
-            Imagenes.Add(Properties.Resources.icecube_leftdown);
-            Imagenes.Add(Properties.Resources.icecube_rightop);
-            Imagenes.Add(Properties.Resources.Icecube_right);
-            Imagenes.Add(Properties.Resources.icecube_rightdown);
+            // UI Styles
+            //PnlNavPractices
+            //UI.PaintBorder(PnlNavPractices, ColorUtils.GetColor("#505050"), 1);
+            // TODO: implement this in the Component code :D
         }
 
         // +------------------------------------------------------------------+
@@ -153,6 +150,60 @@ namespace POO22B_MZJA
 
             Persona = new CPersona(PnlP4AreaAmbiental, PnlP4AreaAmbiental.Width / 2, PnlP4AreaAmbiental.Height / 2);
             Persona.Nacer();
+            Persona.Desplazar(2);
+
+
+            //while (SeresVivos.Count != 0 && TpbPractices.SelectedTab == TpbPractices.TabPages["TpgPractica4"])
+            //{
+            //    PnlP4AreaAmbiental.Refresh();
+            //}
+
+        }
+
+        private void TpbPractices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            Debug.WriteLine($"{SeresVivos.Count} - {TpbPractices.SelectedTab}");
+
+            while(SeresVivos.Count != 0 && 
+                  TpbPractices.SelectedTab == TpbPractices.TabPages["TpgPractice4"])
+            {
+                PnlP4AreaAmbiental.Refresh();
+            }
+        }
+
+        private void PnlNavPractices_Paint(object sender, PaintEventArgs e)
+        {
+            Control Component;
+            Rectangle ComponentRect;
+            ButtonBorderStyle BorderStyle;
+            Color BorderColor;
+            int BorderSize;
+
+            Component = sender as Panel;
+
+            ComponentRect = new Rectangle(new Point(0, 0), Component.Size);
+
+            BorderStyle = ButtonBorderStyle.Solid;
+
+            BorderColor = ColorUtils.GetColor("#6457A6");
+            BorderSize = 2;
+
+            ControlPaint.DrawBorder(Component.CreateGraphics(),
+                                    ComponentRect,
+                                    BorderColor,
+                                    0, // left
+                                    BorderStyle,
+                                    BorderColor,
+                                    BorderSize, // top
+                                    BorderStyle,
+                                    BorderColor,
+                                    BorderSize, // right
+                                    BorderStyle,
+                                    BorderColor,
+                                    0, // bottom
+                                    BorderStyle);
+
         }
     }
 }

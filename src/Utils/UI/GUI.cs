@@ -11,8 +11,9 @@ namespace POO22B_MZJA.src.Utils.GUI
 {
     public class UI
     {
-
-        public static void PaintBorder(Control Component, Color BorderColor, int BorderSize)
+        public static void PaintBorder(Control Component, Color BorderColor, int BorderSize,
+                                       bool LeftVisible, bool TopVisible, bool RightVisible,
+                                       bool BottomVisible)
         {
             Rectangle ComponentRect;
             ButtonBorderStyle BorderStyle;
@@ -34,6 +35,11 @@ namespace POO22B_MZJA.src.Utils.GUI
                                     BorderColor,
                                     BorderSize, // bottom
                                     BorderStyle);
+
+        }
+
+        private static void PaintBorderDelegate()
+        {
 
         }
 

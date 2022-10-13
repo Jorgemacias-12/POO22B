@@ -68,17 +68,14 @@ namespace POO22B_MZJA.src.Utils
             SkinColors.Add(GetColor("#ebd4c6"));
             SkinColors.Add(GetColor("#d7b6a5"));
             SkinColors.Add(GetColor("#9e7967"));
+            SkinColors.Add(GetColor("#70361c"));
+            SkinColors.Add(GetColor("#321b0f"));
 
-            GeneratedIndex = Rand.Next(0, 5);
+            GeneratedIndex = Rand.Next(0, 7);
 
             SkinColor = SkinColors[GeneratedIndex];
 
             return SkinColor;
-        }
-
-        public void Desplazar()
-        {
-            Thread ProcesoDesplazar; 
         }
 
     }
