@@ -325,11 +325,11 @@ namespace POO22B_MZJA.src.Clases
         {
             ProcesoMuerte = new Thread(() =>
             {
+                Muerto = true;
                 Text = "D";
                 BackColor = ColorUtils.GetColor("#ff4d4d");
                 Thread.Sleep(1000);
                 AreaDesplazamiento.Update();
-                Muerto = true;
                 Dispose();
             });
 
