@@ -189,7 +189,9 @@ namespace POO22B_MZJA
             BorderColor = ColorUtils.GetColor("#6457A6");
             BorderSize = 2;
 
-            ControlPaint.DrawBorder(Component.CreateGraphics(),
+            if (WindowState == FormWindowState.Maximized)
+            {
+                ControlPaint.DrawBorder(Component.CreateGraphics(),
                                     ComponentRect,
                                     BorderColor,
                                     0, // left
@@ -203,6 +205,7 @@ namespace POO22B_MZJA
                                     BorderColor,
                                     0, // bottom
                                     BorderStyle);
+            }
 
         }
     }
