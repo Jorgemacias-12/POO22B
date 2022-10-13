@@ -1,6 +1,7 @@
 ﻿using POO22B_MZJA.src.Utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -185,18 +186,20 @@ namespace POO22B_MZJA.src.Clases
         {
             ProcesoCansancio = new Thread(() =>
             {
-                while (!Muerto && Nacio && Hambre <= 300)
+                while (!Muerto && Nacio)
                 {
                     Thread.Sleep(500);
 
                     Hambre += Rand.Next(1, 50);
 
-                    MessageBox.Show($"Hambre generada {Hambre}");
+                    // Ejecutar el método morir si la hambre acumulada  
+                    // es mayor a 300
+                    if (Hambre >= 300)
+                    {
+                        Morir();
+                    }
 
                 }
-
-                // Morir si la hambre acumulada es mayor a 300
-                Morir();
 
             });
 
@@ -299,31 +302,22 @@ namespace POO22B_MZJA.src.Clases
         public virtual void Comer()
         {
             // Generar cada segundo incrementar una variable de hambre
-            ProcesoComer = new Thread(() =>
+            int ComidaEncontrada;
+
+            ComidaEncontrada = Rand.Next(1, 50);
+
+            if (ComidaEncontrada < 0)
             {
-
-                int ComidaEncontrada;
-
                 ComidaEncontrada = 0;
+            }
 
-                ComidaEncontrada = Rand.Next(1, 50);
+            ComidaIngerida += ComidaEncontrada;
 
-                if (ComidaEncontrada < 0)
-                {
-                    ComidaEncontrada = 0;
-                }
+            Hambre -= ComidaEncontrada;
 
-                ComidaIngerida += ComidaEncontrada;
-
-                Hambre -= ComidaEncontrada;
-
-                MessageBox.Show(
-                    $"Debug info: Comida Encontrada: {ComidaEncontrada}, Hambre: {Hambre}, Muerto? {Muerto} " +
-                    $"Comida Ingerida: {ComidaIngerida}");
-
-            });
-
-            ProcesoComer.Start();
+            MessageBox.Show(
+                $"Debug info: Comida Encontrada: {ComidaEncontrada}, Hambre: {Hambre}, Muerto? {Muerto} " +
+                $"Comida Ingerida: {ComidaIngerida}");
 
         }
 
@@ -331,7 +325,7 @@ namespace POO22B_MZJA.src.Clases
         {
             ProcesoMuerte = new Thread(() =>
             {
-                Text = "Dead";
+                Text = "D";
                 BackColor = ColorUtils.GetColor("#ff4d4d");
                 Thread.Sleep(1000);
                 AreaDesplazamiento.Update();
