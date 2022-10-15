@@ -46,7 +46,14 @@ namespace POO22B_MZJA.src.Clases
 
         public override Color Colorear()
         {
-            return ColorUtils.GetPersonColor();
+            Color SkinColor;
+            Color ForeColor;
+
+            ColorUtils.GetPersonColor(out SkinColor, out ForeColor);
+
+            this.ForeColor = ForeColor;
+
+            return SkinColor;
         }
 
         public override void Nacer()

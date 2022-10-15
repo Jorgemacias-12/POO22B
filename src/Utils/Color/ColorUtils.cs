@@ -55,9 +55,8 @@ namespace POO22B_MZJA.src.Utils
             return ColorTranslator.FromHtml(hex);
         }
 
-        public static Color GetPersonColor()
+        public static void GetPersonColor(out Color SkinColor, out Color ForeColor)
         {
-            Color SkinColor;
             List<Color> SkinColors;
             int GeneratedIndex;
 
@@ -73,9 +72,24 @@ namespace POO22B_MZJA.src.Utils
 
             GeneratedIndex = Rand.Next(0, 7);
 
-            SkinColor = SkinColors[GeneratedIndex];
+            int R;
+            int G;
+            int B;
 
-            return SkinColor;
+            R = SkinColors[GeneratedIndex].R;
+            G = SkinColors[GeneratedIndex].G;
+            B = SkinColors[GeneratedIndex].B;
+
+            if (R * 0.299 + G * 0.587 + B * 0.114 > 150)
+            {
+                ForeColor = ColorUtils.GetColor("#000");
+            }
+            else
+            {
+                ForeColor = ColorUtils.GetColor("#fff");
+            }
+
+            SkinColor = SkinColors[GeneratedIndex];
         }
 
     }
