@@ -1,18 +1,11 @@
-﻿using POO22B_MZJA.src.Utils;
+﻿using POO22B_MZJA.Properties;
+using POO22B_MZJA.src.Utils.Rand;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Drawing.Drawing2D;
-using ContentAlignment = System.Drawing.ContentAlignment;
-using System.Runtime.CompilerServices;
-using System.Windows.Forms.VisualStyles;
-using POO22B_MZJA.src.Utils.Rand;
-using POO22B_MZJA.Properties;
+using System.Threading;
+using System.Windows.Forms;
 
 namespace POO22B_MZJA.src.Clases
 {

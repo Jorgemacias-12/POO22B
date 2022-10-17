@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace POO22B_MZJA.src.Utils.Rand
 {
@@ -27,7 +23,7 @@ namespace POO22B_MZJA.src.Utils.Rand
                 return rand.Next(MinValue - 1, MaxValue) + 1;
             }
 
-            return rand.Next(MinValue, MaxValue + 1); 
+            return rand.Next(MinValue, MaxValue + 1);
         }
     }
 }

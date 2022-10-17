@@ -190,11 +190,11 @@ namespace POO22B_MZJA.src.Clases
                             }
 
                         }
-                        
+
                         if (Y <= 0)
                         {
                             this.Norte = false;
-                            
+
                             if (!RegresarABase)
                             {
                                 this.Sur = true;
@@ -254,7 +254,7 @@ namespace POO22B_MZJA.src.Clases
         private void EnClic(object sender, EventArgs e)
         {
 
-            if (Location.X <= 0 && Location.Y <= 0) 
+            if (Location.X <= 0 && Location.Y <= 0)
             {
                 RegresarABase = false;
             }

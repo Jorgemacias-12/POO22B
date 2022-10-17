@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using POO22B_MZJA.src.FToggleButton;
+using System;
 using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using POO22B_MZJA.src.FButton;
-using POO22B_MZJA.src.FToggleButton;
-using Timer = System.Windows.Forms.Timer;
 
 namespace POO22B_MZJA.src.NavigationBar
 {

@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POO22B_MZJA.src.TabPanel
@@ -44,7 +39,7 @@ namespace POO22B_MZJA.src.TabPanel
         {
             base.OnCreateControl();
 
-            foreach(TabPage Tab in TabPages)
+            foreach (TabPage Tab in TabPages)
             {
                 Tab.BackColor = TabsBackColor;
             }

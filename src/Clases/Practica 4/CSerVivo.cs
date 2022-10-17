@@ -1,13 +1,7 @@
 ﻿using POO22B_MZJA.src.Utils;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace POO22B_MZJA.src.Clases
@@ -316,7 +310,7 @@ namespace POO22B_MZJA.src.Clases
                 ComidaIngerida += ComidaEncontrada;
 
                 Hambre -= ComidaEncontrada;
-            
+
                 MessageBox.Show(
                     $"Debug info: Comida Encontrada: {ComidaEncontrada}, Hambre: {Hambre}, Muerto? {Muerto} " +
                     $"Comida Ingerida: {ComidaIngerida}");
