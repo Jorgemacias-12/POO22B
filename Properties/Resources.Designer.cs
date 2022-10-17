@@ -203,9 +203,9 @@ namespace POO22B_MZJA.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap mc_chickem {
+        internal static System.Drawing.Bitmap mc_chicken {
             get {
-                object obj = ResourceManager.GetObject("mc_chickem", resourceCulture);
+                object obj = ResourceManager.GetObject("mc_chicken", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
