@@ -48,7 +48,7 @@ namespace POO22B_MZJA.src.Clases
 
         public override void Nacer()
         {
-            base.Nacer();
+            //base.Nacer();
 
             Thread Proceso;
 
@@ -59,6 +59,9 @@ namespace POO22B_MZJA.src.Clases
 
             Proceso = new Thread(() =>
             {
+                Location = new Point(RandomIC.Next(1, AreaDesplazamiento.Width - Width), 
+                                     RandomIC.Next(1, AreaDesplazamiento.Height - Height));
+                Thread.Sleep(1000);
                 Nacio = true;
             });
 
