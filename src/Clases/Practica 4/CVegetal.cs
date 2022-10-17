@@ -11,6 +11,8 @@ using System.Drawing.Drawing2D;
 using ContentAlignment = System.Drawing.ContentAlignment;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms.VisualStyles;
+using POO22B_MZJA.src.Utils.Rand;
+using POO22B_MZJA.Properties;
 
 namespace POO22B_MZJA.src.Clases
 {
@@ -50,13 +52,17 @@ namespace POO22B_MZJA.src.Clases
 
             List<Image> Vegetables = new List<Image>()
             {
-
+                Resources.mc_acacia_tr,
+                Resources.mc_birch_tr,
+                Resources.mc_jungle_tr,
+                Resources.mc_oak_tr,
+                Resources.mc_spruce_tr,
             };
 
-            RandomIndex = new Random().Next();
+            RandomIndex = RandomIC.Next(0, 4);
 
-            Image = Vegetables[RandomIndex];
-            ImageAlign = ContentAlignment.MiddleCenter;
+            BackgroundImage = Vegetables[RandomIndex];
+            BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         public new void Nacer()
