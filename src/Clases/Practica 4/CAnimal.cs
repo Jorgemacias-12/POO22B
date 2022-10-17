@@ -1,4 +1,6 @@
-﻿using POO22B_MZJA.src.Utils;
+﻿using POO22B_MZJA.Properties;
+using POO22B_MZJA.src.Utils;
+using POO22B_MZJA.src.Utils.Rand;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -27,16 +29,26 @@ namespace POO22B_MZJA.src.Clases
         public CAnimal(Control AreaDesplazamiento, int XNacimiento, int YNacimiento) : 
                        base(AreaDesplazamiento, XNacimiento, YNacimiento)
         {
-            Text = "A";
         }
 
         private void GenerarTipo()
         {
+            int GeneratedIndex;
+
             List<Image> Animales = new List<Image>()
             {
-
+                Resources.mc_axolotl,
+                Resources.mc_cat,
+                Resources.mc_cow,
+                Resources.mc_chicken,
+                Resources.mc_fox,
+                Resources.mc_turtle
             };
 
+            GeneratedIndex = RandomIC.Next(0, 5);
+
+            BackgroundImage = Animales[GeneratedIndex];
+            BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         public override void Nacer()

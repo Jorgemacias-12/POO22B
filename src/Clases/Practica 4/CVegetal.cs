@@ -35,8 +35,6 @@ namespace POO22B_MZJA.src.Clases
             CrecimientoMaximo.X = random.Next(1, 75);
             CrecimientoMaximo.X = random.Next(1, 75);
 
-            Text = "V";
-
             Click += CVegetal_Click;
 
         }

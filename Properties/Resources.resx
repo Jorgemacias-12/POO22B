@@ -148,6 +148,39 @@
   <data name="icecube_rightop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Resources\icecube-rightop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="mc_acacia_tr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\mc_acacia_tr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mc_axolotl" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\mc_axolotl.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mc_birch_tr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\mc_birch_tr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mc_cat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\mc_cat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mc_chicken" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\mc_chickem.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mc_cow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\mc_cow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mc_fox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\mc_fox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mc_jungle_tr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\mc_jungle_tr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mc_oak_tr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\mc_oak_tr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mc_spruce_tr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\mc_spruce_tr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mc_turtle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Resources\mc_turtle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="saul" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Resources\Saul.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

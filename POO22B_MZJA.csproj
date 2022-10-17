@@ -130,6 +130,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Utils\Color\ColorUtils.cs" />
+    <Compile Include="src\Utils\Rand\RandomIC.cs" />
     <Compile Include="src\Utils\UI\GUI.cs" />
     <EmbeddedResource Include="src\Clases\CParticula.resx">
       <DependentUpon>CParticula.cs</DependentUpon>
@@ -186,6 +187,17 @@
     <None Include="src\Resources\icecube-rightdown.png" />
     <None Include="src\Resources\icecube-rightop.png" />
     <Content Include="src\Resources\Icecube.png" />
+    <Content Include="src\Resources\mc_acacia_tr.png" />
+    <Content Include="src\Resources\mc_axolotl.png" />
+    <Content Include="src\Resources\mc_birch_tr.png" />
+    <Content Include="src\Resources\mc_cat.png" />
+    <Content Include="src\Resources\mc_chickem.png" />
+    <Content Include="src\Resources\mc_cow.png" />
+    <Content Include="src\Resources\mc_fox.png" />
+    <Content Include="src\Resources\mc_jungle_tr.png" />
+    <Content Include="src\Resources\mc_oak_tr.png" />
+    <Content Include="src\Resources\mc_spruce_tr.png" />
+    <Content Include="src\Resources\mc_turtle.png" />
     <Content Include="src\Resources\Saul.gif" />
     <Content Include="src\Resources\Saul.jpg" />
     <Content Include="src\Resources\SaulSound.wav" />
