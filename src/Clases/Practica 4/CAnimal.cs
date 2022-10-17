@@ -30,9 +30,13 @@ namespace POO22B_MZJA.src.Clases
             Text = "A";
         }
 
-        public override Color Colorear()
+        private void GenerarTipo()
         {
-            return ColorUtils.GenerateColorShade("red");
+            List<Image> Animales = new List<Image>()
+            {
+
+            };
+
         }
 
         public override void Nacer()
@@ -40,16 +44,14 @@ namespace POO22B_MZJA.src.Clases
             base.Nacer();
 
             Thread Proceso;
-            Color ColorAnimal;
 
             // Ser vivo obtiene su color
-            ColorAnimal = Colorear();
+            GenerarTipo();
 
             // El Vegetal nace después de un tiempo
 
             Proceso = new Thread(() =>
             {
-                BackColor = ColorAnimal;
                 Nacio = true;
             });
 

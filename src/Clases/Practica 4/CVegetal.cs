@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using ContentAlignment = System.Drawing.ContentAlignment;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms.VisualStyles;
 
@@ -29,8 +30,8 @@ namespace POO22B_MZJA.src.Clases
             FlatAppearance.BorderSize = 0;
 
             // Definir crecimiento máximo del vegetal
-            CrecimientoMaximo.X = random.Next(1, 100);
-            CrecimientoMaximo.X = random.Next(1, 100);
+            CrecimientoMaximo.X = random.Next(1, 75);
+            CrecimientoMaximo.X = random.Next(1, 75);
 
             Text = "V";
 
@@ -42,25 +43,33 @@ namespace POO22B_MZJA.src.Clases
         {
 
         }
-        
-        public override Color Colorear()
+
+        public void GenerarTipo()
         {
-            return ColorUtils.GenerateColorShade("green");
+            int RandomIndex;
+
+            List<Image> Vegetables = new List<Image>()
+            {
+
+            };
+
+            RandomIndex = new Random().Next();
+
+            Image = Vegetables[RandomIndex];
+            ImageAlign = ContentAlignment.MiddleCenter;
         }
 
         public new void Nacer()
         {
             Thread Proceso;
-            Color ColorVegetal;
             int X;
             int Y;
 
-            // Vegetal obtiene su color
-            ColorVegetal = Colorear();
-            
+            // Vegetal obtiene una imagen de vegetal aleatoria
+            GenerarTipo();
+
             Proceso = new Thread(() =>
             {
-                BackColor = ColorVegetal;
                 Nacio = true;
 
                 // El vegetal tiene un punto aleatorio para nacer
@@ -90,7 +99,7 @@ namespace POO22B_MZJA.src.Clases
 
             ProcesoCrecimiento = new Thread(() =>
             {
-                while(!Muerto)
+                while (!Muerto)
                 {
                     while (!Crecido)
                     {
@@ -113,7 +122,7 @@ namespace POO22B_MZJA.src.Clases
             });
 
             ProcesoCrecimiento.Start();
-            
+
         }
 
         protected override void OnPaint(PaintEventArgs pe)

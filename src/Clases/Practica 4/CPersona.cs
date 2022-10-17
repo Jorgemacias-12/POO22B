@@ -44,7 +44,7 @@ namespace POO22B_MZJA.src.Clases
 
         }
 
-        public override Color Colorear()
+        private new Color Colorear()
         {
             Color SkinColor;
             Color ForeColor;

@@ -141,7 +141,7 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         // |  Método virtual para colorear a un ser vivo                      |
         // +------------------------------------------------------------------+
-        public virtual Color Colorear()
+        public Color Colorear()
         {
             return ColorUtils.GetRandomColor();
         }
@@ -302,22 +302,28 @@ namespace POO22B_MZJA.src.Clases
         public virtual void Comer()
         {
             // Generar cada segundo incrementar una variable de hambre
-            int ComidaEncontrada;
-
-            ComidaEncontrada = Rand.Next(1, 50);
-
-            if (ComidaEncontrada < 0)
+            ProcesoComer = new Thread(() =>
             {
-                ComidaEncontrada = 0;
-            }
+                int ComidaEncontrada;
 
-            ComidaIngerida += ComidaEncontrada;
+                ComidaEncontrada = Rand.Next(1, 50);
 
-            Hambre -= ComidaEncontrada;
+                if (ComidaEncontrada < 0)
+                {
+                    ComidaEncontrada = 0;
+                }
 
-            MessageBox.Show(
-                $"Debug info: Comida Encontrada: {ComidaEncontrada}, Hambre: {Hambre}, Muerto? {Muerto} " +
-                $"Comida Ingerida: {ComidaIngerida}");
+                ComidaIngerida += ComidaEncontrada;
+
+                Hambre -= ComidaEncontrada;
+            
+                MessageBox.Show(
+                    $"Debug info: Comida Encontrada: {ComidaEncontrada}, Hambre: {Hambre}, Muerto? {Muerto} " +
+                    $"Comida Ingerida: {ComidaIngerida}");
+
+            });
+
+            ProcesoComer.Start();
 
         }
 

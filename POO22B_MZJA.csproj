@@ -46,27 +46,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Clases\CAnimal.cs">
+    <Compile Include="src\Clases\Practica 4\CAnimal.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Clases\CBacteria.cs">
+    <Compile Include="src\Clases\Practica 4\CBacteria.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\Clases\CCliente.cs" />
-    <Compile Include="src\Clases\CCordado.cs">
+    <Compile Include="src\Clases\Practica 4\CCordado.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\Clases\CError.cs" />
-    <Compile Include="src\Clases\CHominidae.cs">
+    <Compile Include="src\Clases\Practica 4\CHominidae.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Clases\CHomoSapien.cs">
+    <Compile Include="src\Clases\Practica 4\CHomoSapien.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Clases\CHongo.cs">
+    <Compile Include="src\Clases\Practica 4\CHongo.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Clases\CMammalia.cs">
+    <Compile Include="src\Clases\Practica 4\CMammalia.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\Clases\CParticula.cs">
@@ -76,19 +76,19 @@
       <DependentUpon>CParticula.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Clases\CPelota.cs" />
-    <Compile Include="src\Clases\CPersona.cs">
+    <Compile Include="src\Clases\Practica 4\CPersona.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Clases\CPrimate.cs">
+    <Compile Include="src\Clases\Practica 4\CPrimate.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Clases\CProctistas.cs">
+    <Compile Include="src\Clases\Practica 4\CProctistas.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Clases\CSerVivo.cs">
+    <Compile Include="src\Clases\Practica 4\CSerVivo.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Clases\CVegetal.cs">
+    <Compile Include="src\Clases\Practica 4\CVegetal.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\Clases\DlgMonitorParticula.cs">
