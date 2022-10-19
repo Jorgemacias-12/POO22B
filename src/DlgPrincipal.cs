@@ -109,7 +109,7 @@ namespace POO22B_MZJA
             CSerVivo SerVivo;
 
             SerVivo = new CSerVivo(this.PnlP4AreaAmbiental, 10, 10);
-            SerVivo.Nacer();
+            SerVivo.Nacer(500);
             SerVivo.Desplazar(1);
 
             SeresVivos.Add(SerVivo);
@@ -122,7 +122,7 @@ namespace POO22B_MZJA
 
             // Change constructor to rand pos
             Vegetal = new CVegetal(PnlP4AreaAmbiental, 10, 10);
-            Vegetal.Nacer();
+            Vegetal.Nacer(800);
             Vegetal.Crecer();
 
         }
@@ -132,7 +132,7 @@ namespace POO22B_MZJA
             CAnimal Animal;
 
             Animal = new CAnimal(PnlP4AreaAmbiental, 10, 10);
-            Animal.Nacer();
+            Animal.Nacer(500);
             Animal.Desplazar(1);
             SeresVivos.Add(Animal);
         }
@@ -142,7 +142,7 @@ namespace POO22B_MZJA
             CPersona Persona;
 
             Persona = new CPersona(PnlP4AreaAmbiental, PnlP4AreaAmbiental.Width / 2, PnlP4AreaAmbiental.Height / 2);
-            Persona.Nacer();
+            Persona.Nacer(1500);
             Persona.Desplazar(2);
 
 

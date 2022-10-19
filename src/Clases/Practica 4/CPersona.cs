@@ -52,7 +52,7 @@ namespace POO22B_MZJA.src.Clases
             return SkinColor;
         }
 
-        public override void Nacer()
+        public override void Nacer(int LimiteInanicion)
         {
             Thread Proceso;
             Color ColorDePiel;

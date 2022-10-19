@@ -1,5 +1,6 @@
 ﻿using POO22B_MZJA.Properties;
 using POO22B_MZJA.src.Utils.Rand;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
@@ -26,6 +27,11 @@ namespace POO22B_MZJA.src.Clases
         {
         }
 
+        protected override void Cansarse()
+        {
+            base.Cansarse();
+        }
+
         private void GenerarTipo()
         {
             int GeneratedIndex;
@@ -42,14 +48,15 @@ namespace POO22B_MZJA.src.Clases
 
             GeneratedIndex = RandomIC.Next(0, 5);
 
+            FlatAppearance.BorderSize = 0;
+            BackColor = Color.Transparent;
             BackgroundImage = Animales[GeneratedIndex];
             BackgroundImageLayout = ImageLayout.Stretch;
         }
 
-        public override void Nacer()
-        {
-            //base.Nacer();
 
+        public override void Nacer(int LimiteInanicion)
+        {
             Thread Proceso;
 
             // Ser vivo obtiene su color
@@ -59,8 +66,11 @@ namespace POO22B_MZJA.src.Clases
 
             Proceso = new Thread(() =>
             {
-                Location = new Point(RandomIC.Next(1, AreaDesplazamiento.Width - Width), 
+                Location = new Point(RandomIC.Next(1, AreaDesplazamiento.Width - Width),
                                      RandomIC.Next(1, AreaDesplazamiento.Height - Height));
+
+                Crecer();
+
                 Thread.Sleep(1000);
                 Nacio = true;
             });

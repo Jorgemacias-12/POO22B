@@ -48,8 +48,10 @@ namespace POO22B_MZJA.src.Clases
         protected bool Nacio;
         protected bool RegresarACasa;
         protected bool Muerto;
-        protected int Hambre;
-        protected int ComidaIngerida;
+        protected bool Crecio;
+        protected double Hambre;
+        protected double ComidaIngerida;
+        protected double LimiteInanicion;
         private Random Rand;
 
         // Atributos de ejecución
@@ -57,6 +59,7 @@ namespace POO22B_MZJA.src.Clases
         private Thread ProcesoCansancio;
         private Thread ProcesoComer;
         private Thread ProcesoMuerte;
+        private Thread ProcesoCrecer;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
@@ -101,6 +104,7 @@ namespace POO22B_MZJA.src.Clases
             Nacio = false;
             RegresarACasa = false;
             Muerto = false;
+            Crecio = false;
 
             // Incializa atributos de ejecución.
             ProcesoVida = null;
@@ -130,7 +134,31 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         // | Proceso de crecimiento del ser vivo                              |   
         // +------------------------------------------------------------------+
-        public virtual void Crecer() { }
+        public virtual void Crecer() 
+        {
+            ProcesoCrecer = new Thread( () =>
+            {
+                LimiteAlto = Rand.Next(40, 75);
+                LimiteAncho = Rand.Next(40, 75);
+
+                while(!Crecio)
+                {
+                    Thread.Sleep(500);
+
+                    if (Width >= LimiteAncho && Height >= LimiteAlto) 
+                    {
+                        Crecio = true;
+                    }
+                    
+                    Width += Rand.Next(1, 20);
+                    Height += Rand.Next(1, 20);
+                }
+
+            });
+
+            ProcesoCrecer.Start();
+
+        }
 
         // +------------------------------------------------------------------+
         // |  Método virtual para colorear a un ser vivo                      |
@@ -143,7 +171,7 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         // | Comienza el proceso de nacimiento                                |   
         // +------------------------------------------------------------------+
-        public virtual void Nacer()
+        public virtual void Nacer(int LimiteInanicion)
         {
             Thread Proceso;
             Color ColorAleatorio;
@@ -163,6 +191,10 @@ namespace POO22B_MZJA.src.Clases
                 Muerto = false;
                 Hambre = 0;
                 ComidaIngerida = 0;
+                this.LimiteInanicion = LimiteInanicion;
+
+                // El ser vivo crece
+                Crecer();
 
                 // Ser vivo comienza a cansarse
                 Cansarse();
@@ -188,7 +220,7 @@ namespace POO22B_MZJA.src.Clases
 
                     // Ejecutar el método morir si la hambre acumulada  
                     // es mayor a 300
-                    if (Hambre >= 300)
+                    if (Hambre >= LimiteInanicion)
                     {
                         Morir();
                     }

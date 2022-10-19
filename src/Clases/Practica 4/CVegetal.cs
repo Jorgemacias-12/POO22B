@@ -52,11 +52,12 @@ namespace POO22B_MZJA.src.Clases
 
             RandomIndex = RandomIC.Next(0, 4);
 
+            BackColor = Color.Transparent;
             BackgroundImage = Vegetables[RandomIndex];
             BackgroundImageLayout = ImageLayout.Stretch;
         }
 
-        public new void Nacer()
+        public override void Nacer(int LimiteInanicion)
         {
             Thread Proceso;
             int X;
