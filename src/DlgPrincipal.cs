@@ -21,6 +21,7 @@ namespace POO22B_MZJA
         // +------------------------------------------------------------------+
         private List<CParticula> Particulas;
         private List<CSerVivo> SeresVivos;
+        private int NivelOxigeno;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
@@ -46,6 +47,9 @@ namespace POO22B_MZJA
             //PnlNavPractices
             //UI.PaintBorder(PnlNavPractices, ColorUtils.GetColor("#505050"), 1);
             // TODO: implement this in the Component code :D
+            NivelOxigeno = 100;
+            PgrOxygenLevel.Value = NivelOxigeno;
+
         }
 
         // +------------------------------------------------------------------+
@@ -109,7 +113,7 @@ namespace POO22B_MZJA
             CSerVivo SerVivo;
 
             SerVivo = new CSerVivo(this.PnlP4AreaAmbiental, 10, 10);
-            SerVivo.Nacer(500);
+            SerVivo.Nacer(500, ref NivelOxigeno);
             SerVivo.Desplazar(1);
 
             SeresVivos.Add(SerVivo);
@@ -122,7 +126,7 @@ namespace POO22B_MZJA
 
             // Change constructor to rand pos
             Vegetal = new CVegetal(PnlP4AreaAmbiental, 10, 10);
-            Vegetal.Nacer(800);
+            Vegetal.Nacer(800, ref NivelOxigeno);
             Vegetal.Crecer();
 
         }
@@ -132,7 +136,7 @@ namespace POO22B_MZJA
             CAnimal Animal;
 
             Animal = new CAnimal(PnlP4AreaAmbiental, 10, 10);
-            Animal.Nacer(500);
+            Animal.Nacer(500, ref NivelOxigeno);
             Animal.Desplazar(1);
             SeresVivos.Add(Animal);
         }
@@ -142,7 +146,7 @@ namespace POO22B_MZJA
             CPersona Persona;
 
             Persona = new CPersona(PnlP4AreaAmbiental, PnlP4AreaAmbiental.Width / 2, PnlP4AreaAmbiental.Height / 2);
-            Persona.Nacer(1500);
+            Persona.Nacer(1500, ref NivelOxigeno);
             Persona.Desplazar(2);
 
 
@@ -188,6 +192,30 @@ namespace POO22B_MZJA
                                     BorderStyle);
             }
 
+        }
+
+        private void TmrTime_Tick(object sender, EventArgs e)
+        {
+            if (TpbPractices.SelectedTab != TpbPractices.TabPages["TbpPractice4"])
+            {
+                return;
+            }
+
+            PgrOxygenLevel.Value = NivelOxigeno;
+
+        }
+
+        private void FBtnGHongo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FBtnGProtista_Click(object sender, EventArgs e)
+        {
+            CProtoctista Alga;
+
+            Alga = new CProtoctista(PnlP4AreaAmbiental, 10, 10);
+            Alga.Nacer(0, ref NivelOxigeno);
         }
     }
 }

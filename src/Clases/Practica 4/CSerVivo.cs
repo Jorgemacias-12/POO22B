@@ -171,10 +171,13 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         // | Comienza el proceso de nacimiento                                |   
         // +------------------------------------------------------------------+
-        public virtual void Nacer(int LimiteInanicion)
+        public virtual void Nacer(int LimiteInanicion, ref int NivelOxigeno)
         {
             Thread Proceso;
             Color ColorAleatorio;
+
+            // El ser vivo consume oxigeno al nacer
+            NivelOxigeno -= 1;
 
             // Ser vivo obteiene su color de piel.
             ColorAleatorio = Colorear();
@@ -332,7 +335,7 @@ namespace POO22B_MZJA.src.Clases
             {
                 int ComidaEncontrada;
 
-                ComidaEncontrada = Rand.Next(1, 50);
+                ComidaEncontrada = Rand.Next(20, 100);
 
                 if (ComidaEncontrada < 0)
                 {

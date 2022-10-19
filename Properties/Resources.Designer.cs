@@ -253,6 +253,26 @@ namespace POO22B_MZJA.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mc_seagrass {
+            get {
+                object obj = ResourceManager.GetObject("mc_seagrass", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mc_seagrass_2 {
+            get {
+                object obj = ResourceManager.GetObject("mc_seagrass_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mc_spruce_tr {
             get {
                 object obj = ResourceManager.GetObject("mc_spruce_tr", resourceCulture);

@@ -55,7 +55,7 @@ namespace POO22B_MZJA.src.Clases
         }
 
 
-        public override void Nacer(int LimiteInanicion)
+        public override void Nacer(int LimiteInanicion, ref int NivelOxigeno)
         {
             Thread Proceso;
 

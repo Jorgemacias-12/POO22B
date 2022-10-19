@@ -196,6 +196,8 @@
     <Content Include="src\Resources\mc_fox.png" />
     <Content Include="src\Resources\mc_jungle_tr.png" />
     <Content Include="src\Resources\mc_oak_tr.png" />
+    <Content Include="src\Resources\mc_seagrass.png" />
+    <Content Include="src\Resources\mc_seagrass_2.png" />
     <Content Include="src\Resources\mc_spruce_tr.png" />
     <Content Include="src\Resources\mc_turtle.png" />
     <Content Include="src\Resources\Saul.gif" />
