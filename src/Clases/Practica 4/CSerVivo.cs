@@ -55,7 +55,7 @@ namespace POO22B_MZJA.src.Clases
         private Random Rand;
 
         // Atributos de ejecución
-        private Thread ProcesoVida;
+        protected Thread ProcesoVida;
         private Thread ProcesoCansancio;
         private Thread ProcesoComer;
         private Thread ProcesoMuerte;
@@ -123,6 +123,8 @@ namespace POO22B_MZJA.src.Clases
 
         }
 
+        protected virtual void GenerarTipo() { }
+
         // +------------------------------------------------------------------+
         // | El ser vivo                                                      |   
         // +------------------------------------------------------------------+
@@ -136,6 +138,8 @@ namespace POO22B_MZJA.src.Clases
         // +------------------------------------------------------------------+
         public virtual void Crecer() 
         {
+            Padding p;
+
             ProcesoCrecer = new Thread( () =>
             {
                 LimiteAlto = Rand.Next(40, 75);
@@ -175,6 +179,10 @@ namespace POO22B_MZJA.src.Clases
         {
             Thread Proceso;
             Color ColorAleatorio;
+
+            // Comprobar si hay suficiente oxigeno
+            if (NivelOxigeno < 0 ||
+                NivelOxigeno > 100) return; 
 
             // El ser vivo consume oxigeno al nacer
             NivelOxigeno -= 1;

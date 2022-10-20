@@ -46,8 +46,11 @@ namespace POO22B_MZJA.src.Clases
         {
             Thread Proceso;
 
-            if (NivelOxigeno < 0) return;
+            // Comprobar si hay suficiente oxigeno
+            if (NivelOxigeno < 0 ||
+                NivelOxigeno > 100) return;
 
+            // El ser vivo consume oxigeno al nacer
             NivelOxigeno -= 1;
 
             GenerarTipo();

@@ -35,8 +35,17 @@ namespace POO22B_MZJA
             Particulas = new List<CParticula>();
 
             SeresVivos = new List<CSerVivo>();
-
         }
+
+        //protected override CreateParams CreateParams
+        //{
+        //    get
+        //    {
+        //        CreateParams cp = base.CreateParams;
+        //        cp.ExStyle |= 0x02000000;  // WS_EX_COMPOSITED
+        //        return cp;
+        //    }
+        //}
 
         // +------------------------------------------------------------------+
         // |  Cargar recursos del proyecto                                    |
@@ -203,6 +212,8 @@ namespace POO22B_MZJA
 
             PgrOxygenLevel.Value = NivelOxigeno;
 
+            PnlP4AreaAmbiental.Update();
+
         }
 
         private void FBtnGHongo_Click(object sender, EventArgs e)
@@ -216,6 +227,15 @@ namespace POO22B_MZJA
 
             Alga = new CProtoctista(PnlP4AreaAmbiental, 10, 10);
             Alga.Nacer(0, ref NivelOxigeno);
+        }
+
+        private void FBtnGBacteria_Click(object sender, EventArgs e)
+        {
+            CBacteria Bacteria;
+
+            Bacteria = new CBacteria(PnlP4AreaAmbiental, 10, 10);
+            Bacteria.Nacer(10000, ref NivelOxigeno);
+            Bacteria.Desplazar(1);
         }
     }
 }

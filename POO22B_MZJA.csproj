@@ -97,6 +97,10 @@
     <Compile Include="src\Clases\DlgMonitorParticula.Designer.cs">
       <DependentUpon>DlgMonitorParticula.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Componentes\Container\Border.cs" />
+    <Compile Include="src\Componentes\Container\Container.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Componentes\FlatButton\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -189,6 +193,8 @@
     <Content Include="src\Resources\Icecube.png" />
     <Content Include="src\Resources\mc_acacia_tr.png" />
     <Content Include="src\Resources\mc_axolotl.png" />
+    <Content Include="src\Resources\mc_bacteria.png" />
+    <Content Include="src\Resources\mc_bacteria_2.png" />
     <Content Include="src\Resources\mc_birch_tr.png" />
     <Content Include="src\Resources\mc_cat.png" />
     <Content Include="src\Resources\mc_chickem.png" />

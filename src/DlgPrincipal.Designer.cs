@@ -271,6 +271,7 @@
             this.FBtnGBacteria.TabIndex = 5;
             this.FBtnGBacteria.Text = "Bacteria";
             this.FBtnGBacteria.UseVisualStyleBackColor = false;
+            this.FBtnGBacteria.Click += new System.EventHandler(this.FBtnGBacteria_Click);
             // 
             // FBtnGProteista
             // 

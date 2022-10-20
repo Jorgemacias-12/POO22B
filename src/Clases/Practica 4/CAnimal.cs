@@ -32,7 +32,7 @@ namespace POO22B_MZJA.src.Clases
             base.Cansarse();
         }
 
-        private void GenerarTipo()
+        protected override void GenerarTipo()
         {
             int GeneratedIndex;
 
@@ -58,6 +58,13 @@ namespace POO22B_MZJA.src.Clases
         public override void Nacer(int LimiteInanicion, ref int NivelOxigeno)
         {
             Thread Proceso;
+
+            // Comprobar si hay suficiente oxigeno
+            if (NivelOxigeno < 0 ||
+                NivelOxigeno > 100) return;
+
+            // El ser vivo consume oxigeno al nacer
+            NivelOxigeno -= 1;
 
             // Ser vivo obtiene su color
             GenerarTipo();

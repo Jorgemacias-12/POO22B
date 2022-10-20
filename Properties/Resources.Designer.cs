@@ -183,6 +183,26 @@ namespace POO22B_MZJA.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mc_bacteria {
+            get {
+                object obj = ResourceManager.GetObject("mc_bacteria", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mc_bacteria_2 {
+            get {
+                object obj = ResourceManager.GetObject("mc_bacteria_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mc_birch_tr {
             get {
                 object obj = ResourceManager.GetObject("mc_birch_tr", resourceCulture);

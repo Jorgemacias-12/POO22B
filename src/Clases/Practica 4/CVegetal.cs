@@ -37,7 +37,7 @@ namespace POO22B_MZJA.src.Clases
 
         }
 
-        public void GenerarTipo()
+        protected override void GenerarTipo()
         {
             int RandomIndex;
 
@@ -62,6 +62,13 @@ namespace POO22B_MZJA.src.Clases
             Thread Proceso;
             int X;
             int Y;
+
+            // Comprobar si hay suficiente oxigeno
+            if (NivelOxigeno < 0 ||
+                NivelOxigeno > 100) return;
+
+            // El ser vivo consume oxigeno al nacer
+            NivelOxigeno -= 1;
 
             // Vegetal obtiene una imagen de vegetal aleatoria
             GenerarTipo();
