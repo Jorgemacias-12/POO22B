@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace POO22B_MZJA.src.Clases.Practica_4
 {
     // +------------------------------------------------------------------+
-    // |  Clase que representa un ser vivo                                |
+    // |  Clase que representa un ser Animal                              |
     // |  MZJA 29/09/22.                                                  |
     // +------------------------------------------------------------------+
     public class CAnimal : CSerVivo

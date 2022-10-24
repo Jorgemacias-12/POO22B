@@ -10,6 +10,10 @@ using System.Windows.Forms;
 
 namespace POO22B_MZJA.src.Clases.Practica_4
 {
+    // +------------------------------------------------------------------+
+    // |  Clase que representa un Hongo                                   |
+    // |  MZJA 29/09/22.                                                  |
+    // +------------------------------------------------------------------+
     public class CHongo : CSerVivo
     {
         private List<Image> Hongos;
