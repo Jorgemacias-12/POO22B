@@ -106,6 +106,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
 
             // Propiedades del Ser Vivo.
             Location = new Point(this.XNacimiento, this.YNacimiento);
+            FlatStyle = FlatStyle.Flat;
             FlatAppearance.BorderColor = Color.White;
             FlatAppearance.BorderSize = 1;
             BackColor = Color.White;
