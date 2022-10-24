@@ -46,7 +46,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         protected bool Crecido;
         protected double Hambre;
         protected double ComidaIngerida;
-        protected double LimiteInanicion;
+        protected int LimiteInanicion;
         protected int OxigenoAlmacenado;
         protected bool HaySol;
         private Random Rand;
@@ -139,6 +139,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             {
                 Muerto = true;
                 Text = "D";
+                BackColor = ColorUtils.GetColor("#ff4d4d");
                 Thread.Sleep(1000);
                 AreaDesplazamiento.Update();
                 Dispose();
@@ -329,8 +330,13 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             ProcesoComer = new Thread(() =>
             {
                 int ComidaEncontrada;
+                int MinComidaAGenerar;
+                int MaxComidaAGenerar;
 
-                ComidaEncontrada = Rand.Next(100, 1000);
+                MinComidaAGenerar = (int)(LimiteInanicion * 0.2);
+                MaxComidaAGenerar = LimiteInanicion * 2;
+
+                ComidaEncontrada = Rand.Next(MinComidaAGenerar, 1000);
 
                 // Prevenir cualquier bug extraño
                 // con valores menores a 0
