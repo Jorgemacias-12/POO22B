@@ -100,7 +100,6 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             Muerto = false;
             Crecido = false;
 
-
             // Incializa atributos de ejecución.
             ProcesoDesplazamiento = null;
 
@@ -167,6 +166,14 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                 {
                     Thread.Sleep(1000);
                     Morir();
+                }
+
+                // Nacer en posiciones aleatorias si las coordenadas de
+                // nacimiento son iguales a 0
+                if (XNacimiento == 0 && YNacimiento == 0)
+                {
+                    Location = new Point(Rand.Next(1, AreaDesplazamiento.Width - Width + LimiteAncho),
+                                         Rand.Next(1, AreaDesplazamiento.Height - Height + LimiteAlto));
                 }
 
                 Nacio = true;
