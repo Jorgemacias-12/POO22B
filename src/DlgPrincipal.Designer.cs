@@ -48,7 +48,8 @@
             this.FBtnGVegetal = new POO22B_MZJA.src.FButton.FlatButton();
             this.FBtnGAnimal = new POO22B_MZJA.src.FButton.FlatButton();
             this.PnlP4Topbar = new System.Windows.Forms.Panel();
-            this.PgrOxygenLevel = new System.Windows.Forms.ProgressBar();
+            this.TbxLimiteInanicion = new System.Windows.Forms.TextBox();
+            this.LblLimiteInanicion = new System.Windows.Forms.Label();
             this.LblOxygenIndicator = new System.Windows.Forms.Label();
             this.PnlP4Generator = new System.Windows.Forms.Panel();
             this.FBtnPersona = new POO22B_MZJA.src.FButton.FlatButton();
@@ -264,7 +265,7 @@
             this.FBtnGBacteria.ForeColor = System.Drawing.Color.Black;
             this.FBtnGBacteria.HoverColor = System.Drawing.Color.Empty;
             this.FBtnGBacteria.HoverEnabled = false;
-            this.FBtnGBacteria.Location = new System.Drawing.Point(349, 0);
+            this.FBtnGBacteria.Location = new System.Drawing.Point(355, 0);
             this.FBtnGBacteria.Margin = new System.Windows.Forms.Padding(2);
             this.FBtnGBacteria.Name = "FBtnGBacteria";
             this.FBtnGBacteria.Size = new System.Drawing.Size(89, 81);
@@ -287,11 +288,11 @@
             this.FBtnGProteista.Location = new System.Drawing.Point(260, 0);
             this.FBtnGProteista.Margin = new System.Windows.Forms.Padding(2);
             this.FBtnGProteista.Name = "FBtnGProteista";
-            this.FBtnGProteista.Size = new System.Drawing.Size(89, 81);
+            this.FBtnGProteista.Size = new System.Drawing.Size(95, 81);
             this.FBtnGProteista.TabIndex = 4;
-            this.FBtnGProteista.Text = "Proteista";
+            this.FBtnGProteista.Text = "Protoctista";
             this.FBtnGProteista.UseVisualStyleBackColor = false;
-            this.FBtnGProteista.Click += new System.EventHandler(this.FBtnGProtista_Click);
+            this.FBtnGProteista.Click += new System.EventHandler(this.FBtnGProtoctista_Click);
             // 
             // FBtnGHongo
             // 
@@ -356,7 +357,8 @@
             // PnlP4Topbar
             // 
             this.PnlP4Topbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
-            this.PnlP4Topbar.Controls.Add(this.PgrOxygenLevel);
+            this.PnlP4Topbar.Controls.Add(this.TbxLimiteInanicion);
+            this.PnlP4Topbar.Controls.Add(this.LblLimiteInanicion);
             this.PnlP4Topbar.Controls.Add(this.LblOxygenIndicator);
             this.PnlP4Topbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlP4Topbar.Location = new System.Drawing.Point(99, 0);
@@ -365,13 +367,27 @@
             this.PnlP4Topbar.Size = new System.Drawing.Size(907, 83);
             this.PnlP4Topbar.TabIndex = 1;
             // 
-            // PgrOxygenLevel
+            // TbxLimiteInanicion
             // 
-            this.PgrOxygenLevel.Location = new System.Drawing.Point(157, 10);
-            this.PgrOxygenLevel.Name = "PgrOxygenLevel";
-            this.PgrOxygenLevel.Size = new System.Drawing.Size(281, 27);
-            this.PgrOxygenLevel.Step = 1;
-            this.PgrOxygenLevel.TabIndex = 1;
+            this.TbxLimiteInanicion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.TbxLimiteInanicion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbxLimiteInanicion.ForeColor = System.Drawing.Color.White;
+            this.TbxLimiteInanicion.Location = new System.Drawing.Point(160, 45);
+            this.TbxLimiteInanicion.Name = "TbxLimiteInanicion";
+            this.TbxLimiteInanicion.Size = new System.Drawing.Size(195, 26);
+            this.TbxLimiteInanicion.TabIndex = 2;
+            this.TbxLimiteInanicion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbxLimiteInanicion_KeyPress);
+            this.TbxLimiteInanicion.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TbxLimiteInanicion_KeyUp);
+            // 
+            // LblLimiteInanicion
+            // 
+            this.LblLimiteInanicion.ForeColor = System.Drawing.Color.Coral;
+            this.LblLimiteInanicion.Location = new System.Drawing.Point(15, 45);
+            this.LblLimiteInanicion.Name = "LblLimiteInanicion";
+            this.LblLimiteInanicion.Size = new System.Drawing.Size(146, 24);
+            this.LblLimiteInanicion.TabIndex = 1;
+            this.LblLimiteInanicion.Text = "Limite de inanición:";
+            this.LblLimiteInanicion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblOxygenIndicator
             // 
@@ -636,6 +652,7 @@
             this.FlpP4Reinos.ResumeLayout(false);
             this.FlpP4Reinos.PerformLayout();
             this.PnlP4Topbar.ResumeLayout(false);
+            this.PnlP4Topbar.PerformLayout();
             this.PnlP4Generator.ResumeLayout(false);
             this.PnlP4Generator.PerformLayout();
             this.PnlSidebar.ResumeLayout(false);
@@ -686,8 +703,9 @@
         private src.FButton.FlatButton FBtnGProteista;
         private src.FButton.FlatButton FBtnGBacteria;
         private System.Windows.Forms.Label LblOxygenIndicator;
-        private System.Windows.Forms.ProgressBar PgrOxygenLevel;
         private System.Windows.Forms.Timer TmrTime;
+        private System.Windows.Forms.Label LblLimiteInanicion;
+        private System.Windows.Forms.TextBox TbxLimiteInanicion;
     }
 }
 
