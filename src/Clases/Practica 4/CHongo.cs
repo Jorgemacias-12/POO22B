@@ -16,12 +16,19 @@ namespace POO22B_MZJA.src.Clases.Practica_4
     // +------------------------------------------------------------------+
     public class CHongo : CSerVivo
     {
+        // +------------------------------------------------------------------+
+        // |  Atributos                                                       |
+        // +------------------------------------------------------------------+
         private List<Image> Hongos;
 
+        // +------------------------------------------------------------------+
+        // |  Constructor                                                     |
+        // +------------------------------------------------------------------+
         public CHongo(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, 
                       int NivelOxigeno, bool HaySol, int LimiteInanicion) : 
                base(AreaDesplazamiento, XNacimiento, YNacimiento, NivelOxigeno, HaySol, LimiteInanicion)
         {
+            // Lista de imagenes para generar el tipo de hongo
             Hongos = new List<Image>()
             {
                 Resources.mc_mushroom_red,
@@ -32,6 +39,9 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             };
         }
 
+        // +------------------------------------------------------------------+
+        // |  Hacer algo en clic (por definir)                                |
+        // +------------------------------------------------------------------+
         public override void EnClic(object sender, EventArgs e)
         { 
 
@@ -43,6 +53,10 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             GenerarTipo();
         }
 
+        // +------------------------------------------------------------------+
+        // |  Sobreescribir el funcionamiento de nacer de la clase padre      |
+        // |  para incluir generación de tipo.                                |
+        // +------------------------------------------------------------------+
         protected override void GenerarTipo()
         {
             int IndiceGenerado;
