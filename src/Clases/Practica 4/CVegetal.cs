@@ -72,8 +72,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
 
             IndiceGenerado = RandomIC.Next(0, 4);
 
-            MessageBox.Show("¡Atención!",$"Se ha recogido la fruta: {NombreFrutos[IndiceGenerado]}", Frutos[IndiceGenerado]);
-            MessageBox.ShowDialog();
+            MessageBox.ShowMessage("¡Atención!",$"Se ha recogido la fruta: {NombreFrutos[IndiceGenerado]}", Frutos[IndiceGenerado]);
         }
 
         // +------------------------------------------------------------------+

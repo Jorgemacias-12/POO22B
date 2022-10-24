@@ -24,10 +24,9 @@ namespace POO22B_MZJA.src.Componentes.CMessageBox
         private void BtnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            this.Dispose();
         }
 
-        public void Show(string Caption,string Mensaje, Image Imagen)
+        public void ShowMessage(string Caption,string Mensaje, Image Imagen)
         {
             this.Text = Caption;
 
@@ -37,6 +36,7 @@ namespace POO22B_MZJA.src.Componentes.CMessageBox
             PbxIcon.BackgroundImage = Imagen;
             LblMensaje.Text = Mensaje;
 
+            ShowDialog();
         }
 
     }
