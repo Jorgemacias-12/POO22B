@@ -11,13 +11,22 @@ using System.Windows.Forms;
 
 namespace POO22B_MZJA.src.Clases.Practica_4
 {
+    // +------------------------------------------------------------------+
+    // |  Clase que representa un ser vivo                                |
+    // |  MZJA 29/09/22.                                                  |
+    // +------------------------------------------------------------------+
     public class CVegetal : CSerVivo
     {
-
+        // +------------------------------------------------------------------+
+        // |  Atributos                                                       |
+        // +------------------------------------------------------------------+
         private List<Image> Vegetales;
         private List<Image> Frutos;
         private List<string> NombreFrutos;
 
+        // +------------------------------------------------------------------+
+        // |  Constructor                                                     |
+        // +------------------------------------------------------------------+
         public CVegetal(Control AreaDesplazamiento, int XNacimiento, int YNacimiento,
                         int NivelOxigeno, bool HaySol, int LimiteInanicion) :
                base(AreaDesplazamiento, XNacimiento, YNacimiento, NivelOxigeno, HaySol, LimiteInanicion)
@@ -49,20 +58,11 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                 "Orange",
                 "Sweet Berries"
             };
-
-            //Frutos = new Dictionary<string, Image>()
-            //{
-            //    {"Apple", Resources.mc_fruit_apple},
-            //    {"BlueBerry", Resources.mc_fruit_blueberry},
-            //    {"Green Apple", Resources.mc_fruit_blueberry},
-            //    {"Orange", Resources.mc_fruit_orange },
-            //    {"Sweet Berries", Resources.mc_fruit_sweet_berries}
-            //};
-
-            
-
         }
 
+        // +------------------------------------------------------------------+
+        // |  Obtener una fruta del vegetal                                   |
+        // +------------------------------------------------------------------+
         public override void EnClic(object sender, EventArgs e)
         {
             int IndiceGenerado;
@@ -72,12 +72,19 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             new DialogFrame().Show("¡Atención!",$"Se ha recogido la fruta: {NombreFrutos[IndiceGenerado]}", Frutos[IndiceGenerado]);
         }
 
+        // +------------------------------------------------------------------+
+        // |  Incluye el método que genera el tipo de vegetal de manera       |
+        // |  aleatoria (pseudo)                                              |
+        // +------------------------------------------------------------------+
         public override void Nacer()
         {
             base.Nacer();
             GenerarTipo();
         }
 
+        // +------------------------------------------------------------------+
+        // |  Generar el tipo según la clase Vegetal.                         | 
+        // +------------------------------------------------------------------+
         protected override void GenerarTipo()
         {
             int IndiceGenerado;
