@@ -201,6 +201,8 @@
     <Content Include="src\Resources\mc_cow.png" />
     <Content Include="src\Resources\mc_fox.png" />
     <Content Include="src\Resources\mc_jungle_tr.png" />
+    <Content Include="src\Resources\mc_mushroom_brown.png" />
+    <Content Include="src\Resources\mc_mushroom_red.png" />
     <Content Include="src\Resources\mc_oak_tr.png" />
     <Content Include="src\Resources\mc_seagrass.png" />
     <Content Include="src\Resources\mc_seagrass_2.png" />

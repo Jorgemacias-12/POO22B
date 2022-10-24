@@ -1,32 +1,27 @@
 ﻿using POO22B_MZJA.src.Utils;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POO22B_MZJA.src.Clases
+namespace POO22B_MZJA.src.Clases.Practica_4
 {
     // +------------------------------------------------------------------+
     // |  Clase que representa un ser vivo                                |
     // |  MZJA 29/09/22.                                                  |
     // +------------------------------------------------------------------+
-    public class CSerVivo : FButton.FlatButton
+    public abstract class CSerVivo : Button
     {
-        // TODO: implementar método de movimiento en clase Animal
-
-        /*
-         * 1 -> DlgPractica 4
-         * 2 -> CSerVivo
-         * 
-         * Clase Animal
-         * 
-         */
 
         // +------------------------------------------------------------------+
         // |  Atributos                                                       |
         // +------------------------------------------------------------------+
 
-        // Atributos de la base
+        // Donde Nacio
         private int XNacimiento;
         private int YNacimiento;
 
@@ -48,43 +43,42 @@ namespace POO22B_MZJA.src.Clases
         protected bool Nacio;
         protected bool RegresarACasa;
         protected bool Muerto;
-        protected bool Crecio;
+        protected bool Crecido;
         protected double Hambre;
         protected double ComidaIngerida;
         protected double LimiteInanicion;
+        protected int OxigenoAlmacenado;
+        protected bool HaySol;
         private Random Rand;
 
         // Atributos de ejecución
-        protected Thread ProcesoVida;
+        protected Thread ProcesoNacimiento;
+        protected Thread ProcesoDesplazamiento;
         private Thread ProcesoCansancio;
         private Thread ProcesoComer;
         private Thread ProcesoMuerte;
-        private Thread ProcesoCrecer;
+        private Thread ProcesoCrecimiento;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CSerVivo(Control AreaDesplazamiento, int XNacimiento, int YNacimiento)
+        public CSerVivo(Control AreaDesplazamiento, int XNacimiento,
+                        int YNacimiento, int NivelOxigeno, bool HaySol,
+                        int LimiteInanicion)
         {
-            Constructor(AreaDesplazamiento, XNacimiento, YNacimiento);
+            Constructor(AreaDesplazamiento, XNacimiento, YNacimiento, NivelOxigeno, HaySol, LimiteInanicion);
         }
 
-        // +------------------------------------------------------------------+
-        // |  Constructor                                                     |
-        // +------------------------------------------------------------------+
-        public CSerVivo(Control AreaDesplazamiento)
+        private void Constructor(Control AreaDesplazamiento, int XNacimiento,
+                                 int YNacimiento, int NivelOxigeno, bool HaySol,
+                                 int LimiteInanicion)
         {
-            Constructor(AreaDesplazamiento, 0, 0);
-        }
-
-        // +------------------------------------------------------------------+
-        // |  Contiene el funcionamiento de inicialización                    |
-        // +------------------------------------------------------------------+
-        private void Constructor(Control AreaDesplazamiento, int XNacimiento, int YNacimiento)
-        {
-            // Inicializa atributos de la base
+            // Asigna valores de nacimiento del ser vivo
             this.XNacimiento = XNacimiento;
             this.YNacimiento = YNacimiento;
+            OxigenoAlmacenado = NivelOxigeno;
+            this.HaySol = HaySol;
+            this.LimiteInanicion = LimiteInanicion;
 
             // Inicializar random
             Rand = new Random();
@@ -104,264 +98,38 @@ namespace POO22B_MZJA.src.Clases
             Nacio = false;
             RegresarACasa = false;
             Muerto = false;
-            Crecio = false;
+            Crecido = false;
+
 
             // Incializa atributos de ejecución.
-            ProcesoVida = null;
+            ProcesoDesplazamiento = null;
 
             // Propiedades del Ser Vivo.
             Location = new Point(this.XNacimiento, this.YNacimiento);
             FlatAppearance.BorderColor = Color.White;
             FlatAppearance.BorderSize = 1;
             BackColor = Color.White;
-            Name = "Particula";
+            Name = "Ser Vivo";
             Size = new Size(32, 32);
             BringToFront();
 
             // Accionar cuando hacemos clic en el
-            Click += CSerVivo_Click;
-
-        }
-
-        protected virtual void GenerarTipo() { }
-
-        // +------------------------------------------------------------------+
-        // | El ser vivo                                                      |   
-        // +------------------------------------------------------------------+
-        private void CSerVivo_Click(object sender, EventArgs e)
-        {
-            Comer();
+            Click += new EventHandler(EnClic);
         }
 
         // +------------------------------------------------------------------+
-        // | Proceso de crecimiento del ser vivo                              |   
+        // |  Permite al ser vivo ejecutar un operacion cuando se haaga clic  |
+        // |  en este.                                                        |
         // +------------------------------------------------------------------+
-        public virtual void Crecer() 
+        public abstract void EnClic(object sender, EventArgs e);
+
+        // +------------------------------------------------------------------+
+        // | Le da un formato (imagen) al SerVivo que va a generarse.         |   
+        // +------------------------------------------------------------------+
+        protected virtual void GenerarTipo()
         {
-            Padding p;
-
-            ProcesoCrecer = new Thread( () =>
-            {
-                LimiteAlto = Rand.Next(40, 75);
-                LimiteAncho = Rand.Next(40, 75);
-
-                while(!Crecio)
-                {
-                    Thread.Sleep(500);
-
-                    if (Width >= LimiteAncho && Height >= LimiteAlto) 
-                    {
-                        Crecio = true;
-                    }
-                    
-                    Width += Rand.Next(1, 20);
-                    Height += Rand.Next(1, 20);
-                }
-
-            });
-
-            ProcesoCrecer.Start();
-
-        }
-
-        // +------------------------------------------------------------------+
-        // |  Método virtual para colorear a un ser vivo                      |
-        // +------------------------------------------------------------------+
-        public Color Colorear()
-        {
-            return ColorUtils.GetRandomColor();
-        }
-
-        // +------------------------------------------------------------------+
-        // | Comienza el proceso de nacimiento                                |   
-        // +------------------------------------------------------------------+
-        public virtual void Nacer(int LimiteInanicion, ref int NivelOxigeno)
-        {
-            Thread Proceso;
-            Color ColorAleatorio;
-
-            // Comprobar si hay suficiente oxigeno
-            if (NivelOxigeno < 0 ||
-                NivelOxigeno > 100) return; 
-
-            // El ser vivo consume oxigeno al nacer
-            NivelOxigeno -= 1;
-
-            // Ser vivo obteiene su color de piel.
-            ColorAleatorio = Colorear();
-
-            // El ser vivo nace.
-
-            Proceso = new Thread(() =>
-            {
-                Thread.Sleep(1500);
-                BackColor = ColorAleatorio;
-
-                // Inicializar variables de vitalidad
-                Nacio = true;
-                Muerto = false;
-                Hambre = 0;
-                ComidaIngerida = 0;
-                this.LimiteInanicion = LimiteInanicion;
-
-                // El ser vivo crece
-                Crecer();
-
-                // Ser vivo comienza a cansarse
-                Cansarse();
-
-
-            });
-
-            Proceso.Start();
-        }
-
-        // +------------------------------------------------------------------+
-        // | Genera un numéro aleátorio de hambre y lo va acumula             |   
-        // +------------------------------------------------------------------+
-        protected virtual void Cansarse()
-        {
-            ProcesoCansancio = new Thread(() =>
-            {
-                while (!Muerto && Nacio)
-                {
-                    Thread.Sleep(500);
-
-                    Hambre += Rand.Next(1, 50);
-
-                    // Ejecutar el método morir si la hambre acumulada  
-                    // es mayor a 300
-                    if (Hambre >= LimiteInanicion)
-                    {
-                        Morir();
-                    }
-
-                }
-
-            });
-
-            ProcesoCansancio.Start();
-
-        }
-
-        public virtual void Desplazar(int Velocidad)
-        {
-            // Variables de posición inicial
-            int X;
-            int Y;
-
-            this.Velocidad = Velocidad;
-
-            // Desplaza la particula por tiempo indefinido
-            // NOTA: Se utiliza un hilo de ejecución, el cual deberá
-            // ser  finalizazdo al término del programa.
-
-            ProcesoVida = new Thread(() =>
-            {
-                while (!Muerto)
-                {
-                    if (Nacio)
-                    {
-
-                        // Posición inical.
-                        X = Location.X;
-                        Y = Location.Y;
-
-                        // Calcula desplazamiento
-
-                        if (Norte)
-                        {
-                            Y -= 1;
-                        }
-
-                        if (Sur)
-                        {
-                            Y += 1;
-                        }
-
-                        if (Este)
-                        {
-                            X += 1;
-                        }
-
-                        if (Oeste)
-                        {
-                            X -= 1;
-                        }
-
-                        // Determinar rebote
-
-                        if (X <= 0)
-                        {
-                            this.Oeste = false;
-
-                            if (!RegresarACasa)
-                            {
-                                this.Este = true;
-                            }
-
-                        }
-
-                        if (Y <= 0)
-                        {
-                            this.Norte = false;
-
-                            if (!RegresarACasa)
-                            {
-                                this.Sur = true;
-                            }
-
-                        }
-
-                        if (X >= AreaDesplazamiento.Width - Width)
-                        {
-                            this.Oeste = true;
-                            this.Este = false;
-                        }
-
-                        if (Y >= AreaDesplazamiento.Height - Height)
-                        {
-                            this.Norte = true;
-                            this.Sur = false;
-                        }
-
-                        // Posición final 
-                        Location = new Point(X, Y);
-                        Thread.Sleep(this.Velocidad);
-                    }
-                }
-            });
-
-            ProcesoVida.Start();
-
-        }
-
-        public virtual void Comer()
-        {
-            // Generar cada segundo incrementar una variable de hambre
-            ProcesoComer = new Thread(() =>
-            {
-                int ComidaEncontrada;
-
-                ComidaEncontrada = Rand.Next(20, 100);
-
-                if (ComidaEncontrada < 0)
-                {
-                    ComidaEncontrada = 0;
-                }
-
-                ComidaIngerida += ComidaEncontrada;
-
-                Hambre -= ComidaEncontrada;
-
-                MessageBox.Show(
-                    $"Debug info: Comida Encontrada: {ComidaEncontrada}, Hambre: {Hambre}, Muerto? {Muerto} " +
-                    $"Comida Ingerida: {ComidaIngerida}");
-
-            });
-
-            ProcesoComer.Start();
-
+            BackColor = ColorUtils.GetRandomColor();
+            ForeColor = ColorUtils.GetForegroundColor(BackColor);
         }
 
         public virtual void Morir()
@@ -370,7 +138,6 @@ namespace POO22B_MZJA.src.Clases
             {
                 Muerto = true;
                 Text = "D";
-                BackColor = ColorUtils.GetColor("#ff4d4d");
                 Thread.Sleep(1000);
                 AreaDesplazamiento.Update();
                 Dispose();
@@ -379,6 +146,218 @@ namespace POO22B_MZJA.src.Clases
             ProcesoMuerte.Start();
         }
 
+        // +------------------------------------------------------------------+
+        // | El Ser Vivo comienza el proceso de nacimiento.                   |   
+        // +------------------------------------------------------------------+
+        public virtual void Nacer()
+        {
+            ProcesoNacimiento = new Thread(() =>
+            {
+                // Comprueba si hay oxigeno suficiente
+                if (OxigenoAlmacenado <= 0)
+                {
+                    Thread.Sleep(1000);
+                    Morir();
+                }
+
+                // Comprueba si hay sol
+                if (!HaySol)
+                {
+                    Thread.Sleep(1000);
+                    Morir();
+                }
+
+                Nacio = true;
+                Muerto = false;
+                Hambre = 0;
+                ComidaIngerida = 0;
+
+                Crecer();
+
+            });
+
+            ProcesoNacimiento.Start();
+
+        }
+
+        // +------------------------------------------------------------------+
+        // | El Ser Vivo tiene unos limites de crecimiento generados, para    |
+        // | posteriormente crecer en función del tiempo y un numero.         |
+        // +------------------------------------------------------------------+
+        public virtual void Crecer()
+        {
+            ProcesoCrecimiento = new Thread(() =>
+            {
+                LimiteAncho = Rand.Next(40, 65);
+                LimiteAlto = Rand.Next(40, 65);
+
+                while (!Crecido)
+                {
+                    if (Width >= LimiteAlto && Height >= LimiteAlto)
+                    {
+                        Crecido = true;
+                    }
+
+                    Width += 1;
+                    Height += 1;
+
+                }
+
+            });
+
+            ProcesoCrecimiento.Start();
+        }
+
+        // +------------------------------------------------------------------+
+        // | El Ser Vivo al desplazarse se cansa, esto conlleva a consumir    |
+        // | oxigeno, y acumular hambre si estos dos llegan a limites el ser  |
+        // | vivo muere.                                                      |
+        // +------------------------------------------------------------------+
+        protected virtual void Cansarse()
+        {
+            ProcesoCansancio = new Thread(() =>
+            {
+                while (!Muerto && Nacio)
+                {
+
+                    Thread.Sleep(50);
+
+                    Hambre += Rand.Next(0, 25);
+
+                    if (Hambre >= LimiteInanicion)
+                    {
+                        Morir();
+                    }
+
+                    if (OxigenoAlmacenado <= 0)
+                    {
+                        Morir();
+                    }
+
+                }
+            });
+
+            ProcesoCansancio.Start();
+        }
+
+        public virtual void Desplazar(int Velocidad)
+        {
+            // Variables para almacenar posición del ser vivo
+            int X;
+            int Y;
+
+            this.Velocidad = Velocidad;
+
+            ProcesoDesplazamiento = new Thread(() =>
+            {
+                while(!Muerto && Nacio)
+                {
+                    // Obtener posición actual del ser vivo
+                    X = Location.X;
+                    Y = Location.Y;
+
+                    // Banderas para control de dirección
+                    if (Norte)
+                    {
+                        Y -= 1;
+                    }
+
+                    if (Sur)
+                    {
+                        Y += 1;
+                    }
+
+                    if (Este)
+                    {
+                        X += 1;
+                    }
+
+                    if (Oeste)
+                    {
+                        X -= 1;
+                    }
+
+                    // Evitar que el ser vivo salga del ecosistema
+
+                    if (X <= 0)
+                    {
+                        this.Oeste = false;
+
+                        if (!RegresarACasa)
+                        {
+                            this.Este = true;
+                        }
+
+                    }
+
+                    if (Y <= 0)
+                    {
+                        this.Norte = false;
+
+                        if (!RegresarACasa)
+                        {
+                            this.Sur = true;
+                        }
+
+                    }
+
+                    if (X >= AreaDesplazamiento.Width - Width)
+                    {
+                        this.Oeste = true;
+                        this.Este = false;
+                    }
+
+                    if (Y >= AreaDesplazamiento.Height - Height)
+                    {
+                        this.Norte = true;
+                        this.Sur = false;
+                    }
+
+                    // Cambiar a nueva posición
+                    Location = new Point(X, Y);
+                    Thread.Sleep(this.Velocidad);
+                }
+
+            });
+
+            ProcesoDesplazamiento.Start();
+        }
+
+        public virtual void Comer()
+        {
+            ProcesoComer = new Thread(() =>
+            {
+                int ComidaEncontrada;
+
+                ComidaEncontrada = Rand.Next(100, 1000);
+
+                // Prevenir cualquier bug extraño
+                // con valores menores a 0
+                if ( ComidaEncontrada < 0)
+                {
+                    ComidaEncontrada = 0;
+                }
+
+                // Almacenar la comida encontrada
+                ComidaIngerida += ComidaEncontrada;
+
+                // "Comer"
+                Hambre -= ComidaEncontrada;
+
+                // Mostrar información acerca de la operación
+                MessageBox.Show(
+                    $"Ser Vivo Ha comido - Comida Encontada: {ComidaEncontrada} - Hambre: {Hambre} " +
+                    $"Esta muerto? {Muerto} - Comida Ingerida: {ComidaIngerida}");
+
+            });
+
+            ProcesoComer.Start();
+        }
+
+        // +------------------------------------------------------------------+
+        // | Establecer bandera muerto a verdadero para evitar                |
+        // | conflictos con todo el hilo principal del programa.              |   
+        // +------------------------------------------------------------------+
         protected override void Dispose(bool disposing)
         {
             Muerto = true;
