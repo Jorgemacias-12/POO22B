@@ -23,6 +23,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         private List<Image> Vegetales;
         private List<Image> Frutos;
         private List<string> NombreFrutos;
+        private DialogFrame MessageBox;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
@@ -58,6 +59,8 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                 "Orange",
                 "Sweet Berries"
             };
+
+            MessageBox = new DialogFrame();
         }
 
         // +------------------------------------------------------------------+
@@ -69,7 +72,8 @@ namespace POO22B_MZJA.src.Clases.Practica_4
 
             IndiceGenerado = RandomIC.Next(0, 4);
 
-            new DialogFrame().Show("¡Atención!",$"Se ha recogido la fruta: {NombreFrutos[IndiceGenerado]}", Frutos[IndiceGenerado]);
+            MessageBox.Show("¡Atención!",$"Se ha recogido la fruta: {NombreFrutos[IndiceGenerado]}", Frutos[IndiceGenerado]);
+            MessageBox.ShowDialog();
         }
 
         // +------------------------------------------------------------------+

@@ -37,8 +37,6 @@ namespace POO22B_MZJA.src.Componentes.CMessageBox
             PbxIcon.BackgroundImage = Imagen;
             LblMensaje.Text = Mensaje;
 
-            this.ShowDialog();
-
         }
 
     }
