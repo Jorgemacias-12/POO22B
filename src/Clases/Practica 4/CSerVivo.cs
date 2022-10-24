@@ -231,7 +231,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
 
                     Thread.Sleep(50);
 
-                    Hambre += Rand.Next(0, 25);
+                    Hambre += Rand.Next(0, 50);
 
                     if (Hambre >= LimiteInanicion)
                     {
