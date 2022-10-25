@@ -87,5 +87,25 @@ namespace POO22B_MZJA.src.Utils
             SkinColor = SkinColors[GeneratedIndex];
         }
 
+        public static Color GetForegroundColor(Color BackColor)
+        {
+            int R;
+            int G;
+            int B;
+
+            R = BackColor.R;
+            G = BackColor.G;
+            B = BackColor.B;
+
+            if (R * 0.299 + G * 0.587 + B * 0.114 > 150)
+            {
+                return Color.Black;
+            }
+            else
+            {
+                return Color.White;
+            }
+        }
+
     }
 }
