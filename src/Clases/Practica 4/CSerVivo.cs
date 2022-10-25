@@ -1,6 +1,7 @@
 ﻿using POO22B_MZJA.src.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -337,13 +338,8 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             ProcesoComer = new Thread(() =>
             {
                 int ComidaEncontrada;
-                int MinComidaAGenerar;
-                int MaxComidaAGenerar;
 
-                MinComidaAGenerar = (int)(LimiteInanicion * 0.2);
-                MaxComidaAGenerar = LimiteInanicion * 2;
-
-                ComidaEncontrada = Rand.Next(MinComidaAGenerar, 1000);
+                ComidaEncontrada = Rand.Next(100, LimiteInanicion - 300);
 
                 // Prevenir cualquier bug extraño
                 // con valores menores a 0
@@ -362,7 +358,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                 MessageBox.Show(
                     $"Ser Vivo Ha comido - Comida Encontada: {ComidaEncontrada} - Hambre: {Hambre} " +
                     $"Esta muerto? {Muerto} - Comida Ingerida: {ComidaIngerida}");
-
+                 
             });
 
             ProcesoComer.Start();
