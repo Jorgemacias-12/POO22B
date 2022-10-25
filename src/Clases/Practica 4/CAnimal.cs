@@ -44,6 +44,8 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // +------------------------------------------------------------------+
         public override void EnClic(object sender, EventArgs e)
         {
+            if (IsDisposed) return; // Evitar excepcion de objeto disposed
+
             base.Comer();
         }
 
