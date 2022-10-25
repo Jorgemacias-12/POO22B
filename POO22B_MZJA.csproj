@@ -46,29 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Clases\Practica 4\CAnimal.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="src\Clases\Practica 4\CBacteria.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="src\Clases\CCliente.cs" />
-    <Compile Include="src\Clases\Practica 4\CCordado.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="src\Clases\CError.cs" />
-    <Compile Include="src\Clases\Practica 4\CHominidae.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="src\Clases\Practica 4\CHomoSapien.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="src\Clases\Practica 4\CHongo.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="src\Clases\Practica 4\CMammalia.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="src\Clases\CParticula.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -76,13 +55,37 @@
       <DependentUpon>CParticula.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Clases\CPelota.cs" />
+    <Compile Include="src\Clases\DlgMonitorParticula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Clases\DlgMonitorParticula.Designer.cs">
+      <DependentUpon>DlgMonitorParticula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Clases\Practica 4\CAnimal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\Practica 4\CBacteria.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\Practica 4\CCordado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\Practica 4\CHominidae.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\Practica 4\CHomosapien.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\Practica 4\CHongo.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Clases\Practica 4\CPersona.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\Clases\Practica 4\CPrimate.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Clases\Practica 4\CProctistas.cs">
+    <Compile Include="src\Clases\Practica 4\CProtoctista.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\Clases\Practica 4\CSerVivo.cs">
@@ -91,11 +94,15 @@
     <Compile Include="src\Clases\Practica 4\CVegetal.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Clases\DlgMonitorParticula.cs">
+    <Compile Include="src\Clases\Practica 4\CMammalia.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Clases\Practica 4\Oxigeno.cs" />
+    <Compile Include="src\Componentes\CMessageBox\DialogFrame.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Clases\DlgMonitorParticula.Designer.cs">
-      <DependentUpon>DlgMonitorParticula.cs</DependentUpon>
+    <Compile Include="src\Componentes\CMessageBox\DialogFrame.Designer.cs">
+      <DependentUpon>DialogFrame.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Componentes\Container\Border.cs" />
     <Compile Include="src\Componentes\Container\Container.cs">
@@ -141,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Clases\DlgMonitorParticula.resx">
       <DependentUpon>DlgMonitorParticula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Componentes\CMessageBox\DialogFrame.resx">
+      <DependentUpon>DialogFrame.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Componentes\FlatButton\FlatButton.resx">
       <DependentUpon>FlatButton.cs</DependentUpon>
@@ -190,9 +200,17 @@
     <None Include="src\Resources\Icecube-right.png" />
     <None Include="src\Resources\icecube-rightdown.png" />
     <None Include="src\Resources\icecube-rightop.png" />
+    <Content Include="src\Resources\gi_hongo.png" />
+    <Content Include="src\Resources\gi_hongo_estelar.png" />
+    <Content Include="src\Resources\gi_hongo_rukkhashava.png" />
     <Content Include="src\Resources\Icecube.png" />
     <Content Include="src\Resources\mc_acacia_tr.png" />
     <Content Include="src\Resources\mc_axolotl.png" />
+    <Content Include="src\Resources\mc_a_jorge.png" />
+    <Content Include="src\Resources\mc_a_notch.png" />
+    <Content Include="src\Resources\mc_a_ricardo.png" />
+    <Content Include="src\Resources\mc_a_shadoune.png" />
+    <Content Include="src\Resources\mc_a_steve.png" />
     <Content Include="src\Resources\mc_bacteria.png" />
     <Content Include="src\Resources\mc_bacteria_2.png" />
     <Content Include="src\Resources\mc_birch_tr.png" />
@@ -200,6 +218,11 @@
     <Content Include="src\Resources\mc_chickem.png" />
     <Content Include="src\Resources\mc_cow.png" />
     <Content Include="src\Resources\mc_fox.png" />
+    <Content Include="src\Resources\mc_fruit_apple.png" />
+    <Content Include="src\Resources\mc_fruit_blueberry.png" />
+    <Content Include="src\Resources\mc_fruit_gapple.png" />
+    <Content Include="src\Resources\mc_fruit_orange.png" />
+    <Content Include="src\Resources\mc_fruit_sweet_berries.png" />
     <Content Include="src\Resources\mc_jungle_tr.png" />
     <Content Include="src\Resources\mc_mushroom_brown.png" />
     <Content Include="src\Resources\mc_mushroom_red.png" />
