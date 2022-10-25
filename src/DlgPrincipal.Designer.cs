@@ -68,7 +68,7 @@
             this.PbxInfoIcon = new System.Windows.Forms.PictureBox();
             this.PnlTopbar = new System.Windows.Forms.Panel();
             this.FBtnOptions = new POO22B_MZJA.src.FButton.FlatButton();
-            this.FBtnSidebar = new POO22B_MZJA.src.FButton.FlatButton();
+            this.FBtnSidebar = new POO22B_MZJA.src.FToggleButton.FlatToggleButton();
             this.TmrTime = new System.Windows.Forms.Timer(this.components);
             this.PnlAppContainer.SuspendLayout();
             this.TpbPractices.SuspendLayout();
@@ -613,18 +613,21 @@
             // 
             // FBtnSidebar
             // 
-            this.FBtnSidebar.BorderColor = System.Drawing.Color.Empty;
+            this.FBtnSidebar.ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(230)))), ((int)(((byte)(137)))));
             this.FBtnSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.FBtnSidebar.FlatAppearance.BorderSize = 0;
             this.FBtnSidebar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FBtnSidebar.HoverColor = System.Drawing.Color.Empty;
-            this.FBtnSidebar.HoverEnabled = false;
             this.FBtnSidebar.Image = global::POO22B_MZJA.Properties.Resources.bars_solid;
+            this.FBtnSidebar.IsActive = false;
             this.FBtnSidebar.Location = new System.Drawing.Point(0, 0);
             this.FBtnSidebar.Name = "FBtnSidebar";
+            this.FBtnSidebar.OldColor = System.Drawing.Color.Empty;
+            this.FBtnSidebar.OverrideMethod = false;
             this.FBtnSidebar.Size = new System.Drawing.Size(61, 50);
             this.FBtnSidebar.TabIndex = 0;
-            this.FBtnSidebar.UseVisualStyleBackColor = true;
+            this.FBtnSidebar.UseVisualStyleBackColor = false;
+            this.FBtnSidebar.Click += new System.EventHandler(this.FBtnSidebar_Click);
             // 
             // TmrTime
             // 
@@ -667,7 +670,7 @@
 
         private System.Windows.Forms.Panel PnlAppContainer;
         private System.Windows.Forms.Panel PnlTopbar;
-        private src.FButton.FlatButton FBtnSidebar;
+        private src.FToggleButton.FlatToggleButton FBtnSidebar;
         private System.Windows.Forms.Label LblTabIndicator;
         private src.FButton.FlatButton FBtnOptions;
         private System.Windows.Forms.Panel PnlSidebar;

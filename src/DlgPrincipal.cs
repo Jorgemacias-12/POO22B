@@ -25,6 +25,7 @@ namespace POO22B_MZJA
         private List<CSerVivo> SeresVivos;
         private Oxigeno OxigenoEnAmbiente;
         private int LimiteInanicion;
+        private int PreviusWidth;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
@@ -40,6 +41,8 @@ namespace POO22B_MZJA
             SeresVivos = new List<CSerVivo>();
 
             OxigenoEnAmbiente = new Oxigeno(1500);
+
+            LimiteInanicion = 3000;
 
         }
 
@@ -62,7 +65,7 @@ namespace POO22B_MZJA
             //PnlNavPractices
             //UI.PaintBorder(PnlNavPractices, ColorUtils.GetColor("#505050"), 1);
             // TODO: implement this in the Component code :D
-
+            PreviusWidth = PnlSidebar.Width;
         }
 
         // +------------------------------------------------------------------+
@@ -149,7 +152,12 @@ namespace POO22B_MZJA
 
         private void FBtnPersona_Click(object sender, EventArgs e)
         {
-            //CPersona Persona;
+            CPersona Persona;
+
+            Persona = new CPersona(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente.CapacidadMaxima, true, LimiteInanicion);
+
+            Persona.Nacer();
+            Persona.Desplazar(1000);
 
             //Persona = new CPersona(PnlP4AreaAmbiental, PnlP4AreaAmbiental.Width / 2, PnlP4AreaAmbiental.Height / 2);
             //Persona.Nacer(1500, ref NivelOxigeno);
@@ -235,10 +243,6 @@ namespace POO22B_MZJA
             Bacteria = new CBacteria(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente.ValorActual, true, LimiteInanicion);
             Bacteria.Nacer();
             Bacteria.Desplazar(1000);
-
-            //Bacteria = new CBacteria(PnlP4AreaAmbiental, 10, 10);
-            //Bacteria.Nacer(10000, ref NivelOxigeno);
-            //Bacteria.Desplazar(1000);
         }
 
         private void TbxLimiteInanicion_KeyPress(object sender, KeyPressEventArgs e)
@@ -263,6 +267,28 @@ namespace POO22B_MZJA
             {
                 LimiteInanicion = Convert.ToInt32(TbxLimiteInanicion.Text);
             }
+        }
+
+        private void FBtnSidebar_Click(object sender, EventArgs e)
+        {
+            Thread HideSideBar;               
+
+            HideSideBar = new Thread(() =>
+            {
+
+                if (FBtnSidebar.IsActive)
+                {
+                    PnlSidebar.Width = 0;
+                }
+
+                if (!FBtnSidebar.IsActive)
+                {
+                    PnlSidebar.Width = PreviusWidth;
+                }
+
+            });
+
+            HideSideBar.Start();
         }
     }
 }
