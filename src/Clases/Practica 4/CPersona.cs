@@ -1,173 +1,76 @@
-﻿using POO22B_MZJA.src.Utils;
+﻿using POO22B_MZJA.Properties;
+using POO22B_MZJA.src.Utils.Rand;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Threading;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace POO22B_MZJA.src.Clases
+namespace POO22B_MZJA.src.Clases.Practica_4
 {
     // +------------------------------------------------------------------+
-    // |  Clase que representa una persona.                               |
-    // |  MZJA 30/08/22.                                                  |
+    // |  Clase que representa una Persona                                |
+    // |  MZJA 29/09/22.                                                  |
     // +------------------------------------------------------------------+
-    public class CPersona : CHomoSapiens
+    public class CPersona : CHominidae
     {
         // +------------------------------------------------------------------+
         // |  Atributos                                                       |
         // +------------------------------------------------------------------+
-        private Random random;
-
+        private List<Image> Personas;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CPersona(Control AreaDesplazamiento, int XNacimiento, int YNacimiento) :
-            base(AreaDesplazamiento, XNacimiento, YNacimiento)
+        public CPersona(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, 
+                        int NivelOxigeno, bool HaySol, int LimiteInanicion) : 
+               base(AreaDesplazamiento, XNacimiento, YNacimiento, NivelOxigeno, HaySol, LimiteInanicion)
         {
-            Constructor();
-        }
-
-        public CPersona(Control AreaDesplazamiento) : base(AreaDesplazamiento, 0, 0)
-        {
-            Constructor();
-        }
-
-        private void Constructor()
-        {
-            random = new Random();
-
-            Text = "P";
-
-        }
-
-        private new Color Colorear()
-        {
-            Color SkinColor;
-            Color ForeColor;
-
-            ColorUtils.GetPersonColor(out SkinColor, out ForeColor);
-
-            this.ForeColor = ForeColor;
-
-            return SkinColor;
-        }
-
-        public override void Nacer(int LimiteInanicion, ref int NivelOxigeno)
-        {
-            Thread Proceso;
-            Color ColorDePiel;
-            int X;
-            int Y;
-
-            // Persona obtiene su color de piel 
-            // Refact this to a virtual method
-            ColorDePiel = Colorear();
-
-            Proceso = new Thread(() =>
+            // Lista de recursos
+            Personas = new List<Image>()
             {
-                BackColor = ColorDePiel;
-                Nacio = true;
-
-                // El vegetal tiene un punto aleatorio para nacer
-                X = random.Next(10, AreaDesplazamiento.Width / 2);
-                Y = random.Next(10, AreaDesplazamiento.Height / 2);
-
-                // Aplicar la posición
-                Location = new Point(X, Y);
-
-            });
-
-            Proceso.Start();
-
+                Resources.mc_a_jorge,
+                Resources.mc_a_notch,
+                Resources.mc_a_ricardo,
+                Resources.mc_a_shadoune,
+                Resources.mc_a_steve
+            };
         }
 
-        public override void Desplazar(int Velocidad)
+        // +------------------------------------------------------------------+
+        // |  Acción de la persona                                            |
+        // +------------------------------------------------------------------+
+        public override void EnClic(object sender, EventArgs e)
         {
-            Thread ProcesoVida;
-
-            int X;
-            int Y;
-
-            ProcesoVida = new Thread(() =>
-            {
-                while (!Muerto)
-                {
-                    if (Nacio)
-                    {
-                        // Posición inical.
-                        X = Location.X;
-                        Y = Location.Y;
-
-                        // Evitar que las personas salgan del ecosistema
-                        if (X <= 0)
-                        {
-                            this.Oeste = false;
-
-                            if (!RegresarACasa)
-                            {
-                                this.Este = true;
-                            }
-
-                        }
-
-                        if (Y <= 0)
-                        {
-                            this.Norte = false;
-
-                            if (!RegresarACasa)
-                            {
-                                this.Sur = true;
-                            }
-
-                        }
-
-                        if (X >= AreaDesplazamiento.Width - Width)
-                        {
-                            this.Oeste = true;
-                            this.Este = false;
-                        }
-
-                        if (Y >= AreaDesplazamiento.Height - Height)
-                        {
-                            this.Norte = true;
-                            this.Sur = false;
-                        }
-
-                        // Calcula desplazamiento
-
-                        if (Norte)
-                        {
-                            Y -= 1;
-                        }
-
-                        if (Sur)
-                        {
-                            Y += 1;
-                        }
-
-                        if (Este)
-                        {
-                            X += 1;
-                        }
-
-                        if (Oeste)
-                        {
-                            X -= 1;
-                        }
-
-
-
-                        // Posición final 
-                        Location = new Point(X, Y);
-                        Thread.Sleep(Velocidad);
-                    }
-                }
-            });
-
-            ProcesoVida.Start();
-
+            MessageBox.Show("Hola soy un ser humano");
         }
 
+        // +------------------------------------------------------------------+
+        // |  Sobreescribir el funcionamiento de nacer de la clase padre      |
+        // |  para incluir generación de tipo.                                |
+        // +------------------------------------------------------------------+
+        public override void Nacer()
+        {
+            base.Nacer();
+            GenerarTipo();
+        }
 
+        // +------------------------------------------------------------------+
+        // |  Generar el tipo según la clase Persona.                         | 
+        // +------------------------------------------------------------------+
+        protected override void GenerarTipo()
+        {
+            int IndiceGenerado;
+
+            IndiceGenerado = RandomIC.Next(0, 4);
+
+            FlatAppearance.BorderSize = 0;
+            BackColor = Color.Transparent;
+
+            BackgroundImage = Personas[IndiceGenerado];
+            BackgroundImageLayout = ImageLayout.Stretch;
+        }
     }
 }
