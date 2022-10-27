@@ -73,7 +73,7 @@
     <Compile Include="src\Clases\Practica 4\CHominidae.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Clases\Practica 4\CHomosapien.cs">
+    <Compile Include="src\Clases\Practica 4\CHomoSapien.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\Clases\Practica 4\CHongo.cs">
