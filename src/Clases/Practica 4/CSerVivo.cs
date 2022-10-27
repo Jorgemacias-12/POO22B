@@ -25,6 +25,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // Donde Nacio
         private int XNacimiento;
         private int YNacimiento;
+        private Point CoordenadasNacimiento;
 
         // Limites de crecimiento
         protected int LimiteAncho;
@@ -84,6 +85,9 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             // Inicializar random
             Rand = new Random();
 
+            // Inicializar point
+            CoordenadasNacimiento = new Point();
+
             // Inicializa atributos del ecosistema
             this.AreaDesplazamiento = AreaDesplazamiento;
             this.AreaDesplazamiento.Controls.Add(this);
@@ -105,7 +109,15 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             ProcesoDesplazamiento = null;
 
             // Propiedades del Ser Vivo.
-            Location = new Point(this.XNacimiento, this.YNacimiento);
+
+            // Si las coordenadas de nacimiento son 0
+            // Se generan unas aleatorias
+            CoordenadasNacimiento.X = this.XNacimiento == 0 ? Rand.Next(1, AreaDesplazamiento.Width - Width + LimiteAncho) : XNacimiento;
+            CoordenadasNacimiento.Y = this.YNacimiento == 0 ? Rand.Next(1, AreaDesplazamiento.Height - Height + LimiteAlto) : YNacimiento;
+
+            // Asignar coordenadas al ser vivo
+            Location = CoordenadasNacimiento;
+
             FlatStyle = FlatStyle.Flat;
             FlatAppearance.BorderColor = Color.White;
             FlatAppearance.BorderSize = 1;
@@ -155,13 +167,13 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         {
             ProcesoNacimiento = new Thread(() =>
             {
-                // Nacer en posiciones aleatorias si las coordenadas de
-                // nacimiento son iguales a 0
-                if (XNacimiento == 0 && YNacimiento == 0)
-                {
-                    Location = new Point(Rand.Next(1, AreaDesplazamiento.Width - Width + LimiteAncho),
-                                         Rand.Next(1, AreaDesplazamiento.Height - Height + LimiteAlto));
-                }
+                //// Nacer en posiciones aleatorias si las coordenadas de
+                //// nacimiento son iguales a 0
+                //if (XNacimiento == 0 && YNacimiento == 0)
+                //{
+                //    Location = new Point(Rand.Next(1, AreaDesplazamiento.Width - Width + LimiteAncho),
+                //                         Rand.Next(1, AreaDesplazamiento.Height - Height + LimiteAlto));
+                //}
 
                 // Comprueba si hay oxigeno suficiente
                 if (OxigenoAlmacenado <= 0)
