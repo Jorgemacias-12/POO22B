@@ -134,11 +134,6 @@ namespace POO22B_MZJA
 
             Vegetal = new CVegetal(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente.CapacidadMaxima, true, LimiteInanicion);
             Vegetal.Nacer();
-            //// Change constructor to rand pos
-            //Vegetal = new CVegetal(PnlP4AreaAmbiental, 10, 10);
-            //Vegetal.Nacer(800, ref NivelOxigeno);
-            //Vegetal.Crecer();
-
         }
 
         private void FBtnGAnimal_Click(object sender, EventArgs e)
@@ -154,20 +149,10 @@ namespace POO22B_MZJA
         {
             CPersona Persona;
 
-            Persona = new CPersona(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente.CapacidadMaxima, true, LimiteInanicion);
+            Persona = new CPersona(PnlP4AreaAmbiental, 10, 10, OxigenoEnAmbiente.CapacidadMaxima, true, LimiteInanicion);
 
             Persona.Nacer();
-            Persona.Desplazar(1000);
-
-            //Persona = new CPersona(PnlP4AreaAmbiental, PnlP4AreaAmbiental.Width / 2, PnlP4AreaAmbiental.Height / 2);
-            //Persona.Nacer(1500, ref NivelOxigeno);
-            //Persona.Desplazar(2);
-
-
-            //while (SeresVivos.Count != 0 && TpbPractices.SelectedTab == TpbPractices.TabPages["TpgPractica4"])
-            //{
-            //    PnlP4AreaAmbiental.Refresh();
-            //}
+            Persona.Desplazar(1);
 
         }
 
@@ -242,7 +227,7 @@ namespace POO22B_MZJA
 
             Bacteria = new CBacteria(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente.ValorActual, true, LimiteInanicion);
             Bacteria.Nacer();
-            Bacteria.Desplazar(1000);
+            Bacteria.Desplazar(1);
         }
 
         private void TbxLimiteInanicion_KeyPress(object sender, KeyPressEventArgs e)
