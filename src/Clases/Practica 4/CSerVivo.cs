@@ -167,14 +167,6 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         {
             ProcesoNacimiento = new Thread(() =>
             {
-                //// Nacer en posiciones aleatorias si las coordenadas de
-                //// nacimiento son iguales a 0
-                //if (XNacimiento == 0 && YNacimiento == 0)
-                //{
-                //    Location = new Point(Rand.Next(1, AreaDesplazamiento.Width - Width + LimiteAncho),
-                //                         Rand.Next(1, AreaDesplazamiento.Height - Height + LimiteAlto));
-                //}
-
                 // Comprueba si hay oxigeno suficiente
                 if (OxigenoAlmacenado <= 0)
                 {
