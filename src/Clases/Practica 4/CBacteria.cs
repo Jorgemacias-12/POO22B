@@ -101,19 +101,6 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                         X -= 1;
                     }
 
-                    // Evitar que el ser vivo salga del ecosistema
-
-                    if (X <= 0)
-                    {
-                        this.Oeste = false;
-
-                        if (!RegresarACasa)
-                        {
-                            this.Este = true;
-                        }
-
-                    }
-
                     // Cambiar a nueva posición
                     Location = new Point(X, Y);
                     Thread.Sleep(this.Velocidad);
@@ -128,17 +115,25 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // +------------------------------------------------------------------+
         public override void EnClic(object sender, EventArgs e)
         {
-            MessageBox.Show($"D: {Muerto} - N: {Nacio}");
+            MessageBox.Show(ToString());
         }
 
         // +------------------------------------------------------------------+
-        // |  Incluye el método que genera el tipo de bacteria de manera      |
-        // |  aleatoria (pseudo)                                              |
+        // |  La bacteria nace, incluye el método que genera el tipo          |
+        // |  de bacteria de manera (pseudo) aleatoria.                       |
         // +------------------------------------------------------------------+
         public override void Nacer()
         {
             base.Nacer();
             GenerarTipo();
+        }
+
+        // +------------------------------------------------------------------+
+        // |  Obtiene información acerca de la bacteria.                      |
+        // +------------------------------------------------------------------+
+        public override string ToString()
+        {
+            return $"{GetType()} - Atributos de control: [Nacio: {Nacio}, Regresar a casa:{RegresarACasa}, Muerto: {Muerto}, Crecido: {Crecido}]";
         }
 
         // +------------------------------------------------------------------+
