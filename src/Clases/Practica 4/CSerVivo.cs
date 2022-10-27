@@ -155,11 +155,20 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         {
             ProcesoNacimiento = new Thread(() =>
             {
+                // Nacer en posiciones aleatorias si las coordenadas de
+                // nacimiento son iguales a 0
+                if (XNacimiento == 0 && YNacimiento == 0)
+                {
+                    Location = new Point(Rand.Next(1, AreaDesplazamiento.Width - Width + LimiteAncho),
+                                         Rand.Next(1, AreaDesplazamiento.Height - Height + LimiteAlto));
+                }
+
                 // Comprueba si hay oxigeno suficiente
                 if (OxigenoAlmacenado <= 0)
                 {
                     Thread.Sleep(1000);
                     Morir();
+                    return;
                 }
 
                 // Comprueba si hay sol
@@ -167,14 +176,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                 {
                     Thread.Sleep(1000);
                     Morir();
-                }
-
-                // Nacer en posiciones aleatorias si las coordenadas de
-                // nacimiento son iguales a 0
-                if (XNacimiento == 0 && YNacimiento == 0)
-                {
-                    Location = new Point(Rand.Next(1, AreaDesplazamiento.Width - Width + LimiteAncho),
-                                         Rand.Next(1, AreaDesplazamiento.Height - Height + LimiteAlto));
+                    return;
                 }
 
                 Nacio = true;
@@ -356,7 +358,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
 
                 // Mostrar información acerca de la operación
                 MessageBox.Show(
-                    $"Ser Vivo Ha comido - Comida Encontada: {ComidaEncontrada} - Hambre: {Hambre} " +
+                    $"{GetType()} Ha comido - Comida Encontada: {ComidaEncontrada} - Hambre: {Hambre} " +
                     $"Esta muerto? {Muerto} - Comida Ingerida: {ComidaIngerida}");
                  
             });
