@@ -25,15 +25,15 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
         public CProtoctista(Control AreaDesplazamiento, int XNacimiento, int YNacimiento,
-                            int NivelOxigeno, bool HaySol, int LimiteInanicion) :
-                base(AreaDesplazamiento, XNacimiento, YNacimiento, NivelOxigeno, HaySol, LimiteInanicion)
+                            Oxigeno Oxigeno, bool HaySol, int LimiteInanicion) :
+                base(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion)
         {
-            // Incialización de lista de recurso para generar tipo
-            Algas = new List<Image>()
-            {
-                Resources.mc_seagrass,
-                Resources.mc_seagrass_2
-            };
+            //// Incialización de lista de recurso para generar tipo
+            //Algas = new List<Image>()
+            //{
+            //    Resources.mc_seagrass,
+            //    Resources.mc_seagrass_2
+            //};
         }
 
         // +------------------------------------------------------------------+

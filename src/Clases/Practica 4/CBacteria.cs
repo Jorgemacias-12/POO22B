@@ -25,9 +25,9 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CBacteria(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, int NivelOxigeno, 
+        public CBacteria(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, Oxigeno Oxigeno, 
                          bool HaySol, int LimiteInanicion) : 
-               base(AreaDesplazamiento, XNacimiento, YNacimiento, NivelOxigeno, HaySol, LimiteInanicion)
+               base(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion)
         {
             // Inicializar lista con rescursos graficos
             Bacterias = new List<Image>()

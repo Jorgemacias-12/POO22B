@@ -44,6 +44,13 @@ namespace POO22B_MZJA
 
             LimiteInanicion = 3000;
 
+            OxigenoEnAmbiente.OxigenoConsumido += OxigenoEnAmbiente_OxigenoConsumido;
+
+        }
+
+        private void OxigenoEnAmbiente_OxigenoConsumido(object sender, EventArgs e)
+        {
+            LblOxygenIndicator.Text = "";
         }
 
         protected override CreateParams CreateParams
@@ -132,7 +139,7 @@ namespace POO22B_MZJA
         {
             CVegetal Vegetal;
 
-            Vegetal = new CVegetal(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente.CapacidadMaxima, true, LimiteInanicion);
+            Vegetal = new CVegetal(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion);
             Vegetal.Nacer();
         }
 
@@ -140,7 +147,7 @@ namespace POO22B_MZJA
         {
             CAnimal Animal;
 
-            Animal = new CAnimal(PnlP4AreaAmbiental, 10, 10, OxigenoEnAmbiente.CapacidadMaxima, true, LimiteInanicion);
+            Animal = new CAnimal(PnlP4AreaAmbiental, 10, 10, OxigenoEnAmbiente, true, LimiteInanicion);
             Animal.Nacer();
             Animal.Desplazar(1);
         }
@@ -149,11 +156,10 @@ namespace POO22B_MZJA
         {
             CPersona Persona;
 
-            Persona = new CPersona(PnlP4AreaAmbiental, 10, 10, OxigenoEnAmbiente.CapacidadMaxima, true, LimiteInanicion);
+            Persona = new CPersona(PnlP4AreaAmbiental, 10, 10, OxigenoEnAmbiente, true, LimiteInanicion);
 
             Persona.Nacer();
             Persona.Desplazar(1);
-
         }
 
         private void PnlNavPractices_Paint(object sender, PaintEventArgs e)
@@ -209,7 +215,7 @@ namespace POO22B_MZJA
         {
             CHongo Hongo;
 
-            Hongo = new CHongo(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente.CapacidadMaxima, true, LimiteInanicion);
+            Hongo = new CHongo(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion);
             Hongo.Nacer();
         }
 
@@ -217,7 +223,7 @@ namespace POO22B_MZJA
         {
             CProtoctista Alga;
 
-            Alga = new CProtoctista(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente.ValorActual, true, LimiteInanicion);
+            Alga = new CProtoctista(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion);
             Alga.Nacer();
         }
 
@@ -225,7 +231,7 @@ namespace POO22B_MZJA
         {
             CBacteria Bacteria;
 
-            Bacteria = new CBacteria(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente.ValorActual, true, LimiteInanicion);
+            Bacteria = new CBacteria(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion);
             Bacteria.Nacer();
             Bacteria.Desplazar(1);
         }

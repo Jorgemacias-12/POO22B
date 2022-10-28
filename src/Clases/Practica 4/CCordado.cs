@@ -9,7 +9,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
 {
     public class CCordado : CSerVivo
     {
-        public CCordado(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, int NivelOxigeno, bool HaySol, int LimiteInanicion) : base(AreaDesplazamiento, XNacimiento, YNacimiento, NivelOxigeno, HaySol, LimiteInanicion)
+        public CCordado(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, Oxigeno Oxigeno, bool HaySol, int LimiteInanicion) : base(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion)
         {
         }
 

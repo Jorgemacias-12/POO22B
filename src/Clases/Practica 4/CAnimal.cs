@@ -25,10 +25,11 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
         public CAnimal(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, 
-                       int NivelOxigeno, bool HaySol, int LimiteInanicion) : 
-               base(AreaDesplazamiento, XNacimiento, YNacimiento, NivelOxigeno, HaySol, LimiteInanicion)
+                       Oxigeno Oxigeno, bool HaySol, int LimiteInanicion) : 
+               base(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion)
         {
         }
+
 
         // +------------------------------------------------------------------+
         // |  Sobrecarga del método Desplazar.                                |

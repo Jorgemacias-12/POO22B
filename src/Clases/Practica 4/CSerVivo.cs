@@ -49,7 +49,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         protected double Hambre;
         protected double ComidaIngerida;
         protected int LimiteInanicion;
-        protected int OxigenoAlmacenado;
+        protected Oxigeno Oxigeno;
         protected bool HaySol;
         private Random Rand;
 
@@ -65,20 +65,20 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
         public CSerVivo(Control AreaDesplazamiento, int XNacimiento,
-                        int YNacimiento, int NivelOxigeno, bool HaySol,
+                        int YNacimiento, Oxigeno Oxigeno, bool HaySol,
                         int LimiteInanicion)
         {
-            Constructor(AreaDesplazamiento, XNacimiento, YNacimiento, NivelOxigeno, HaySol, LimiteInanicion);
+            Constructor(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion);
         }
 
         private void Constructor(Control AreaDesplazamiento, int XNacimiento,
-                                 int YNacimiento, int NivelOxigeno, bool HaySol,
+                                 int YNacimiento, Oxigeno Oxigeno, bool HaySol,
                                  int LimiteInanicion)
         {
             // Asigna valores de nacimiento del ser vivo
             this.XNacimiento = XNacimiento;
             this.YNacimiento = YNacimiento;
-            OxigenoAlmacenado = NivelOxigeno;
+            this.Oxigeno = Oxigeno;
             this.HaySol = HaySol;
             this.LimiteInanicion = LimiteInanicion;
 
@@ -168,7 +168,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             ProcesoNacimiento = new Thread(() =>
             {
                 // Comprueba si hay oxigeno suficiente
-                if (OxigenoAlmacenado <= 0)
+                if (Oxigeno.ValorActual <= 0)
                 {
                     Thread.Sleep(1000);
                     Morir();
@@ -245,7 +245,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                         Morir();
                     }
 
-                    if (OxigenoAlmacenado <= 0)
+                    if (Oxigeno.ValorActual <= 0)
                     {
                         Morir();
                     }
