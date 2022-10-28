@@ -153,8 +153,8 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                 Text = "D";
                 BackColor = ColorUtils.GetColor("#ff4d4d");
                 Thread.Sleep(1000);
+                AreaDesplazamiento.Controls.Remove(this);
                 AreaDesplazamiento.Update();
-                Dispose();
             });
 
             ProcesoMuerte.Start();
