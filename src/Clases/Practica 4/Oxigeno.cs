@@ -12,22 +12,27 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         private const int PORCENTAJE_MAXIMO = 100;
         public event EventHandler OxigenoConsumido;
         private int PorcentajeOxigeno;
+        private int _ValorActual;
 
         public int CapacidadMaxima
         {
             get; set;
         }
 
+
         public int ValorActual
         {
             get
             {
-                return ValorActual;
+                return this._ValorActual;
             }
             set
             {
-                ValorActual = value;
-                OxigenoConsumido.Invoke(this, EventArgs.Empty);
+                this._ValorActual = value;
+                if (OxigenoConsumido != null)
+                {
+                    OxigenoConsumido.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 

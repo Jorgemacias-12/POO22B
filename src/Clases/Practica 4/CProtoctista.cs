@@ -29,11 +29,11 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                 base(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion)
         {
             //// Incialización de lista de recurso para generar tipo
-            //Algas = new List<Image>()
-            //{
-            //    Resources.mc_seagrass,
-            //    Resources.mc_seagrass_2
-            //};
+            Algas = new List<Image>()
+            {
+                Resources.mc_seagrass,
+                Resources.mc_seagrass_2
+            };
         }
 
         // +------------------------------------------------------------------+
