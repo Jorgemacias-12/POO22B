@@ -32,7 +32,11 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             Algas = new List<Image>()
             {
                 Resources.mc_seagrass,
-                Resources.mc_seagrass_2
+                Resources.mc_seagrass_2,
+                Resources.img_alga,
+                Resources.img_alga_2,
+                Resources.img_alga_3,
+
             };
         }
 
@@ -41,6 +45,14 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // +------------------------------------------------------------------+
         public override void EnClic(object sender, EventArgs e)
         {
+            int OxigenoGenerado;
+
+            //OxigenoGenerado = RandomIC.Next(0, Oxigeno.CapacidadMaxima);
+
+            //Oxigeno.ValorActual += OxigenoGenerado;
+
+            //MessageBox.Show($"He generado: {OxigenoGenerado} de oxigeno, buen día");
+
         }
 
         // +------------------------------------------------------------------+
@@ -60,7 +72,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         {
             int IndiceGenerado;
 
-            IndiceGenerado = RandomIC.Next(0, 1);
+            IndiceGenerado = RandomIC.Next(0, 4);
 
             FlatAppearance.BorderSize = 0;
             BackColor = Color.Transparent;

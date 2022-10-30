@@ -21,20 +21,27 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // |  Atributos                                                       |
         // +------------------------------------------------------------------+
         private List<Image> Bacterias;
+        private Random Rand;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CBacteria(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, Oxigeno Oxigeno, 
-                         bool HaySol, int LimiteInanicion) : 
+        public CBacteria(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, Oxigeno Oxigeno,
+                         bool HaySol, int LimiteInanicion) :
                base(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion)
         {
             // Inicializar lista con rescursos graficos
             Bacterias = new List<Image>()
             {
                 Resources.mc_bacteria,
-                Resources.mc_bacteria_2
+                Resources.mc_bacteria_2,
+                Resources.img_bacteria,
+                Resources.img_bacteria_2,
+                Resources.img_bacteria_3,
             };
+
+            //Inicializar random
+            Rand = new Random();
         }
 
 
@@ -58,7 +65,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                     Y = Location.Y;
 
                     // Generar movimiento erratico
-                    if (RandomIC.Next(0,1) == 0)
+                    if (RandomIC.Next(0, 1) == 0)
                     {
                         Norte = true;
                         Sur = false;
@@ -69,7 +76,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                         Norte = false;
                     }
 
-                    if (RandomIC.Next(0,1) == 0)
+                    if (RandomIC.Next(0, 1) == 0)
                     {
                         Este = true;
                         Oeste = false;
@@ -111,11 +118,44 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         }
 
         // +------------------------------------------------------------------+
-        // |  Falta implementar funcionalidad                                 |
+        // |  LLeva a cabo el proceso de mitosis de la bacteria.              |
         // +------------------------------------------------------------------+
         public override void EnClic(object sender, EventArgs e)
         {
             MessageBox.Show(ToString());
+
+            Mitosis();
+
+        }
+
+        // +------------------------------------------------------------------+
+        // |  La bacteria hace mitosis, muere y nacen otras dos.              |
+        // +------------------------------------------------------------------+
+        private void Mitosis()
+        {
+            int XOffset;
+            int YOffset;
+
+            for (int i = 0; i < 2; i++)
+            {
+                GenerarPosicion(out XOffset, out YOffset);
+
+                CBacteria Hijo;
+
+                Hijo = new CBacteria(AreaDesplazamiento, XOffset, YOffset, Oxigeno, true, LimiteInanicion);
+                Hijo.Nacer();
+                Hijo.Desplazar(1);
+            }
+
+            Morir();
+        }
+
+        private void GenerarPosicion(out int XNacimiento, out int YNacimiento)
+        {
+
+            XNacimiento = RandomIC.Next(Location.X - Width, Location.X);
+            YNacimiento = RandomIC.Next(Location.Y - Height, Location.Y);
+
         }
 
         // +------------------------------------------------------------------+
@@ -143,7 +183,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         {
             int IndiceGenerado;
 
-            IndiceGenerado = RandomIC.Next(0, 1);
+            IndiceGenerado = RandomIC.Next(0, 4);
 
             FlatAppearance.BorderSize = 0;
             BackColor = Color.Transparent;
