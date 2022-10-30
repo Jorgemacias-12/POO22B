@@ -186,6 +186,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="src\Resources\img_alga_3.webp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -204,6 +205,9 @@
     <Content Include="src\Resources\gi_hongo_estelar.png" />
     <Content Include="src\Resources\gi_hongo_rukkhashava.png" />
     <Content Include="src\Resources\Icecube.png" />
+    <Content Include="src\Resources\img_alga.png" />
+    <Content Include="src\Resources\img_alga_2.png" />
+    <Content Include="src\Resources\img_alga_3.png" />
     <Content Include="src\Resources\mc_acacia_tr.png" />
     <Content Include="src\Resources\mc_axolotl.png" />
     <Content Include="src\Resources\mc_a_jorge.png" />
