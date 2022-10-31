@@ -24,8 +24,8 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CHongo(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, 
-                      Oxigeno Oxigeno, bool HaySol, int LimiteInanicion) : 
+        public CHongo(Control AreaDesplazamiento, int XNacimiento, int YNacimiento,
+                      Oxigeno Oxigeno, bool HaySol, int LimiteInanicion) :
                base(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion)
         {
             // Lista de imagenes para generar el tipo de hongo
@@ -43,8 +43,26 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // |  Hacer algo en clic (por definir)                                |
         // +------------------------------------------------------------------+
         public override void EnClic(object sender, EventArgs e)
-        { 
+        {
+            Reproducirse();
+        }
 
+        // +------------------------------------------------------------------+
+        // |  El hongo se reproduce, y nace otro hongo.                       |
+        // +------------------------------------------------------------------+
+        private void Reproducirse()
+        {
+            if (IsDisposed) return;
+
+            for (int i = 0; i < 2; i++)
+            {
+                CHongo Hijo;
+
+                Hijo = new CHongo(AreaDesplazamiento, 0, 0, Oxigeno, true, LimiteInanicion);
+                Hijo.Nacer();
+            }
+
+            Morir();
         }
 
         public override void Nacer()
