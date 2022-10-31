@@ -1,4 +1,5 @@
 ﻿using POO22B_MZJA.src.Utils;
+using POO22B_MZJA.src.Utils.Rand;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -150,11 +151,15 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             ProcesoMuerte = new Thread(() =>
             {
                 Muerto = true;
+
                 Text = "D";
                 BackColor = ColorUtils.GetColor("#ff4d4d");
-                Thread.Sleep(1000);
-                AreaDesplazamiento.Update();
-                Dispose();
+
+                Thread.Sleep(500);
+
+                AreaDesplazamiento.Controls.Remove(this);
+                AreaDesplazamiento.Refresh();
+
             });
 
             ProcesoMuerte.Start();
@@ -184,6 +189,8 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                 }
 
                 Nacio = true;
+                // Sobreescribir cantidad de oxigeno a consumir en los hijos
+                Oxigeno.ValorActual -= 1;
                 Muerto = false;
                 Hambre = 0;
                 ComidaIngerida = 0;
@@ -345,7 +352,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             {
                 int ComidaEncontrada;
 
-                ComidaEncontrada = Rand.Next(100, LimiteInanicion - 300);
+                ComidaEncontrada = Rand.Next(100, LimiteInanicion);
 
                 // Prevenir cualquier bug extraño
                 // con valores menores a 0
