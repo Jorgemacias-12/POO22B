@@ -208,6 +208,9 @@
     <Content Include="src\Resources\img_alga.png" />
     <Content Include="src\Resources\img_alga_2.png" />
     <Content Include="src\Resources\img_alga_3.png" />
+    <Content Include="src\Resources\img_bacteria.png" />
+    <Content Include="src\Resources\img_bacteria_2.png" />
+    <Content Include="src\Resources\img_bacteria_3.png" />
     <Content Include="src\Resources\mc_acacia_tr.png" />
     <Content Include="src\Resources\mc_axolotl.png" />
     <Content Include="src\Resources\mc_a_jorge.png" />
