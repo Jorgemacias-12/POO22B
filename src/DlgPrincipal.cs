@@ -25,6 +25,7 @@ namespace POO22B_MZJA
         private List<CSerVivo> SeresVivos;
         private Oxigeno OxigenoEnAmbiente;
         private int LimiteInanicion;
+        private int LimiteOxigeno;
         private int PreviusWidth;
 
         // +------------------------------------------------------------------+
@@ -40,25 +41,37 @@ namespace POO22B_MZJA
 
             SeresVivos = new List<CSerVivo>();
 
-            OxigenoEnAmbiente = new Oxigeno(1500);
+            OxigenoEnAmbiente = new Oxigeno(3000);
 
             LimiteInanicion = 3000;
 
+            LblOxygenIndicator.Text = $"Nivel de oxigeno: {OxigenoEnAmbiente}";
+            PrgNivelOxigeno.Value = (int)OxigenoEnAmbiente.PorcentajeOxigeno;
+
             OxigenoEnAmbiente.OxigenoConsumido += OxigenoEnAmbiente_OxigenoConsumido;
 
+
         }
 
+        // +------------------------------------------------------------------+
+        // |  Actualizar el valor del oxigeno en tiempo real                  |
+        // +------------------------------------------------------------------+
         private void OxigenoEnAmbiente_OxigenoConsumido(object sender, EventArgs e)
         {
-            LblOxygenIndicator.Text = "";
+            LblOxygenIndicator.Text = $"Nivel de oxigeno: {OxigenoEnAmbiente}";
+            PrgNivelOxigeno.Value = (int)OxigenoEnAmbiente.PorcentajeOxigeno;
         }
 
+        // +------------------------------------------------------------------+
+        // |  Encender el double buffering (formulario)                       |
+        // +------------------------------------------------------------------+
         protected override CreateParams CreateParams
         {
             get
             {
+                const int WS_EX_COMPOSITED = 0x02000000;
                 CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000;  // WS_EX_COMPOSITED
+                cp.ExStyle |= WS_EX_COMPOSITED;  // WS_EX_COMPOSITED
                 return cp;
             }
         }
@@ -141,25 +154,31 @@ namespace POO22B_MZJA
 
             Vegetal = new CVegetal(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion);
             Vegetal.Nacer();
+            
+            SeresVivos.Add(Vegetal);
         }
 
         private void FBtnGAnimal_Click(object sender, EventArgs e)
         {
             CAnimal Animal;
 
-            Animal = new CAnimal(PnlP4AreaAmbiental, 10, 10, OxigenoEnAmbiente, true, LimiteInanicion);
+            Animal = new CAnimal(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion);
             Animal.Nacer();
             Animal.Desplazar(1);
+
+           SeresVivos.Add(Animal);
         }
 
         private void FBtnPersona_Click(object sender, EventArgs e)
         {
             CPersona Persona;
 
-            Persona = new CPersona(PnlP4AreaAmbiental, 10, 10, OxigenoEnAmbiente, true, LimiteInanicion);
+            Persona = new CPersona(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion);
 
             Persona.Nacer();
             Persona.Desplazar(1);
+
+           SeresVivos.Add(Persona);
         }
 
         private void PnlNavPractices_Paint(object sender, PaintEventArgs e)
@@ -206,8 +225,9 @@ namespace POO22B_MZJA
                 return;
             }
 
+            //TbxLimiteOxigeno.Text = $"{OxigenoEnAmbiente.ValorActual} - {OxigenoEnAmbiente.CapacidadMaxima}";
 
-            PnlP4AreaAmbiental.Update();
+            //PnlP4AreaAmbiental.Update();
 
         }
 
@@ -217,6 +237,8 @@ namespace POO22B_MZJA
 
             Hongo = new CHongo(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion);
             Hongo.Nacer();
+
+            SeresVivos.Add(Hongo);
         }
 
         private void FBtnGProtoctista_Click(object sender, EventArgs e)
@@ -225,31 +247,24 @@ namespace POO22B_MZJA
 
             Alga = new CProtoctista(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion);
             Alga.Nacer();
+
+            SeresVivos.Add(Alga);
         }
 
         private void FBtnGBacteria_Click(object sender, EventArgs e)
         {
             CBacteria Bacteria;
 
-            Bacteria = new CBacteria(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion);
+            Bacteria = new CBacteria(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion, SeresVivos);
             Bacteria.Nacer();
             Bacteria.Desplazar(1);
+
+            SeresVivos.Add(Bacteria);
         }
 
         private void TbxLimiteInanicion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) &&
-                !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-
-            if ((e.KeyChar == '.'))
-            {
-                e.Handled = true;
-            }
+            ValidateField(sender, e);
         }
 
         private void TbxLimiteInanicion_KeyUp(object sender, KeyEventArgs e)
@@ -258,11 +273,12 @@ namespace POO22B_MZJA
             {
                 LimiteInanicion = Convert.ToInt32(TbxLimiteInanicion.Text);
             }
+
         }
 
         private void FBtnSidebar_Click(object sender, EventArgs e)
         {
-            Thread HideSideBar;               
+            Thread HideSideBar;
 
             HideSideBar = new Thread(() =>
             {
@@ -280,6 +296,60 @@ namespace POO22B_MZJA
             });
 
             HideSideBar.Start();
+        }
+
+        private void ValidateField(object sender, KeyPressEventArgs e)
+        {
+            TextBox Input;
+
+            Input = sender as TextBox;
+
+            int value;
+
+            int.TryParse(Input.Text, out value);
+
+            if (value > int.MaxValue)
+            {
+                return;
+            }
+
+            Input.MaxLength = 9;
+            
+            if (!char.IsControl(e.KeyChar) &&
+                !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+
+            if ((e.KeyChar == '.'))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void BtnUpdateOxygenLimit_Click(object sender, EventArgs e)
+        {
+            if (TbxLimiteOxigeno.Text == "")
+            {
+                return;
+            }
+
+            OxigenoEnAmbiente.CapacidadMaxima = Convert.ToInt32(TbxLimiteOxigeno.Text);
+        }
+
+        private void FBtnOverflow_Click(object sender, EventArgs e)
+        {
+            if (FBtnOverflow.IsActive)
+            {
+                PnlP4AreaAmbiental.AutoScroll = false;
+            }
+            else
+            {
+                PnlP4AreaAmbiental.AutoScroll = true;
+            }
         }
     }
 }

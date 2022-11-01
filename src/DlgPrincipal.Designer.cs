@@ -48,6 +48,11 @@
             this.FBtnGVegetal = new POO22B_MZJA.src.FButton.FlatButton();
             this.FBtnGAnimal = new POO22B_MZJA.src.FButton.FlatButton();
             this.PnlP4Topbar = new System.Windows.Forms.Panel();
+            this.FBtnOverflow = new POO22B_MZJA.src.FToggleButton.FlatToggleButton();
+            this.BtnUpdateOxygenLimit = new System.Windows.Forms.Button();
+            this.PrgNivelOxigeno = new System.Windows.Forms.ProgressBar();
+            this.TbxLimiteOxigeno = new System.Windows.Forms.TextBox();
+            this.LblLimiteOxigeno = new System.Windows.Forms.Label();
             this.TbxLimiteInanicion = new System.Windows.Forms.TextBox();
             this.LblLimiteInanicion = new System.Windows.Forms.Label();
             this.LblOxygenIndicator = new System.Windows.Forms.Label();
@@ -357,6 +362,11 @@
             // PnlP4Topbar
             // 
             this.PnlP4Topbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(32)))));
+            this.PnlP4Topbar.Controls.Add(this.FBtnOverflow);
+            this.PnlP4Topbar.Controls.Add(this.BtnUpdateOxygenLimit);
+            this.PnlP4Topbar.Controls.Add(this.PrgNivelOxigeno);
+            this.PnlP4Topbar.Controls.Add(this.TbxLimiteOxigeno);
+            this.PnlP4Topbar.Controls.Add(this.LblLimiteOxigeno);
             this.PnlP4Topbar.Controls.Add(this.TbxLimiteInanicion);
             this.PnlP4Topbar.Controls.Add(this.LblLimiteInanicion);
             this.PnlP4Topbar.Controls.Add(this.LblOxygenIndicator);
@@ -366,6 +376,65 @@
             this.PnlP4Topbar.Name = "PnlP4Topbar";
             this.PnlP4Topbar.Size = new System.Drawing.Size(907, 83);
             this.PnlP4Topbar.TabIndex = 1;
+            // 
+            // FBtnOverflow
+            // 
+            this.FBtnOverflow.ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.FBtnOverflow.BackColor = System.Drawing.Color.Coral;
+            this.FBtnOverflow.FlatAppearance.BorderSize = 0;
+            this.FBtnOverflow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FBtnOverflow.HoverColor = System.Drawing.Color.Empty;
+            this.FBtnOverflow.IsActive = false;
+            this.FBtnOverflow.Location = new System.Drawing.Point(549, 11);
+            this.FBtnOverflow.Name = "FBtnOverflow";
+            this.FBtnOverflow.OldColor = System.Drawing.Color.Empty;
+            this.FBtnOverflow.OverrideMethod = false;
+            this.FBtnOverflow.Size = new System.Drawing.Size(227, 34);
+            this.FBtnOverflow.TabIndex = 6;
+            this.FBtnOverflow.Text = "Activar Scroll";
+            this.FBtnOverflow.UseVisualStyleBackColor = false;
+            this.FBtnOverflow.Click += new System.EventHandler(this.FBtnOverflow_Click);
+            // 
+            // BtnUpdateOxygenLimit
+            // 
+            this.BtnUpdateOxygenLimit.BackColor = System.Drawing.Color.Coral;
+            this.BtnUpdateOxygenLimit.FlatAppearance.BorderSize = 0;
+            this.BtnUpdateOxygenLimit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnUpdateOxygenLimit.Location = new System.Drawing.Point(376, 11);
+            this.BtnUpdateOxygenLimit.Name = "BtnUpdateOxygenLimit";
+            this.BtnUpdateOxygenLimit.Size = new System.Drawing.Size(140, 36);
+            this.BtnUpdateOxygenLimit.TabIndex = 5;
+            this.BtnUpdateOxygenLimit.Text = "Actualizar limite";
+            this.BtnUpdateOxygenLimit.UseVisualStyleBackColor = false;
+            this.BtnUpdateOxygenLimit.Click += new System.EventHandler(this.BtnUpdateOxygenLimit_Click);
+            // 
+            // PrgNivelOxigeno
+            // 
+            this.PrgNivelOxigeno.Location = new System.Drawing.Point(618, 51);
+            this.PrgNivelOxigeno.Name = "PrgNivelOxigeno";
+            this.PrgNivelOxigeno.Size = new System.Drawing.Size(158, 23);
+            this.PrgNivelOxigeno.TabIndex = 4;
+            // 
+            // TbxLimiteOxigeno
+            // 
+            this.TbxLimiteOxigeno.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.TbxLimiteOxigeno.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TbxLimiteOxigeno.ForeColor = System.Drawing.Color.White;
+            this.TbxLimiteOxigeno.Location = new System.Drawing.Point(160, 13);
+            this.TbxLimiteOxigeno.Name = "TbxLimiteOxigeno";
+            this.TbxLimiteOxigeno.Size = new System.Drawing.Size(195, 26);
+            this.TbxLimiteOxigeno.TabIndex = 3;
+            this.TbxLimiteOxigeno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValidateField);
+            // 
+            // LblLimiteOxigeno
+            // 
+            this.LblLimiteOxigeno.ForeColor = System.Drawing.Color.Coral;
+            this.LblLimiteOxigeno.Location = new System.Drawing.Point(15, 11);
+            this.LblLimiteOxigeno.Name = "LblLimiteOxigeno";
+            this.LblLimiteOxigeno.Size = new System.Drawing.Size(146, 24);
+            this.LblLimiteOxigeno.TabIndex = 2;
+            this.LblLimiteOxigeno.Text = "Limite de Oxigeno:";
+            this.LblLimiteOxigeno.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TbxLimiteInanicion
             // 
@@ -392,12 +461,13 @@
             // LblOxygenIndicator
             // 
             this.LblOxygenIndicator.ForeColor = System.Drawing.Color.Coral;
-            this.LblOxygenIndicator.Location = new System.Drawing.Point(5, 10);
+            this.LblOxygenIndicator.Location = new System.Drawing.Point(372, 51);
+            this.LblOxygenIndicator.Margin = new System.Windows.Forms.Padding(1);
             this.LblOxygenIndicator.Name = "LblOxygenIndicator";
-            this.LblOxygenIndicator.Size = new System.Drawing.Size(146, 24);
+            this.LblOxygenIndicator.Size = new System.Drawing.Size(221, 20);
             this.LblOxygenIndicator.TabIndex = 0;
             this.LblOxygenIndicator.Text = "Nivel de oxigeno:";
-            this.LblOxygenIndicator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblOxygenIndicator.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // PnlP4Generator
             // 
@@ -632,7 +702,7 @@
             // TmrTime
             // 
             this.TmrTime.Enabled = true;
-            this.TmrTime.Interval = 1000;
+            this.TmrTime.Interval = 500;
             this.TmrTime.Tick += new System.EventHandler(this.TmrTime_Tick);
             // 
             // DlgPrincipal
@@ -709,6 +779,11 @@
         private System.Windows.Forms.Timer TmrTime;
         private System.Windows.Forms.Label LblLimiteInanicion;
         private System.Windows.Forms.TextBox TbxLimiteInanicion;
+        private System.Windows.Forms.Label LblLimiteOxigeno;
+        private System.Windows.Forms.TextBox TbxLimiteOxigeno;
+        private System.Windows.Forms.ProgressBar PrgNivelOxigeno;
+        private System.Windows.Forms.Button BtnUpdateOxygenLimit;
+        private src.FToggleButton.FlatToggleButton FBtnOverflow;
     }
 }
 
