@@ -47,12 +47,16 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         {
             int OxigenoGenerado;
 
-            //OxigenoGenerado = RandomIC.Next(0, Oxigeno.CapacidadMaxima);
+            OxigenoGenerado = RandomIC.Next(0, (int)(Oxigeno.ValorActual * 0.10f));
 
-            //Oxigeno.ValorActual += OxigenoGenerado;
+            Oxigeno.ValorActual += OxigenoGenerado;
 
-            //MessageBox.Show($"He generado: {OxigenoGenerado} de oxigeno, buen día");
+            if (Oxigeno.ValorActual > Oxigeno.CapacidadMaxima)
+            {
+                Oxigeno.CapacidadMaxima = Oxigeno.ValorActual;
+            }
 
+            MessageBox.Show($"He generado: {OxigenoGenerado} puntos de oxigeno, buen día");
         }
 
         // +------------------------------------------------------------------+
@@ -62,6 +66,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         public override void Nacer()
         {
             base.Nacer();
+            Oxigeno.ValorActual -= 10;
             GenerarTipo();
         }
 
