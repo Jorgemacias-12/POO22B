@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POO22B_MZJA.src.Utils.Rand;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +24,7 @@ namespace POO22B_MZJA.src.Componentes.CMessageBox
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         public void ShowMessage(string Caption,string Mensaje, Image Imagen)
@@ -35,6 +36,29 @@ namespace POO22B_MZJA.src.Componentes.CMessageBox
 
             PbxIcon.BackgroundImage = Imagen;
             LblMensaje.Text = Mensaje;
+
+            ShowDialog();
+        }
+
+        public void ShowMessage(string Caption, string Mensaje)
+        {
+            this.Text = Caption;
+            this.Mensaje = Mensaje;
+
+            ShowDialog();
+        }
+
+        public void ShowMessage(string Caption, string Mensaje, List<Image> Iconos, List<string> Nombres)
+        {
+            this.Text = Caption;
+            this.Mensaje = Mensaje;
+
+            int Indice;
+
+            Indice = RandomIC.Next(0, Iconos.Count);
+
+            PbxIcon.BackgroundImage = Iconos[Indice];
+            LblMensaje.Text = $"{Mensaje}";
 
             ShowDialog();
         }
