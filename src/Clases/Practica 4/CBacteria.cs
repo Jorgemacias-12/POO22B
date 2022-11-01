@@ -21,13 +21,16 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // |  Atributos                                                       |
         // +------------------------------------------------------------------+
         private List<Image> Bacterias;
-        private Random Rand;
+        public List<CSerVivo> SeresVivos
+        {
+            get; set;
+        }
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
         public CBacteria(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, Oxigeno Oxigeno,
-                         bool HaySol, int LimiteInanicion) :
+                         bool HaySol, int LimiteInanicion, List<CSerVivo> SeresVivos) :
                base(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion)
         {
             // Inicializar lista con rescursos graficos
@@ -42,6 +45,9 @@ namespace POO22B_MZJA.src.Clases.Practica_4
 
             //Inicializar random
             Rand = new Random();
+
+            // Obtener los seres vivos
+            this.SeresVivos = SeresVivos;
         }
 
 
@@ -122,41 +128,49 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // +------------------------------------------------------------------+
         public override void EnClic(object sender, EventArgs e)
         {
-            MessageBox.Show(ToString());
-
-            Mitosis();
-
+            Infectar();
         }
 
         // +------------------------------------------------------------------+
-        // |  La bacteria hace mitosis, muere y nacen otras dos.              |
+        // |  La bacteria entra en un huesped, y procede a infectarla.        |
         // +------------------------------------------------------------------+
-        private void Mitosis()
+        public void Infectar()
         {
-            int XOffset;
-            int YOffset;
-
-            for (int i = 0; i < 2; i++)
+            if (SeresVivos.Count == 1)
             {
-                GenerarPosicion(out XOffset, out YOffset);
-
-                CBacteria Hijo;
-
-                Hijo = new CBacteria(AreaDesplazamiento, XOffset, YOffset, Oxigeno, true, LimiteInanicion);
-                Hijo.Nacer();
-                Hijo.Desplazar(1);
+                MessageBox.Show("¡No hay personas que infectar!", "¡Familia hoy no se come :C", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
             }
 
-            Morir();
+            for (int i = 0; i < SeresVivos.Count; i++)
+            {
+
+                if (SeresVivos[i].GetType() == typeof(CPersona))
+                {
+                    MessageBox.Show("He infectado a persona");
+                    SeresVivos[i].Morir();
+                    
+                    MessageBox.Show("Persona ha muerto");
+                    SeresVivos.RemoveAt(i);
+
+                    break;
+                }
+
+                if (SeresVivos[i] is CAnimal)
+                {
+                    MessageBox.Show("He infectado a animal");
+                    SeresVivos[i].Morir();
+                    
+                    MessageBox.Show($"{SeresVivos[i].Name} ha muerto");
+                    SeresVivos.RemoveAt(i);
+
+                    break;
+                }
+
+            }
+
         }
 
-        private void GenerarPosicion(out int XNacimiento, out int YNacimiento)
-        {
-
-            XNacimiento = RandomIC.Next(Location.X - Width, Location.X);
-            YNacimiento = RandomIC.Next(Location.Y - Height, Location.Y);
-
-        }
 
         // +------------------------------------------------------------------+
         // |  La bacteria nace, incluye el método que genera el tipo          |
@@ -165,6 +179,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         public override void Nacer()
         {
             base.Nacer();
+            Oxigeno.ValorActual -= 10;
             GenerarTipo();
         }
 
