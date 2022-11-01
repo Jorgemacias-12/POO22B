@@ -81,6 +81,24 @@ namespace POO22B_MZJA.Properties {
         }
         
         /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream emoji_muriendo {
+            get {
+                return ResourceManager.GetStream("emoji_muriendo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Eso_es_el_mercado_amigo {
+            get {
+                return ResourceManager.GetStream("Eso_es_el_mercado_amigo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap fa_cog {
@@ -117,6 +135,15 @@ namespace POO22B_MZJA.Properties {
             get {
                 object obj = ResourceManager.GetObject("gi_hongo_rukkhashava", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Gus_sus {
+            get {
+                return ResourceManager.GetStream("Gus_sus", resourceCulture);
             }
         }
         
@@ -186,6 +213,66 @@ namespace POO22B_MZJA.Properties {
         internal static System.Drawing.Bitmap icecube_rightop {
             get {
                 object obj = ResourceManager.GetObject("icecube_rightop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_alga {
+            get {
+                object obj = ResourceManager.GetObject("img_alga", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_alga_2 {
+            get {
+                object obj = ResourceManager.GetObject("img_alga_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_alga_3 {
+            get {
+                object obj = ResourceManager.GetObject("img_alga_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_bacteria {
+            get {
+                object obj = ResourceManager.GetObject("img_bacteria", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_bacteria_2 {
+            get {
+                object obj = ResourceManager.GetObject("img_bacteria_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_bacteria_3 {
+            get {
+                object obj = ResourceManager.GetObject("img_bacteria_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -467,6 +554,24 @@ namespace POO22B_MZJA.Properties {
             get {
                 object obj = ResourceManager.GetObject("saul", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream spam_click {
+            get {
+                return ResourceManager.GetStream("spam_click", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.IO.UnmanagedMemoryStream similar a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Taco_Bell_Bong {
+            get {
+                return ResourceManager.GetStream("Taco_Bell_Bong", resourceCulture);
             }
         }
     }

@@ -21,20 +21,33 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // |  Atributos                                                       |
         // +------------------------------------------------------------------+
         private List<Image> Bacterias;
+        public List<CSerVivo> SeresVivos
+        {
+            get; set;
+        }
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CBacteria(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, Oxigeno Oxigeno, 
-                         bool HaySol, int LimiteInanicion) : 
+        public CBacteria(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, Oxigeno Oxigeno,
+                         bool HaySol, int LimiteInanicion, List<CSerVivo> SeresVivos) :
                base(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion)
         {
             // Inicializar lista con rescursos graficos
             Bacterias = new List<Image>()
             {
                 Resources.mc_bacteria,
-                Resources.mc_bacteria_2
+                Resources.mc_bacteria_2,
+                Resources.img_bacteria,
+                Resources.img_bacteria_2,
+                Resources.img_bacteria_3,
             };
+
+            //Inicializar random
+            Rand = new Random();
+
+            // Obtener los seres vivos
+            this.SeresVivos = SeresVivos;
         }
 
 
@@ -58,7 +71,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                     Y = Location.Y;
 
                     // Generar movimiento erratico
-                    if (RandomIC.Next(0,1) == 0)
+                    if (RandomIC.Next(0, 1) == 0)
                     {
                         Norte = true;
                         Sur = false;
@@ -69,7 +82,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                         Norte = false;
                     }
 
-                    if (RandomIC.Next(0,1) == 0)
+                    if (RandomIC.Next(0, 1) == 0)
                     {
                         Este = true;
                         Oeste = false;
@@ -111,12 +124,53 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         }
 
         // +------------------------------------------------------------------+
-        // |  Falta implementar funcionalidad                                 |
+        // |  LLeva a cabo el proceso de mitosis de la bacteria.              |
         // +------------------------------------------------------------------+
         public override void EnClic(object sender, EventArgs e)
         {
-            MessageBox.Show(ToString());
+            Infectar();
         }
+
+        // +------------------------------------------------------------------+
+        // |  La bacteria entra en un huesped, y procede a infectarla.        |
+        // +------------------------------------------------------------------+
+        public void Infectar()
+        {
+            if (SeresVivos.Count == 1)
+            {
+                MessageBox.Show("¡No hay personas que infectar!", "¡Familia hoy no se come :C", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
+            }
+
+            for (int i = 0; i < SeresVivos.Count; i++)
+            {
+
+                if (SeresVivos[i].GetType() == typeof(CPersona))
+                {
+                    MessageBox.Show("He infectado a persona");
+                    SeresVivos[i].Morir();
+                    
+                    MessageBox.Show("Persona ha muerto");
+                    SeresVivos.RemoveAt(i);
+
+                    break;
+                }
+
+                if (SeresVivos[i] is CAnimal)
+                {
+                    MessageBox.Show("He infectado a animal");
+                    SeresVivos[i].Morir();
+                    
+                    MessageBox.Show($"{SeresVivos[i].Name} ha muerto");
+                    SeresVivos.RemoveAt(i);
+
+                    break;
+                }
+
+            }
+
+        }
+
 
         // +------------------------------------------------------------------+
         // |  La bacteria nace, incluye el método que genera el tipo          |
@@ -125,6 +179,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         public override void Nacer()
         {
             base.Nacer();
+            Oxigeno.ValorActual -= 10;
             GenerarTipo();
         }
 
@@ -143,7 +198,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         {
             int IndiceGenerado;
 
-            IndiceGenerado = RandomIC.Next(0, 1);
+            IndiceGenerado = RandomIC.Next(0, 4);
 
             FlatAppearance.BorderSize = 0;
             BackColor = Color.Transparent;

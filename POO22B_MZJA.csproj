@@ -186,6 +186,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="src\Resources\img_alga_3.webp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -193,6 +194,8 @@
   <ItemGroup>
     <Content Include="src\Resources\bars-solid.png" />
     <Content Include="src\Resources\document-32px.png" />
+    <Content Include="src\Resources\emoji_muriendo.wav" />
+    <Content Include="src\Resources\Eso_es_el_mercado_amigo.wav" />
     <Content Include="src\Resources\fa-cog.png" />
     <None Include="src\Resources\icecube-left.png" />
     <None Include="src\Resources\icecube-leftdown.png" />
@@ -203,7 +206,14 @@
     <Content Include="src\Resources\gi_hongo.png" />
     <Content Include="src\Resources\gi_hongo_estelar.png" />
     <Content Include="src\Resources\gi_hongo_rukkhashava.png" />
+    <Content Include="src\Resources\Gus_sus.wav" />
     <Content Include="src\Resources\Icecube.png" />
+    <Content Include="src\Resources\img_alga.png" />
+    <Content Include="src\Resources\img_alga_2.png" />
+    <Content Include="src\Resources\img_alga_3.png" />
+    <Content Include="src\Resources\img_bacteria.png" />
+    <Content Include="src\Resources\img_bacteria_2.png" />
+    <Content Include="src\Resources\img_bacteria_3.png" />
     <Content Include="src\Resources\mc_acacia_tr.png" />
     <Content Include="src\Resources\mc_axolotl.png" />
     <Content Include="src\Resources\mc_a_jorge.png" />
@@ -234,6 +244,8 @@
     <Content Include="src\Resources\Saul.gif" />
     <Content Include="src\Resources\Saul.jpg" />
     <Content Include="src\Resources\SaulSound.wav" />
+    <Content Include="src\Resources\spam_click.wav" />
+    <Content Include="src\Resources\Taco_Bell_Bong.wav" />
     <Content Include="src\Resources\user.png" />
   </ItemGroup>
   <ItemGroup />

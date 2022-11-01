@@ -11,14 +11,27 @@ namespace POO22B_MZJA.src.Clases.Practica_4
     {
         private const int PORCENTAJE_MAXIMO = 100;
         public event EventHandler OxigenoConsumido;
-        private int PorcentajeOxigeno;
         private int _ValorActual;
+        private double _CapacidadMaxima;
 
-        public int CapacidadMaxima
+        public double CapacidadMaxima
         {
-            get; set;
-        }
+            get
+            {
+                return _CapacidadMaxima;
+            } 
+            set
+            {
+                if (value < 0) return;
 
+                _CapacidadMaxima = value;
+
+                if (OxigenoConsumido != null)
+                {
+                    OxigenoConsumido.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
 
         public int ValorActual
         {
@@ -28,7 +41,10 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             }
             set
             {
+                if (value < 0) return;
+                
                 this._ValorActual = value;
+
                 if (OxigenoConsumido != null)
                 {
                     OxigenoConsumido.Invoke(this, EventArgs.Empty);
@@ -36,39 +52,33 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             }
         }
 
-        //private Thread ProcesoOxigeno;
-        //private bool Ejecutar;
+        public double PorcentajeOxigeno
+        {
+            get
+            {
+                try
+                {
+                    double Porcentaje = ValorActual * PORCENTAJE_MAXIMO / CapacidadMaxima;
 
+                    Porcentaje = (Porcentaje * 10) / 10;
+
+                    return Porcentaje >= 100 ? 100 : Porcentaje;
+                }
+                catch (DivideByZeroException) { }
+                
+                return 0;
+            }
+        }
 
         public Oxigeno(int CapacidadMaxima)
         {
             this.CapacidadMaxima = CapacidadMaxima;
-            //Ejecutar = true;
             ValorActual = CapacidadMaxima;
-            PorcentajeOxigeno = 0;
         }
-
-        //public void CicloOxigeno()
-        //{
-        //    ProcesoOxigeno = new Thread(() =>
-        //    {
-        //        while(Ejecutar)
-        //        {
-
-        //        }
-
-        //    });
-
-        //    ProcesoOxigeno.Start();
-        //}
 
         public override string ToString()
         {
-            // Calcular porcentaje de oxigeno
-
-            PorcentajeOxigeno = ValorActual * PORCENTAJE_MAXIMO / CapacidadMaxima;
-
-            return $"%{PorcentajeOxigeno}";
+            return $"%{PorcentajeOxigeno.ToString("0.##")}";
         }
 
     }
