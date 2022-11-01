@@ -82,6 +82,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         public override void Nacer()
         {
             base.Nacer();
+            Oxigeno.ValorActual -= 150;
             GenerarTipo();
         }
 

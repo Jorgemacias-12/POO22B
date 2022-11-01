@@ -3,7 +3,9 @@ using POO22B_MZJA.src.Utils.Rand;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,12 +22,13 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         // |  Atributos                                                       |
         // +------------------------------------------------------------------+
         private List<Image> Personas;
+        private List<Stream> Audios;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CPersona(Control AreaDesplazamiento, int XNacimiento, int YNacimiento, 
-                        Oxigeno Oxigeno, bool HaySol, int LimiteInanicion) : 
+        public CPersona(Control AreaDesplazamiento, int XNacimiento, int YNacimiento,
+                        Oxigeno Oxigeno, bool HaySol, int LimiteInanicion) :
                base(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion)
         {
             // Lista de recursos
@@ -37,6 +40,16 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                 Resources.mc_a_shadoune,
                 Resources.mc_a_steve
             };
+
+            Audios = new List<Stream>()
+            {
+                Resources.Eso_es_el_mercado_amigo,
+                Resources.Gus_sus,
+                Resources.emoji_muriendo,
+                Resources.Taco_Bell_Bong,
+                Resources.spam_click
+            };
+
         }
 
         // +------------------------------------------------------------------+
@@ -46,7 +59,16 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         {
             if (IsDisposed) return;
 
-            MessageBox.Show("Hola soy un ser humano");
+            int indice;
+
+            indice = RandomIC.Next(0, Audios.Count - 1);
+
+            using (SoundPlayer player = new SoundPlayer(Audios[indice]))
+            {
+                player.Stream.Position = 0;
+                player.Play();
+            }
+            
         }
 
         // +------------------------------------------------------------------+
@@ -56,6 +78,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         public override void Nacer()
         {
             base.Nacer();
+            Oxigeno.ValorActual -= 200;
             GenerarTipo();
         }
 

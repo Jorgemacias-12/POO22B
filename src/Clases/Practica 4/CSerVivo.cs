@@ -32,6 +32,9 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         protected int LimiteAncho;
         protected int LimiteAlto;
 
+        // Prevent non safe thread issues
+        private readonly Object ThrLock;
+
         // Atributos del áre de desplazamiento
         protected Control AreaDesplazamiento;
 
@@ -52,14 +55,14 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         protected int LimiteInanicion;
         protected Oxigeno Oxigeno;
         protected bool HaySol;
-        private Random Rand;
+        protected Random Rand;
 
         // Atributos de ejecución
-        protected Thread ProcesoNacimiento;
         protected Thread ProcesoDesplazamiento;
-        private Thread ProcesoCansancio;
-        private Thread ProcesoComer;
+        protected Thread ProcesoNacimiento;
+        protected Thread ProcesoComer;
         private Thread ProcesoMuerte;
+        private Thread ProcesoCansancio;
         private Thread ProcesoCrecimiento;
 
         // +------------------------------------------------------------------+
@@ -70,6 +73,9 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                         int LimiteInanicion)
         {
             Constructor(AreaDesplazamiento, XNacimiento, YNacimiento, Oxigeno, HaySol, LimiteInanicion);
+
+            // Prevent non safe thread issues
+            ThrLock = new object();
         }
 
         private void Constructor(Control AreaDesplazamiento, int XNacimiento,
@@ -151,14 +157,15 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             ProcesoMuerte = new Thread(() =>
             {
                 Muerto = true;
-
                 Text = "D";
                 BackColor = ColorUtils.GetColor("#ff4d4d");
 
                 Thread.Sleep(500);
 
+                Visible = false;
+
                 AreaDesplazamiento.Controls.Remove(this);
-                AreaDesplazamiento.Refresh();
+                AreaDesplazamiento.Invalidate();
 
             });
 
@@ -175,6 +182,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                 // Comprueba si hay oxigeno suficiente
                 if (Oxigeno.ValorActual <= 0)
                 {
+                    MessageBox.Show("No hay oxigeno disponible");
                     Thread.Sleep(1000);
                     Morir();
                     return;
@@ -242,14 +250,14 @@ namespace POO22B_MZJA.src.Clases.Practica_4
             {
                 while (!Muerto && Nacio)
                 {
+                    Thread.Sleep(1000);
 
-                    Thread.Sleep(50);
-
-                    Hambre += Rand.Next(0, 50);
+                    Hambre += Rand.Next(0, (int)(LimiteInanicion * 0.10f));
 
                     if (Hambre >= LimiteInanicion)
                     {
                         Morir();
+                        return;
                     }
 
                     if (Oxigeno.ValorActual <= 0)
@@ -273,7 +281,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
 
             ProcesoDesplazamiento = new Thread(() =>
             {
-                while(!Muerto && Nacio)
+                while (!Muerto && Nacio)
                 {
                     // Obtener posición actual del ser vivo
                     X = Location.X;
@@ -350,38 +358,49 @@ namespace POO22B_MZJA.src.Clases.Practica_4
         {
             ProcesoComer = new Thread(() =>
             {
-                int ComidaEncontrada;
+            int ComidaEncontrada;
 
-                ComidaEncontrada = Rand.Next(100, LimiteInanicion);
+            ComidaEncontrada = 0;
 
-                // Prevenir cualquier bug extraño
-                // con valores menores a 0
-                if ( ComidaEncontrada < 0)
-                {
-                    ComidaEncontrada = 0;
-                }
+            if (LimiteInanicion > 1000)
+            {
+                ComidaEncontrada = Rand.Next(100, (int)(LimiteInanicion * 0.20f));
+            }
 
-                // Almacenar la comida encontrada
-                ComidaIngerida += ComidaEncontrada;
+            if (LimiteInanicion < 1000)
+            {
+                ComidaEncontrada = Rand.Next(0, 950);
+            }
 
-                // "Comer"
-                Hambre -= ComidaEncontrada;
 
-                // Mostrar información acerca de la operación
-                MessageBox.Show(
-                    $"{GetType()} Ha comido - Comida Encontada: {ComidaEncontrada} - Hambre: {Hambre} " +
-                    $"Esta muerto? {Muerto} - Comida Ingerida: {ComidaIngerida}");
-                 
-            });
+            // Prevenir cualquier bug extraño
+            // con valores menores a 0
+            if (ComidaEncontrada == 0)
+            {
+                return;
+            }
+
+            // Almacenar la comida encontrada
+            ComidaIngerida += ComidaEncontrada;
+
+            // "Comer"
+            Hambre -= ComidaEncontrada;
+
+            // Mostrar información acerca de la operación
+            MessageBox.Show(
+                $"{GetType()} Ha comido - Comida Encontada: {ComidaEncontrada} - Hambre: {Hambre} " +
+                $"Esta muerto? {Muerto} - Comida Ingerida: {ComidaIngerida}");
+
+        });
 
             ProcesoComer.Start();
         }
 
-        // +------------------------------------------------------------------+
-        // | Establecer bandera muerto a verdadero para evitar                |
-        // | conflictos con todo el hilo principal del programa.              |   
-        // +------------------------------------------------------------------+
-        protected override void Dispose(bool disposing)
+    // +------------------------------------------------------------------+
+    // | Establecer bandera muerto a verdadero para evitar                |
+    // | conflictos con todo el hilo principal del programa.              |   
+    // +------------------------------------------------------------------+
+    protected override void Dispose(bool disposing)
         {
             Muerto = true;
             base.Dispose(disposing);
