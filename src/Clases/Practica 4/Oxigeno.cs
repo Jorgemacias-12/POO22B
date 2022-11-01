@@ -64,7 +64,7 @@ namespace POO22B_MZJA.src.Clases.Practica_4
 
                     return Porcentaje >= 100 ? 100 : Porcentaje;
                 }
-                catch (DivideByZeroException ex) { }
+                catch (DivideByZeroException) { }
                 
                 return 0;
             }
