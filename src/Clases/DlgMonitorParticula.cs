@@ -31,6 +31,20 @@ namespace POO22B_MZJA.src.Clases
 
         }
 
+        // +------------------------------------------------------------------+
+        // |  Encender el double buffering (formulario)                       |
+        // +------------------------------------------------------------------+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                const int WS_EX_COMPOSITED = 0x02000000;
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= WS_EX_COMPOSITED;  // WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
         private void DlgMonitorParticula_Load(object sender, EventArgs e)
         {
             FBtnActualizar_Click(null, null);
@@ -39,24 +53,24 @@ namespace POO22B_MZJA.src.Clases
         private void FBtnActualizar_Click(object sender, EventArgs e)
         {
             DgvMonitor.Rows.Clear();
+
             for (int i = 0; i < Particulas.Count; i++)
             {
-                //DgvMonitor.Rows.Add(new string[]
-                //{
-                //    Particulas[i].GetHashCode().ToString(), Particulas[i].Name,
-                //    Particulas[i].Location.X.ToString(),
-                //    Particulas[i].Location.Y.ToString()
-                //}); ;
-                DgvMonitor.Rows.Add();
-                DgvMonitor.Rows[i].Cells[0].Value = Particulas[i].GetHashCode().ToString();
-                DgvMonitor.Rows[i].Cells[1].Value = Particulas[i].Name;
+                DgvMonitor.Rows.Add(new string[]
+                {
+                    Particulas[i].GetHashCode().ToString(),
+                    Particulas[i].Name,
+                    Particulas[i].Location.X.ToString(),
+                    Particulas[i].Location.Y.ToString()
+                });
+
                 DgvMonitor.Rows[i].Cells[1].Style.BackColor = Particulas[i].BackColor;
-                DgvMonitor.Rows[i].Cells[2].Value = Particulas[i].Location.X;
-                DgvMonitor.Rows[i].Cells[3].Value = Particulas[i].Location.Y;
             }
 
-            LblTotalParticulas.Text = $"En este momento hay {DgvMonitor.Rows.Count} particulas activas";
             DgvMonitor.Refresh();
+
+            LblTotalParticulas.Text = $"En este momento hay {DgvMonitor.Rows.Count} particulas activas";
+            
         }
 
         private void FBtnAutomatico_Click(object sender, EventArgs e)
@@ -64,7 +78,7 @@ namespace POO22B_MZJA.src.Clases
             Proceso = new Thread(() =>
             {
 
-                while (true)
+                while (FBtnAutomatico.IsActive)
                 {
                     FBtnActualizar_Click(null, null);
                     Thread.Sleep(1000);
@@ -73,21 +87,19 @@ namespace POO22B_MZJA.src.Clases
             });
 
             Proceso.Start();
-
         }
 
         private void DlgMonitorParticula_FormClosing(object sender, FormClosingEventArgs e)
         {
-
             Properties.Settings.Default.Reset();
 
+
+            if (Proceso is null)
+            {
+                return;
+            }
+
             Proceso.Abort();
-
-            //foreach (CParticula Particula in Particulas)
-            //{
-            //    Particula.Termina();
-            //}
-
         }
 
     }
