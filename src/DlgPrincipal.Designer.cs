@@ -37,7 +37,7 @@
             this.PnlP2Navigation = new System.Windows.Forms.Panel();
             this.FBtnPD = new POO22B_MZJA.src.FButton.FlatButton();
             this.FBtnPY = new POO22B_MZJA.src.FButton.FlatButton();
-            this.FBtnP2PX = new POO22B_MZJA.src.FButton.FlatButton();
+            this.FBtnP2PM = new POO22B_MZJA.src.FButton.FlatButton();
             this.TbpPractice3 = new System.Windows.Forms.TabPage();
             this.TbpPractice4 = new System.Windows.Forms.TabPage();
             this.PnlP4AreaAmbiental = new System.Windows.Forms.Panel();
@@ -75,6 +75,7 @@
             this.FBtnOptions = new POO22B_MZJA.src.FButton.FlatButton();
             this.FBtnSidebar = new POO22B_MZJA.src.FToggleButton.FlatToggleButton();
             this.TmrTime = new System.Windows.Forms.Timer(this.components);
+            this.FBtnPX = new POO22B_MZJA.src.FButton.FlatButton();
             this.PnlAppContainer.SuspendLayout();
             this.TpbPractices.SuspendLayout();
             this.TbpPractice2.SuspendLayout();
@@ -156,8 +157,9 @@
             // 
             this.PnlP2Navigation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(95)))), ((int)(((byte)(92)))));
             this.PnlP2Navigation.Controls.Add(this.FBtnPD);
+            this.PnlP2Navigation.Controls.Add(this.FBtnPX);
             this.PnlP2Navigation.Controls.Add(this.FBtnPY);
-            this.PnlP2Navigation.Controls.Add(this.FBtnP2PX);
+            this.PnlP2Navigation.Controls.Add(this.FBtnP2PM);
             this.PnlP2Navigation.Dock = System.Windows.Forms.DockStyle.Right;
             this.PnlP2Navigation.Location = new System.Drawing.Point(932, 3);
             this.PnlP2Navigation.Name = "PnlP2Navigation";
@@ -172,7 +174,7 @@
             this.FBtnPD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FBtnPD.HoverColor = System.Drawing.Color.Empty;
             this.FBtnPD.HoverEnabled = false;
-            this.FBtnPD.Location = new System.Drawing.Point(0, 80);
+            this.FBtnPD.Location = new System.Drawing.Point(0, 120);
             this.FBtnPD.Name = "FBtnPD";
             this.FBtnPD.Size = new System.Drawing.Size(71, 40);
             this.FBtnPD.TabIndex = 2;
@@ -196,21 +198,21 @@
             this.FBtnPY.UseVisualStyleBackColor = true;
             this.FBtnPY.Click += new System.EventHandler(this.FBtnPY_Click);
             // 
-            // FBtnP2PX
+            // FBtnP2PM
             // 
-            this.FBtnP2PX.BorderColor = System.Drawing.Color.Empty;
-            this.FBtnP2PX.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FBtnP2PX.FlatAppearance.BorderSize = 0;
-            this.FBtnP2PX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FBtnP2PX.HoverColor = System.Drawing.Color.Empty;
-            this.FBtnP2PX.HoverEnabled = false;
-            this.FBtnP2PX.Location = new System.Drawing.Point(0, 0);
-            this.FBtnP2PX.Name = "FBtnP2PX";
-            this.FBtnP2PX.Size = new System.Drawing.Size(71, 40);
-            this.FBtnP2PX.TabIndex = 0;
-            this.FBtnP2PX.Text = "M";
-            this.FBtnP2PX.UseVisualStyleBackColor = true;
-            this.FBtnP2PX.Click += new System.EventHandler(this.FBtnP2PX_Click);
+            this.FBtnP2PM.BorderColor = System.Drawing.Color.Empty;
+            this.FBtnP2PM.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FBtnP2PM.FlatAppearance.BorderSize = 0;
+            this.FBtnP2PM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FBtnP2PM.HoverColor = System.Drawing.Color.Empty;
+            this.FBtnP2PM.HoverEnabled = false;
+            this.FBtnP2PM.Location = new System.Drawing.Point(0, 0);
+            this.FBtnP2PM.Name = "FBtnP2PM";
+            this.FBtnP2PM.Size = new System.Drawing.Size(71, 40);
+            this.FBtnP2PM.TabIndex = 0;
+            this.FBtnP2PM.Text = "M";
+            this.FBtnP2PM.UseVisualStyleBackColor = true;
+            this.FBtnP2PM.Click += new System.EventHandler(this.FBtnP2PM_Click);
             // 
             // TbpPractice3
             // 
@@ -705,6 +707,22 @@
             this.TmrTime.Interval = 500;
             this.TmrTime.Tick += new System.EventHandler(this.TmrTime_Tick);
             // 
+            // FBtnPX
+            // 
+            this.FBtnPX.BorderColor = System.Drawing.Color.Empty;
+            this.FBtnPX.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FBtnPX.FlatAppearance.BorderSize = 0;
+            this.FBtnPX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FBtnPX.HoverColor = System.Drawing.Color.Empty;
+            this.FBtnPX.HoverEnabled = false;
+            this.FBtnPX.Location = new System.Drawing.Point(0, 80);
+            this.FBtnPX.Name = "FBtnPX";
+            this.FBtnPX.Size = new System.Drawing.Size(71, 40);
+            this.FBtnPX.TabIndex = 3;
+            this.FBtnPX.Text = "PX";
+            this.FBtnPX.UseVisualStyleBackColor = true;
+            this.FBtnPX.Click += new System.EventHandler(this.FBtnPX_Click);
+            // 
             // DlgPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -761,7 +779,7 @@
         private System.Windows.Forms.TabPage TbpPractice10;
         private System.Windows.Forms.Panel PnlP2Container;
         private System.Windows.Forms.Panel PnlP2Navigation;
-        private src.FButton.FlatButton FBtnP2PX;
+        private src.FButton.FlatButton FBtnP2PM;
         private src.FButton.FlatButton FBtnPD;
         private src.FButton.FlatButton FBtnPY;
         private System.Windows.Forms.Panel PnlP4Topbar;
@@ -784,6 +802,7 @@
         private System.Windows.Forms.ProgressBar PrgNivelOxigeno;
         private System.Windows.Forms.Button BtnUpdateOxygenLimit;
         private src.FToggleButton.FlatToggleButton FBtnOverflow;
+        private src.FButton.FlatButton FBtnPX;
     }
 }
 

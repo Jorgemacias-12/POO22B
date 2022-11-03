@@ -117,30 +117,31 @@ namespace POO22B_MZJA
 
         private void FBtnPY_Click(object sender, EventArgs e)
         {
-            Thread HiloPruebas;
+            CParticula Particula = new CParticula(10, 10, PnlP2Container);
 
-            HiloPruebas = new Thread(() =>
-            {
-                for (int i = 0; i < 50; i++)
-                {
-                    CParticula Particula;
+            Particula.Enciende();
+            Particula.Eleva(10);
+            Particula.Desplaza(1);
+            Particula.Rumbo(false, true, false, false);
 
-                    Particula = new CParticula(10, 10, PnlP2Container);
-                    Particula.Enciende();
-                    Particula.Eleva(10);
-                    Particula.Desplaza(1);
-
-                    Particulas.Add(Particula);
-                }
-            });
-
-            HiloPruebas.Start();
-
+            Particulas.Add(Particula);
         }
 
-        private void FBtnP2PX_Click(object sender, EventArgs e)
+        private void FBtnP2PM_Click(object sender, EventArgs e)
         {
             new DlgMonitorParticula(Particulas).Show();
+        }
+
+        private void FBtnPX_Click(object sender, EventArgs e)
+        {
+            CParticula Particula = new CParticula(10, 10, PnlP2Container);
+
+            Particula.Enciende();
+            Particula.Eleva(10);
+            Particula.Desplaza(1);
+            Particula.Rumbo(false, false, true, false);
+
+            Particulas.Add(Particula);
         }
 
         private void FBtnP4SerVivo_Click(object sender, EventArgs e)
@@ -359,5 +360,7 @@ namespace POO22B_MZJA
                 PnlP4AreaAmbiental.AutoScroll = true;
             }
         }
+
+        
     }
 }
