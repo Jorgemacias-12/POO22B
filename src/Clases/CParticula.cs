@@ -124,6 +124,17 @@ namespace POO22B_MZJA.src.Clases
         }
 
         // +------------------------------------------------------------------+
+        // | Cambia el rumbo de la particula                                  |   
+        // +------------------------------------------------------------------+
+        public void Rumbo(bool Norte, bool Sur, bool Este, bool Oeste)
+        {
+            this.Norte = Norte;
+            this.Sur = Sur;
+            this.Este = Este;
+            this.Oeste = Oeste;
+        }
+
+        // +------------------------------------------------------------------+
         // | Eleva la particula                                               |   
         // +------------------------------------------------------------------+
         public void Eleva(int Altura)
