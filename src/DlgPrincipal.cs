@@ -225,6 +225,14 @@ namespace POO22B_MZJA
                 return;
             }
 
+            if (OxigenoEnAmbiente.ValorActual == 0)
+            {
+                foreach (CSerVivo ser_vivo in SeresVivos)
+                {
+                    ser_vivo.Morir();
+                }
+            }
+
             //TbxLimiteOxigeno.Text = $"{OxigenoEnAmbiente.ValorActual} - {OxigenoEnAmbiente.CapacidadMaxima}";
 
             //PnlP4AreaAmbiental.Update();

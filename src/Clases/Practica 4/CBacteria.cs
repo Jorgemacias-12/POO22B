@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -152,6 +153,12 @@ namespace POO22B_MZJA.src.Clases.Practica_4
                     
                     MessageBox.Show("Persona ha muerto");
                     SeresVivos.RemoveAt(i);
+
+                    using (SoundPlayer player = new SoundPlayer(Resources.Taco_Bell_Bong))
+                    {
+                        player.Stream.Position = 0;
+                        player.Play();
+                    }
 
                     break;
                 }
