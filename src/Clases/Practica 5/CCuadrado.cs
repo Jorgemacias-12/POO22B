@@ -8,8 +8,20 @@ using System.Windows.Forms;
 
 namespace POO22B_MZJA.src.Clases.Practica_5
 {
+    // +------------------------------------------------------------------+
+    // |  Clase que representa un Cuadrado / Rectangulo                   |
+    // |  MZJA 01/09/22.                                                  |
+    // +------------------------------------------------------------------+
     public class CCuadrado : CFigura
     {
+        // +------------------------------------------------------------------+
+        // |  Atributos                                                       |
+        // +------------------------------------------------------------------+
+        // Heredados
+
+        // +------------------------------------------------------------------+
+        // |  Constructor                                                     |
+        // +------------------------------------------------------------------+
         public CCuadrado(Control Container, Color FigureColor, int FigureWidth,
                          int FigureHeight) : 
                base(Container, FigureColor, FigureWidth, FigureHeight)
@@ -27,9 +39,21 @@ namespace POO22B_MZJA.src.Clases.Practica_5
             throw new NotImplementedException();
         }
 
+        // +------------------------------------------------------------------+
+        // |  Dibuja un cuadrado / rectangulo                                 |
+        // +------------------------------------------------------------------+
         protected override void DibujarFigura()
         {
-            base.DibujarFigura();
+            // Dibujar cuadrado
+            using (Graphics graficos = Graphics.FromImage(Lienzo))
+            {
+                graficos.FillRectangle(FigureBrush, Coordenadas.X, 
+                                       Coordenadas.Y, Width,Height);
+
+            }
+
+            // Actualizar imagen
+            Container.Invalidate();
         }
     }
 }

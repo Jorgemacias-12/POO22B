@@ -365,9 +365,13 @@ namespace POO22B_MZJA
         private void BtnTest_Click(object sender, EventArgs e)
         {
 
-            CFigura Figura;
+            //CFigura Figura;
 
-            Figura = new CFigura(PnlPrueba, Color.Red, 10, 10);
+            //Figura = new CFigura(PnlPrueba, Color.Red, 10, 10);
+
+            CCuadrado Cuadrado;
+
+            Cuadrado = new CCuadrado(PnlPrueba, Color.Red, 20, 20);
 
         }
     }
