@@ -1,5 +1,6 @@
 ﻿using POO22B_MZJA.src.Clases;
 using POO22B_MZJA.src.Clases.Practica_4;
+using POO22B_MZJA.src.Clases.Practica_5;
 using POO22B_MZJA.src.Utils;
 using System;
 using System.Collections.Generic;
@@ -361,6 +362,13 @@ namespace POO22B_MZJA
             }
         }
 
-        
+        private void BtnTest_Click(object sender, EventArgs e)
+        {
+
+            CFigura Figura;
+
+            Figura = new CFigura(PnlPrueba, Color.Red, 10, 10);
+
+        }
     }
 }
