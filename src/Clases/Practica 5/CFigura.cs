@@ -24,6 +24,7 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         protected Color ColorFigura;
         protected Control Container;
         protected Brush FigureBrush;
+        protected Pen FigurePen;
         protected Bitmap Lienzo;
         protected int Width;
         protected int Height;
