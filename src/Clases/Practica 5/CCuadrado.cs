@@ -22,9 +22,13 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CCuadrado(Control Container, Color FigureColor, int FigureWidth,
-                         int FigureHeight) : 
-               base(Container, FigureColor, FigureWidth, FigureHeight)
+        public CCuadrado(Control Container,
+                         Color FigureColor,
+                         int FigureWidth,
+                         int FigureHeight) : base(Container,
+                                                  FigureColor,
+                                                  FigureWidth,
+                                                  FigureHeight)
         {
 
         }

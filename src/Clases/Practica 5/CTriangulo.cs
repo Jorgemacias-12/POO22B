@@ -26,12 +26,17 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         public int Base;
         public int Altura;
 
-        public CTriangulo(Control Container, Color FigureColor,
-                          int Base, int Altura, TypeOfTriangle Type) :
-               base(Container, FigureColor, Base, Altura)
+        public CTriangulo(Control Container,
+                          Color FigureColor,
+                          int FigureWidth,
+                          int FigureHeight,
+                          TypeOfTriangle Type) : base(Container,
+                                                    FigureColor,
+                                                    FigureWidth,
+                                                    FigureHeight)
         {
-            this.Base = Base;
-            this.Altura = Altura;
+            this.Base = FigureWidth;
+            this.Altura = FigureHeight;
             this.Type = Type;
         }
 
@@ -104,6 +109,7 @@ namespace POO22B_MZJA.src.Clases.Practica_5
                 CalcularPuntos(out Vertice, out Vertice2);
 
                 graficos.FillPolygon(FigureBrush, new PointF[] { Coordenadas, Vertice, Vertice2 });
+                graficos.SmoothingMode = SmoothingMode.HighQuality;
 
             }
 

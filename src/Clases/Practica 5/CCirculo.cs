@@ -15,20 +15,24 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         // +------------------------------------------------------------------+
         private int Radio;
 
+
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CCirculo(Control Container, Color FigureColor, 
-                        int FigureWidth, int FigureHeight, int Radio) : 
-               base(Container, FigureColor, FigureWidth, FigureHeight)
+        public CCirculo(Control Container,
+                        Color FigureColor,
+                        int FigureWidth,
+                        int FigureHeight) : base(Container,
+                                                 FigureColor,
+                                                 FigureWidth,
+                                                 FigureHeight)
         {
             if (Radio == 0)
             {
                 Radio = 2;
             }
-
-            this.Radio = Radio;
         }
+
 
         public override int CalcularArea()
         {

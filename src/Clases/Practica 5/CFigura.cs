@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,7 +33,10 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CFigura(Control Container, Color FigureColor, int FigureWidth, int FigureHeight)
+        public CFigura(Control Container,
+                       Color FigureColor,
+                       int FigureWidth,
+                       int FigureHeight)
         {
             // Obtener contenedor principal
             this.Container = Container;
@@ -44,23 +48,27 @@ namespace POO22B_MZJA.src.Clases.Practica_5
             // Guardar color 
             this.ColorFigura = FigureColor;
 
-            // Añadir evento manejador de pintura para las figuras
-            Container.Click += Container_Click;
-
             // Mantener imagen del contenedor ajustada
             Container.BackgroundImageLayout = ImageLayout.Stretch;
 
-            // Añadir evento cuando se pinta
-            Container.Paint += Container_Paint;
-
-            // Inicializar lienzo virtual
-            Lienzo = new Bitmap(Container.Width, Container.Height);
+            // Obtener lienzo
+            this.Lienzo = new Bitmap(Container.Width, Container.Height);
 
             // Incializar solid brush con color entrante
             FigureBrush = new SolidBrush(FigureColor);
         }
 
-       
+        // +------------------------------------------------------------------+
+        // |  Inicializar eventos y lienzo                                    | 
+        // +------------------------------------------------------------------+
+        public void Inicializar()
+        {
+            // Añadir evento manejador de pintura para las figuras
+            Container.Click += Container_Click;
+
+            // Añadir evento cuando se pinta
+            Container.Paint += Container_Paint;
+        }
 
         // +------------------------------------------------------------------+
         // |  Calcula el área de la figura                                    |
@@ -102,8 +110,6 @@ namespace POO22B_MZJA.src.Clases.Practica_5
 
             // Dibujar figura
             DibujarFigura();
-
-            MessageBox.Show(Coordenadas.ToString());
         }
 
         // +------------------------------------------------------------------+
