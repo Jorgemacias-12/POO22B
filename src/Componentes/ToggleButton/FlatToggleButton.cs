@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POO22B_MZJA.src.Utils;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace POO22B_MZJA.src.FToggleButton
         [
          Browsable(true),
          Category("Appearance"),
-         Description("Color to be applied when cursor is on the button")
+         Description("Color to be applied when the button is Active")
         ]
         public Color ActiveColor
         {
@@ -67,12 +68,13 @@ namespace POO22B_MZJA.src.FToggleButton
                 if (!IsActive)
                 {
                     BackColor = OldColor;
+                    ForeColor = ColorUtils.GetForegroundColor(BackColor);
                 }
 
                 if (IsActive)
                 {
                     BackColor = ActiveColor;
-                    ForeColor = Color.White;
+                    ForeColor = ColorUtils.GetForegroundColor(BackColor);
                 }
             }
         }
