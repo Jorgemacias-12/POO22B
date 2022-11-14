@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace POO22B_MZJA.src.Utils
 {
@@ -105,6 +106,31 @@ namespace POO22B_MZJA.src.Utils
             {
                 return Color.White;
             }
+        }
+
+        public static Color DialogColor()
+        {
+            ColorDialog FigureColorDialog;
+            DialogResult DResult;
+
+            FigureColorDialog = new ColorDialog()
+            {
+                AnyColor = true,
+            };
+
+            DResult = FigureColorDialog.ShowDialog();
+
+            if (DResult != DialogResult.OK)
+            {
+                return Color.Empty;
+            }
+
+            if (DResult == DialogResult.OK)
+            {
+                return FigureColorDialog.Color;
+            }
+
+            return Color.Empty;
         }
 
     }
