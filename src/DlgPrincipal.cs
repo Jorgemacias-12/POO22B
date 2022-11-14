@@ -1,9 +1,12 @@
-﻿using POO22B_MZJA.src.Clases;
+﻿using Microsoft.Win32;
+using POO22B_MZJA.src.Clases;
 using POO22B_MZJA.src.Clases.Practica_4;
 using POO22B_MZJA.src.Clases.Practica_5;
+using POO22B_MZJA.src.FToggleButton;
 using POO22B_MZJA.src.Utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
@@ -24,10 +27,12 @@ namespace POO22B_MZJA
         // +------------------------------------------------------------------+
         private List<CParticula> Particulas;
         private List<CSerVivo> SeresVivos;
+        private List<CFigura> Figuras;
         private Oxigeno OxigenoEnAmbiente;
         private int LimiteInanicion;
-        private int LimiteOxigeno;
         private int PreviusWidth;
+        private int FiguraAncho;
+        private int FiguraAlto;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
@@ -41,6 +46,8 @@ namespace POO22B_MZJA
             Particulas = new List<CParticula>();
 
             SeresVivos = new List<CSerVivo>();
+
+            Figuras = new List<CFigura>();
 
             OxigenoEnAmbiente = new Oxigeno(3000);
 
@@ -87,6 +94,10 @@ namespace POO22B_MZJA
             //UI.PaintBorder(PnlNavPractices, ColorUtils.GetColor("#505050"), 1);
             // TODO: implement this in the Component code :D
             PreviusWidth = PnlSidebar.Width;
+
+            // Inicializar valores practica 5
+            FiguraAlto = 0;
+            FiguraAncho = 0;
         }
 
         // +------------------------------------------------------------------+
@@ -156,7 +167,7 @@ namespace POO22B_MZJA
 
             Vegetal = new CVegetal(PnlP4AreaAmbiental, 0, 0, OxigenoEnAmbiente, true, LimiteInanicion);
             Vegetal.Nacer();
-            
+
             SeresVivos.Add(Vegetal);
         }
 
@@ -168,7 +179,7 @@ namespace POO22B_MZJA
             Animal.Nacer();
             Animal.Desplazar(1);
 
-           SeresVivos.Add(Animal);
+            SeresVivos.Add(Animal);
         }
 
         private void FBtnPersona_Click(object sender, EventArgs e)
@@ -180,7 +191,7 @@ namespace POO22B_MZJA
             Persona.Nacer();
             Persona.Desplazar(1);
 
-           SeresVivos.Add(Persona);
+            SeresVivos.Add(Persona);
         }
 
         private void PnlNavPractices_Paint(object sender, PaintEventArgs e)
@@ -324,7 +335,7 @@ namespace POO22B_MZJA
             }
 
             Input.MaxLength = 9;
-            
+
             if (!char.IsControl(e.KeyChar) &&
                 !char.IsDigit(e.KeyChar) &&
                 (e.KeyChar != '.'))
@@ -369,10 +380,154 @@ namespace POO22B_MZJA
 
             //Figura = new CFigura(PnlPrueba, Color.Red, 10, 10);
 
-            CCuadrado Cuadrado;
+            //CCuadrado Cuadrado;
 
-            Cuadrado = new CCuadrado(PnlPrueba, Color.Red, 20, 20);
+            //Cuadrado = new CCuadrado(PnlPrueba, Color.Red, 20, 20);
 
+
+
+            //CTriangulo Triangulo;
+
+            //Triangulo = new CTriangulo(PnlPrueba, Color.Red, 20, 20, TypeOfTriangle.Normal);
+            //Triangulo.Inicializar();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //CCuadrado Cuadrado;
+
+            //Cuadrado = new CCuadrado(PnlPrueba, Color.Red, 50, 20);
+            //Cuadrado.Inicializar();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //CCirculo Circulo;
+
+            //Circulo = new CCirculo(PnlPrueba, Color.Red, 20, 20);
+            //Circulo.Inicializar();
+        }
+
+
+        private void Ejecutar(object sender)
+        {
+            // Checar variables de entrada
+            if (FiguraAlto == 0 ||
+                FiguraAncho == 0)
+            {
+                MessageBox.Show("Defina un ancho y un alto para la figura", "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            
+            // Checar si se ha seleccionado un color
+            if (PnlAreaColor.BackColor == Color.White ||
+                PnlPerimeterColor.BackColor == Color.White)
+            {
+                MessageBox.Show("Seleccione dos colores para dar a la figura", "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            FlatToggleButton target = sender as FlatToggleButton;
+
+            for(int i = 0; i < PnlP5TopNav.Controls.Count; i++)
+            {
+                if (PnlP5TopNav.Controls[i] is FlatToggleButton)
+                {
+                    FlatToggleButton _ = (FlatToggleButton)PnlP5TopNav.Controls[i];
+
+                    _.OverrideMethod = true;
+                    _.IsActive = false;
+                    _.BackColor = _.OldColor;
+
+                }
+            }
+
+            target.IsActive = true;
+            target.BackColor = target.ActiveColor;
+        }
+
+        private void AñadirALista(CFigura Figura)
+        {
+            if (Figuras.Count == 3) return;
+
+            Figuras.Add(Figura);
+        }
+
+        private void FBtnCuadrado_Click(object sender, EventArgs e)
+        {
+            //CCuadrado Cuadrado;
+
+            //Cuadrado = new CCuadrado(PnlPrueba, Color.Red, 20, 20);
+
+            //Cuadrado.Inicializar();
+
+            //AñadirALista(Cuadrado);
+
+            Ejecutar(sender);
+        }
+
+        private void FBtnCirculo_Click(object sender, EventArgs e)
+        {
+            //CCirculo Circulo;
+
+            //Circulo = new CCirculo(PnlPrueba, Color.Green, 50, 50);
+
+            //Circulo.Inicializar();
+
+            //AñadirALista(Circulo);
+
+            Ejecutar(sender);
+        }
+
+        private void FBtnTriangulo_Click(object sender, EventArgs e)
+        {
+            //CTriangulo Triangulo;
+
+            //Triangulo = new CTriangulo(PnlPrueba, Color.Blue, 40, 100, TypeOfTriangle.Obtuse);
+
+            //Triangulo.Inicializar();
+
+            //AñadirALista(Triangulo);
+
+            Ejecutar(sender);
+        }
+
+        private void PnlPerimeterColor_Click(object sender, EventArgs e)
+        {
+            PnlPerimeterColor.BackColor = ColorUtils.DialogColor();
+        }
+
+        private void PnlAreaColor_Click(object sender, EventArgs e)
+        {
+            PnlAreaColor.BackColor = ColorUtils.DialogColor();
+        }
+
+        private void TbxAncho_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateField(sender, e);
+        }
+
+        private void TbxAncho_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (TbxAncho.Text != string.Empty)
+            {
+                FiguraAncho = Convert.ToInt32(TbxAncho.Text);
+            }
+        }
+
+        private void TbxAlto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ValidateField(sender, e);
+        }
+
+        private void TbxAlto_KeyUp(object sender, KeyEventArgs e)
+        {
+            Debug.Print($"{sender} - {e.KeyCode}");
+
+            if (TbxAlto.Text != string.Empty)
+            {
+                FiguraAlto = Convert.ToInt32(TbxAlto.Text);
+            }
         }
     }
 }
