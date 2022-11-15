@@ -122,7 +122,7 @@ namespace POO22B_MZJA.src.Utils
 
             if (DResult != DialogResult.OK)
             {
-                return Color.Empty;
+                return Color.White;
             }
 
             if (DResult == DialogResult.OK)
@@ -130,7 +130,7 @@ namespace POO22B_MZJA.src.Utils
                 return FigureColorDialog.Color;
             }
 
-            return Color.Empty;
+            return Color.White;
         }
 
     }
