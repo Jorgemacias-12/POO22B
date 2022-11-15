@@ -37,5 +37,34 @@ namespace POO22B_MZJA.src.Utils.GUI
 
         }
 
+        public static void ValidateTextBox(object sender, KeyPressEventArgs e)
+        {
+            TextBox Input;
+
+            Input = sender as TextBox;
+
+            int value;
+
+            int.TryParse(Input.Text, out value);
+
+            if (value > int.MaxValue)
+            {
+                return;
+            }
+
+            if (!char.IsControl(e.KeyChar) &&
+                !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+
+            if ((e.KeyChar == '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }
