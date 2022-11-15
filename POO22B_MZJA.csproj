@@ -100,7 +100,14 @@
     <Compile Include="src\Clases\Practica 4\Oxigeno.cs" />
     <Compile Include="src\Clases\Practica 5\CCuadrado.cs" />
     <Compile Include="src\Clases\Practica 5\CFigura.cs" />
+    <Compile Include="src\Clases\Practica 5\CFigureManager.cs" />
     <Compile Include="src\Clases\Practica 5\CTriangulo.cs" />
+    <Compile Include="src\Clases\Practica 5\DlgPropiedadesFigura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Clases\Practica 5\DlgPropiedadesFigura.Designer.cs">
+      <DependentUpon>DlgPropiedadesFigura.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Componentes\CMessageBox\DialogFrame.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Clases\DlgMonitorParticula.resx">
       <DependentUpon>DlgMonitorParticula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Clases\Practica 5\DlgPropiedadesFigura.resx">
+      <DependentUpon>DlgPropiedadesFigura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Componentes\CMessageBox\DialogFrame.resx">
       <DependentUpon>DialogFrame.cs</DependentUpon>
