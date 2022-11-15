@@ -98,10 +98,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\Clases\Practica 4\Oxigeno.cs" />
-    <Compile Include="src\Clases\Practica 5\CCirculo.cs" />
     <Compile Include="src\Clases\Practica 5\CCuadrado.cs" />
     <Compile Include="src\Clases\Practica 5\CFigura.cs" />
-    <Compile Include="src\Clases\Practica 5\CPentagono.cs" />
     <Compile Include="src\Clases\Practica 5\CTriangulo.cs" />
     <Compile Include="src\Componentes\CMessageBox\DialogFrame.cs">
       <SubType>Form</SubType>
