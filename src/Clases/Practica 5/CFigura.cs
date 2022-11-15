@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -22,40 +24,43 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         protected int Area;
         protected int Perimetro;
         protected Point Coordenadas;
-        protected Color ColorFigura;
+        protected Color ColorPerimetro;
+        protected Color ColorArea;
         protected Control Container;
         protected Brush FigureBrush;
         protected Pen FigurePen;
         protected Bitmap Lienzo;
-        protected int Width;
-        protected int Height;
+        protected Graphics graficos;
+        protected int Ancho;
+        protected int Alto;
 
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
         public CFigura(Control Container,
-                       Color FigureColor,
-                       int FigureWidth,
-                       int FigureHeight)
+                       int Ancho,
+                       int Alto,
+                       Color ColorPerimetro,
+                       Color ColorArea,
+                       int PerimetroSize)
         {
-            // Obtener contenedor principal
+            // Almacenar contenedor
             this.Container = Container;
 
-            // Obtener el tamaño de la figura
-            this.Width = FigureWidth;
-            this.Height = FigureHeight;
+            // Almacenar tamaño de la figura
+            this.Ancho = Ancho;
+            this.Alto = Alto;
 
-            // Guardar color 
-            this.ColorFigura = FigureColor;
+            // Guardar colores para dibujar la figura
+            this.ColorPerimetro = ColorPerimetro;
+            this.ColorArea = ColorArea;
 
-            // Mantener imagen del contenedor ajustada
+            // Mantener la imagen del contenedor ajustada
             Container.BackgroundImageLayout = ImageLayout.Stretch;
 
-            // Obtener lienzo
-            this.Lienzo = new Bitmap(Container.Width, Container.Height);
-
-            // Incializar solid brush con color entrante
-            FigureBrush = new SolidBrush(FigureColor);
+            // Inicializar brush y pen
+            FigureBrush = new SolidBrush(ColorArea);
+            FigurePen = new Pen(ColorPerimetro, PerimetroSize);
         }
 
         // +------------------------------------------------------------------+
@@ -63,11 +68,22 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         // +------------------------------------------------------------------+
         public void Inicializar()
         {
-            // Añadir evento manejador de pintura para las figuras
+            // Añadir eventos
             Container.Click += Container_Click;
-
-            // Añadir evento cuando se pinta
             Container.Paint += Container_Paint;
+            Container.Resize += Container_Resize;
+
+            // Inicializar objetos de gráficos
+            if (Lienzo is null) Lienzo = new Bitmap(Container.Width, Container.Height);
+        }
+
+        // +------------------------------------------------------------------+
+        // |  Elimina los eventos de pintura y clic especificos               |
+        // +------------------------------------------------------------------+
+        public void Finalizar()
+        {
+            Container.Click -= Container_Click;
+            Container.Paint -= Container_Paint;
         }
 
         // +------------------------------------------------------------------+
@@ -88,17 +104,8 @@ namespace POO22B_MZJA.src.Clases.Practica_5
 
         }
 
-        protected virtual void DibujarFigura()
-        {
-            // Dibujar linea de ejemplo :D
-            using(Graphics graficos = Graphics.FromImage(Lienzo))
-            {
-                Pen pencil = new Pen(ColorFigura, 10);
-                graficos.DrawLine(pencil, Coordenadas, new Point(Width, Height));
-            }
-
-            Container.Invalidate();
-        }
+        // Dibujar la figura
+        protected virtual void Dibujar() { }
 
         // +------------------------------------------------------------------+
         // |  Dibujar la figura cuando se hace click                          |
@@ -106,10 +113,13 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         private void Container_Click(object sender, EventArgs e)
         {
             // Guardar coordenadas donde se hace el click
-            Coordenadas = Container.PointToClient(Cursor.Position);
+            MouseEventArgs _ = (MouseEventArgs)e;
 
-            // Dibujar figura
-            DibujarFigura();
+            Coordenadas = _.Location;
+
+            Debug.Print($"{sender} - {Coordenadas} - {graficos}");
+            // Dibujar la figura 
+            Dibujar();
         }
 
         // +------------------------------------------------------------------+
@@ -120,5 +130,23 @@ namespace POO22B_MZJA.src.Clases.Practica_5
             Container.BackgroundImage = Lienzo;
         }
 
+        private void Container_Resize(object sender, EventArgs e)
+        {
+            // Reiniciar coordenadas
+            Coordenadas = Container.PointToClient(Cursor.Position);
+
+            Debug.Print($"Nuevas coordenadas {Coordenadas}");
+
+            Bitmap newImage;
+
+            newImage = new Bitmap(Container.Width, Container.Height);
+
+            using (Graphics g = Graphics.FromImage(newImage))
+            {
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+                g.DrawImage(Lienzo, 0, 0, Container.Width, Container.Height);
+            }
+        }
     }
 }

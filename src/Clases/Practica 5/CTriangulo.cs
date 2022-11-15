@@ -19,26 +19,27 @@ namespace POO22B_MZJA.src.Clases.Practica_5
 
     public class CTriangulo : CFigura
     {
-
-        
-
         TypeOfTriangle Type;
         public int Base;
         public int Altura;
 
-        public CTriangulo(Control Container,
-                          Color FigureColor,
-                          int FigureWidth,
-                          int FigureHeight,
-                          TypeOfTriangle Type) : base(Container,
-                                                    FigureColor,
-                                                    FigureWidth,
-                                                    FigureHeight)
+        public CTriangulo(Control Container, int Ancho, int Alto, Color ColorPerimetro, Color ColorArea, int PerimetroSize) : base(Container, Ancho, Alto, ColorPerimetro, ColorArea, PerimetroSize)
         {
-            this.Base = FigureWidth;
-            this.Altura = FigureHeight;
-            this.Type = Type;
         }
+
+        //public CTriangulo(Control Container,
+        //                  Color FigureColor,
+        //                  int FigureWidth,
+        //                  int FigureHeight,
+        //                  TypeOfTriangle Type) : base(Container,
+        //                                            FigureColor,
+        //                                            FigureWidth,
+        //                                            FigureHeight)
+        //{
+        //    this.Base = FigureWidth;
+        //    this.Altura = FigureHeight;
+        //    this.Type = Type;
+        //}
 
         public override int CalcularArea()
         {
@@ -98,7 +99,7 @@ namespace POO22B_MZJA.src.Clases.Practica_5
 
         }
 
-        protected override void DibujarFigura()
+        protected override void Dibujar()
         {
             // Dibujar triángulo
             using (Graphics graficos = Graphics.FromImage(Lienzo))

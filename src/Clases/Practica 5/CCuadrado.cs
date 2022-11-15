@@ -1,6 +1,8 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,27 +10,18 @@ using System.Windows.Forms;
 
 namespace POO22B_MZJA.src.Clases.Practica_5
 {
-    // +------------------------------------------------------------------+
-    // |  Clase que representa un Cuadrado / Rectangulo                   |
-    // |  MZJA 01/09/22.                                                  |
-    // +------------------------------------------------------------------+
     public class CCuadrado : CFigura
     {
-        // +------------------------------------------------------------------+
-        // |  Atributos                                                       |
-        // +------------------------------------------------------------------+
-        // Heredados
-
-        // +------------------------------------------------------------------+
-        // |  Constructor                                                     |
-        // +------------------------------------------------------------------+
-        public CCuadrado(Control Container,
-                         Color FigureColor,
-                         int FigureWidth,
-                         int FigureHeight) : base(Container,
-                                                  FigureColor,
-                                                  FigureWidth,
-                                                  FigureHeight)
+        public CCuadrado(Control Container, 
+                         int Ancho, 
+                         int Alto, 
+                         Color ColorPerimetro, 
+                         Color ColorArea,
+                         int PerimetroSize) : base(Container,
+                                                 Ancho,
+                                                 Alto,
+                                                 ColorPerimetro,
+                                                 ColorArea, PerimetroSize)
         {
 
         }
@@ -43,21 +36,24 @@ namespace POO22B_MZJA.src.Clases.Practica_5
             throw new NotImplementedException();
         }
 
-        // +------------------------------------------------------------------+
-        // |  Dibuja un cuadrado / rectangulo                                 |
-        // +------------------------------------------------------------------+
-        protected override void DibujarFigura()
+        protected override void Dibujar()
         {
-            // Dibujar cuadrado
-            using (Graphics graficos = Graphics.FromImage(Lienzo))
+            using (graficos = Graphics.FromImage(Lienzo))
             {
-                graficos.FillRectangle(FigureBrush, Coordenadas.X, 
-                                       Coordenadas.Y, Width,Height);
+                // Dibuar el cuadrado
+                graficos.FillRectangle(FigureBrush, // Dibujar Área
+                                       Coordenadas.X,
+                                       Coordenadas.Y,
+                                       Ancho, Alto);
 
+                graficos.DrawRectangle(FigurePen, // Dibujar Perimetro
+                                       Coordenadas.X,
+                                       Coordenadas.Y,
+                                       Ancho, Alto);
             }
 
-            // Actualizar imagen
             Container.Invalidate();
+
         }
     }
 }
