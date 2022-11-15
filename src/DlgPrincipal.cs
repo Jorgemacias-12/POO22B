@@ -29,6 +29,7 @@ namespace POO22B_MZJA
         private List<CSerVivo> SeresVivos;
         private List<CFigura> Figuras;
         private Oxigeno OxigenoEnAmbiente;
+        private CFigureManager Manager;
         private int LimiteInanicion;
         private int PreviusWidth;
         private int FiguraAncho;
@@ -194,43 +195,6 @@ namespace POO22B_MZJA
             SeresVivos.Add(Persona);
         }
 
-        private void PnlNavPractices_Paint(object sender, PaintEventArgs e)
-        {
-            Control Component;
-            Rectangle ComponentRect;
-            ButtonBorderStyle BorderStyle;
-            Color BorderColor;
-            int BorderSize;
-
-            Component = sender as Panel;
-
-            ComponentRect = new Rectangle(new Point(0, 0), Component.Size);
-
-            BorderStyle = ButtonBorderStyle.Solid;
-
-            BorderColor = ColorUtils.GetColor("#6457A6");
-            BorderSize = 2;
-
-            if (WindowState == FormWindowState.Maximized)
-            {
-                ControlPaint.DrawBorder(Component.CreateGraphics(),
-                                    ComponentRect,
-                                    BorderColor,
-                                    0, // left
-                                    BorderStyle,
-                                    BorderColor,
-                                    BorderSize, // top
-                                    BorderStyle,
-                                    BorderColor,
-                                    BorderSize, // right
-                                    BorderStyle,
-                                    BorderColor,
-                                    0, // bottom
-                                    BorderStyle);
-            }
-
-        }
-
         private void TmrTime_Tick(object sender, EventArgs e)
         {
             if (TpbPractices.SelectedTab != TpbPractices.TabPages["TbpPractice4"])
@@ -373,91 +337,9 @@ namespace POO22B_MZJA
             }
         }
 
-        private void Ejecutar(object sender)
-        {
-            FlatToggleButton target = sender as FlatToggleButton;
-
-            for(int i = 0; i < PnlP5TopNav.Controls.Count; i++)
-            {
-                if (PnlP5TopNav.Controls[i] is FlatToggleButton)
-                {
-                    FlatToggleButton _ = (FlatToggleButton)PnlP5TopNav.Controls[i];
-
-                    _.OverrideMethod = true;
-                    _.IsActive = false;
-                    _.BackColor = _.OldColor;
-
-                }
-            }
-
-            target.IsActive = true;
-            target.BackColor = target.ActiveColor;
-        }
-
-        private void PnlPerimeterColor_Click(object sender, EventArgs e)
-        {
-            PnlPerimeterColor.BackColor = ColorUtils.DialogColor();
-        }
-
-        private void PnlAreaColor_Click(object sender, EventArgs e)
-        {
-            PnlAreaColor.BackColor = ColorUtils.DialogColor();
-        }
-
-        private void TbxAncho_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidateField(sender, e);
-        }
-
-        private void TbxAncho_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (TbxAncho.Text != string.Empty)
-            {
-                FiguraAncho = Convert.ToInt32(TbxAncho.Text);
-            }
-        }
-
-        private void TbxAlto_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ValidateField(sender, e);
-        }
-
-        private void TbxAlto_KeyUp(object sender, KeyEventArgs e)
-        {
-            Debug.Print($"{sender} - {e.KeyCode}");
-
-            if (TbxAlto.Text != string.Empty)
-            {
-                FiguraAlto = Convert.ToInt32(TbxAlto.Text);
-            }
-        }
-
         private void CmbFiguras_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
-            // Checar variables de entrada
-            if (FiguraAlto == 0 ||
-                FiguraAncho == 0)
-            {
-                MessageBox.Show("Defina un ancho y un alto para la figura", "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                CmbFiguras.SelectedIndex = -1;
-
-                return;
-            }
-
-            // Checar si se ha seleccionado un color
-            if (PnlAreaColor.BackColor == Color.White ||
-                PnlPerimeterColor.BackColor == Color.White)
-            {
-                MessageBox.Show("Seleccione dos colores para dar a la figura", "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                CmbFiguras.SelectedIndex = -1;
-
-                return;
-            }
-
-            Debug.Print($"Valor {CmbFiguras.SelectedIndex} - {CmbFiguras.SelectedItem}");
+            Manager = new CFigureManager(PnlPrueba, CmbFiguras.SelectedIndex);
         }
     }
 }

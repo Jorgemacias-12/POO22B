@@ -64,12 +64,6 @@
             this.PnlPrueba = new System.Windows.Forms.PictureBox();
             this.PnlP5TopNav = new System.Windows.Forms.Panel();
             this.CmbFiguras = new System.Windows.Forms.ComboBox();
-            this.PnlAreaColor = new System.Windows.Forms.Panel();
-            this.PnlPerimeterColor = new System.Windows.Forms.Panel();
-            this.LblAlto = new System.Windows.Forms.Label();
-            this.LblAncho = new System.Windows.Forms.Label();
-            this.TbxAlto = new System.Windows.Forms.TextBox();
-            this.TbxAncho = new System.Windows.Forms.TextBox();
             this.TbpPractice6 = new System.Windows.Forms.TabPage();
             this.TbpPractice7 = new System.Windows.Forms.TabPage();
             this.TbpPractice8 = new System.Windows.Forms.TabPage();
@@ -85,6 +79,7 @@
             this.FBtnOptions = new POO22B_MZJA.src.FButton.FlatButton();
             this.FBtnSidebar = new POO22B_MZJA.src.FToggleButton.FlatToggleButton();
             this.TmrTime = new System.Windows.Forms.Timer(this.components);
+            this.LblP5Titulo = new System.Windows.Forms.Label();
             this.PnlAppContainer.SuspendLayout();
             this.TpbPractices.SuspendLayout();
             this.TbpPractice2.SuspendLayout();
@@ -565,27 +560,22 @@
             // 
             this.PnlPrueba.BackColor = System.Drawing.Color.Transparent;
             this.PnlPrueba.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlPrueba.Location = new System.Drawing.Point(0, 68);
+            this.PnlPrueba.Location = new System.Drawing.Point(0, 51);
             this.PnlPrueba.Margin = new System.Windows.Forms.Padding(2);
             this.PnlPrueba.Name = "PnlPrueba";
-            this.PnlPrueba.Size = new System.Drawing.Size(1006, 530);
+            this.PnlPrueba.Size = new System.Drawing.Size(1006, 547);
             this.PnlPrueba.TabIndex = 1;
             this.PnlPrueba.TabStop = false;
             // 
             // PnlP5TopNav
             // 
             this.PnlP5TopNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(244)))), ((int)(((byte)(245)))));
+            this.PnlP5TopNav.Controls.Add(this.LblP5Titulo);
             this.PnlP5TopNav.Controls.Add(this.CmbFiguras);
-            this.PnlP5TopNav.Controls.Add(this.PnlAreaColor);
-            this.PnlP5TopNav.Controls.Add(this.PnlPerimeterColor);
-            this.PnlP5TopNav.Controls.Add(this.LblAlto);
-            this.PnlP5TopNav.Controls.Add(this.LblAncho);
-            this.PnlP5TopNav.Controls.Add(this.TbxAlto);
-            this.PnlP5TopNav.Controls.Add(this.TbxAncho);
             this.PnlP5TopNav.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlP5TopNav.Location = new System.Drawing.Point(0, 0);
             this.PnlP5TopNav.Name = "PnlP5TopNav";
-            this.PnlP5TopNav.Size = new System.Drawing.Size(1006, 68);
+            this.PnlP5TopNav.Size = new System.Drawing.Size(1006, 51);
             this.PnlP5TopNav.TabIndex = 2;
             // 
             // CmbFiguras
@@ -599,71 +589,11 @@
             "Circulo",
             "Triangulo",
             "Rectangulo"});
-            this.CmbFiguras.Location = new System.Drawing.Point(462, 23);
+            this.CmbFiguras.Location = new System.Drawing.Point(67, 11);
             this.CmbFiguras.Name = "CmbFiguras";
             this.CmbFiguras.Size = new System.Drawing.Size(129, 28);
             this.CmbFiguras.TabIndex = 9;
             this.CmbFiguras.SelectionChangeCommitted += new System.EventHandler(this.CmbFiguras_SelectionChangeCommitted);
-            // 
-            // PnlAreaColor
-            // 
-            this.PnlAreaColor.BackColor = System.Drawing.Color.White;
-            this.PnlAreaColor.Location = new System.Drawing.Point(397, 3);
-            this.PnlAreaColor.Name = "PnlAreaColor";
-            this.PnlAreaColor.Size = new System.Drawing.Size(59, 56);
-            this.PnlAreaColor.TabIndex = 8;
-            this.PnlAreaColor.Click += new System.EventHandler(this.PnlAreaColor_Click);
-            // 
-            // PnlPerimeterColor
-            // 
-            this.PnlPerimeterColor.BackColor = System.Drawing.Color.White;
-            this.PnlPerimeterColor.Location = new System.Drawing.Point(332, 3);
-            this.PnlPerimeterColor.Name = "PnlPerimeterColor";
-            this.PnlPerimeterColor.Size = new System.Drawing.Size(59, 56);
-            this.PnlPerimeterColor.TabIndex = 7;
-            this.PnlPerimeterColor.Click += new System.EventHandler(this.PnlPerimeterColor_Click);
-            // 
-            // LblAlto
-            // 
-            this.LblAlto.AutoSize = true;
-            this.LblAlto.Location = new System.Drawing.Point(12, 35);
-            this.LblAlto.Name = "LblAlto";
-            this.LblAlto.Size = new System.Drawing.Size(123, 20);
-            this.LblAlto.TabIndex = 6;
-            this.LblAlto.Text = "Alto de la figura:";
-            // 
-            // LblAncho
-            // 
-            this.LblAncho.AutoSize = true;
-            this.LblAncho.Location = new System.Drawing.Point(12, 5);
-            this.LblAncho.Name = "LblAncho";
-            this.LblAncho.Size = new System.Drawing.Size(141, 20);
-            this.LblAncho.TabIndex = 5;
-            this.LblAncho.Text = "Ancho de la figura:";
-            // 
-            // TbxAlto
-            // 
-            this.TbxAlto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(66)))), ((int)(((byte)(76)))));
-            this.TbxAlto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TbxAlto.ForeColor = System.Drawing.Color.White;
-            this.TbxAlto.Location = new System.Drawing.Point(141, 35);
-            this.TbxAlto.Name = "TbxAlto";
-            this.TbxAlto.Size = new System.Drawing.Size(185, 26);
-            this.TbxAlto.TabIndex = 4;
-            this.TbxAlto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbxAlto_KeyPress);
-            this.TbxAlto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TbxAlto_KeyUp);
-            // 
-            // TbxAncho
-            // 
-            this.TbxAncho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(66)))), ((int)(((byte)(76)))));
-            this.TbxAncho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TbxAncho.ForeColor = System.Drawing.Color.White;
-            this.TbxAncho.Location = new System.Drawing.Point(159, 3);
-            this.TbxAncho.Name = "TbxAncho";
-            this.TbxAncho.Size = new System.Drawing.Size(167, 26);
-            this.TbxAncho.TabIndex = 3;
-            this.TbxAncho.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbxAncho_KeyPress);
-            this.TbxAncho.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TbxAncho_KeyUp);
             // 
             // TbpPractice6
             // 
@@ -744,7 +674,6 @@
             this.PnlNavPractices.TabContentContainer = this.TpbPractices;
             this.PnlNavPractices.TabIndex = 1;
             this.PnlNavPractices.WrapContents = false;
-            this.PnlNavPractices.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlNavPractices_Paint);
             // 
             // LblTabIndicator
             // 
@@ -841,6 +770,15 @@
             this.TmrTime.Interval = 500;
             this.TmrTime.Tick += new System.EventHandler(this.TmrTime_Tick);
             // 
+            // LblP5Titulo
+            // 
+            this.LblP5Titulo.AutoSize = true;
+            this.LblP5Titulo.Location = new System.Drawing.Point(3, 14);
+            this.LblP5Titulo.Name = "LblP5Titulo";
+            this.LblP5Titulo.Size = new System.Drawing.Size(58, 20);
+            this.LblP5Titulo.TabIndex = 10;
+            this.LblP5Titulo.Text = "Figura:";
+            // 
             // DlgPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -928,13 +866,8 @@
         private src.FButton.FlatButton FBtnPX;
         private System.Windows.Forms.PictureBox PnlPrueba;
         private System.Windows.Forms.Panel PnlP5TopNav;
-        private System.Windows.Forms.TextBox TbxAlto;
-        private System.Windows.Forms.TextBox TbxAncho;
-        private System.Windows.Forms.Label LblAncho;
-        private System.Windows.Forms.Label LblAlto;
-        private System.Windows.Forms.Panel PnlAreaColor;
-        private System.Windows.Forms.Panel PnlPerimeterColor;
         private System.Windows.Forms.ComboBox CmbFiguras;
+        private System.Windows.Forms.Label LblP5Titulo;
     }
 }
 
