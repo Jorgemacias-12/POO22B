@@ -373,60 +373,8 @@ namespace POO22B_MZJA
             }
         }
 
-        private void BtnTest_Click(object sender, EventArgs e)
-        {
-
-            //CFigura Figura;
-
-            //Figura = new CFigura(PnlPrueba, Color.Red, 10, 10);
-
-            //CCuadrado Cuadrado;
-
-            //Cuadrado = new CCuadrado(PnlPrueba, Color.Red, 20, 20);
-
-
-
-            //CTriangulo Triangulo;
-
-            //Triangulo = new CTriangulo(PnlPrueba, Color.Red, 20, 20, TypeOfTriangle.Normal);
-            //Triangulo.Inicializar();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //CCuadrado Cuadrado;
-
-            //Cuadrado = new CCuadrado(PnlPrueba, Color.Red, 50, 20);
-            //Cuadrado.Inicializar();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //CCirculo Circulo;
-
-            //Circulo = new CCirculo(PnlPrueba, Color.Red, 20, 20);
-            //Circulo.Inicializar();
-        }
-
-
         private void Ejecutar(object sender)
         {
-            // Checar variables de entrada
-            if (FiguraAlto == 0 ||
-                FiguraAncho == 0)
-            {
-                MessageBox.Show("Defina un ancho y un alto para la figura", "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            
-            // Checar si se ha seleccionado un color
-            if (PnlAreaColor.BackColor == Color.White ||
-                PnlPerimeterColor.BackColor == Color.White)
-            {
-                MessageBox.Show("Seleccione dos colores para dar a la figura", "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
             FlatToggleButton target = sender as FlatToggleButton;
 
             for(int i = 0; i < PnlP5TopNav.Controls.Count; i++)
@@ -444,52 +392,6 @@ namespace POO22B_MZJA
 
             target.IsActive = true;
             target.BackColor = target.ActiveColor;
-        }
-
-        private void AñadirALista(CFigura Figura)
-        {
-            if (Figuras.Count == 3) return;
-
-            Figuras.Add(Figura);
-        }
-
-        private void FBtnCuadrado_Click(object sender, EventArgs e)
-        {
-            //CCuadrado Cuadrado;
-
-            //Cuadrado = new CCuadrado(PnlPrueba, Color.Red, 20, 20);
-
-            //Cuadrado.Inicializar();
-
-            //AñadirALista(Cuadrado);
-
-            Ejecutar(sender);
-        }
-
-        private void FBtnCirculo_Click(object sender, EventArgs e)
-        {
-            //CCirculo Circulo;
-
-            //Circulo = new CCirculo(PnlPrueba, Color.Green, 50, 50);
-
-            //Circulo.Inicializar();
-
-            //AñadirALista(Circulo);
-
-            Ejecutar(sender);
-        }
-
-        private void FBtnTriangulo_Click(object sender, EventArgs e)
-        {
-            //CTriangulo Triangulo;
-
-            //Triangulo = new CTriangulo(PnlPrueba, Color.Blue, 40, 100, TypeOfTriangle.Obtuse);
-
-            //Triangulo.Inicializar();
-
-            //AñadirALista(Triangulo);
-
-            Ejecutar(sender);
         }
 
         private void PnlPerimeterColor_Click(object sender, EventArgs e)
@@ -528,6 +430,34 @@ namespace POO22B_MZJA
             {
                 FiguraAlto = Convert.ToInt32(TbxAlto.Text);
             }
+        }
+
+        private void CmbFiguras_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+
+            // Checar variables de entrada
+            if (FiguraAlto == 0 ||
+                FiguraAncho == 0)
+            {
+                MessageBox.Show("Defina un ancho y un alto para la figura", "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CmbFiguras.SelectedIndex = -1;
+
+                return;
+            }
+
+            // Checar si se ha seleccionado un color
+            if (PnlAreaColor.BackColor == Color.White ||
+                PnlPerimeterColor.BackColor == Color.White)
+            {
+                MessageBox.Show("Seleccione dos colores para dar a la figura", "¡Atención!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                CmbFiguras.SelectedIndex = -1;
+
+                return;
+            }
+
+            Debug.Print($"Valor {CmbFiguras.SelectedIndex} - {CmbFiguras.SelectedItem}");
         }
     }
 }

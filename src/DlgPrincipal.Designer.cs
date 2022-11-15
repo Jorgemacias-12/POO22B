@@ -61,17 +61,15 @@
             this.FBtnPersona = new POO22B_MZJA.src.FButton.FlatButton();
             this.FBtnP4SerVivo = new POO22B_MZJA.src.FButton.FlatButton();
             this.TbpPractice5 = new System.Windows.Forms.TabPage();
-            this.PnlPrueba = new System.Windows.Forms.Panel();
+            this.PnlPrueba = new System.Windows.Forms.PictureBox();
             this.PnlP5TopNav = new System.Windows.Forms.Panel();
+            this.CmbFiguras = new System.Windows.Forms.ComboBox();
             this.PnlAreaColor = new System.Windows.Forms.Panel();
             this.PnlPerimeterColor = new System.Windows.Forms.Panel();
             this.LblAlto = new System.Windows.Forms.Label();
             this.LblAncho = new System.Windows.Forms.Label();
             this.TbxAlto = new System.Windows.Forms.TextBox();
             this.TbxAncho = new System.Windows.Forms.TextBox();
-            this.FBtnTriangulo = new POO22B_MZJA.src.FToggleButton.FlatToggleButton();
-            this.FBtnCirculo = new POO22B_MZJA.src.FToggleButton.FlatToggleButton();
-            this.FBtnCuadrado = new POO22B_MZJA.src.FToggleButton.FlatToggleButton();
             this.TbpPractice6 = new System.Windows.Forms.TabPage();
             this.TbpPractice7 = new System.Windows.Forms.TabPage();
             this.TbpPractice8 = new System.Windows.Forms.TabPage();
@@ -96,6 +94,7 @@
             this.PnlP4Topbar.SuspendLayout();
             this.PnlP4Generator.SuspendLayout();
             this.TbpPractice5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PnlPrueba)).BeginInit();
             this.PnlP5TopNav.SuspendLayout();
             this.PnlSidebar.SuspendLayout();
             this.PnlInfoArea.SuspendLayout();
@@ -571,29 +570,45 @@
             this.PnlPrueba.Name = "PnlPrueba";
             this.PnlPrueba.Size = new System.Drawing.Size(1006, 530);
             this.PnlPrueba.TabIndex = 1;
+            this.PnlPrueba.TabStop = false;
             // 
             // PnlP5TopNav
             // 
             this.PnlP5TopNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(244)))), ((int)(((byte)(245)))));
+            this.PnlP5TopNav.Controls.Add(this.CmbFiguras);
             this.PnlP5TopNav.Controls.Add(this.PnlAreaColor);
             this.PnlP5TopNav.Controls.Add(this.PnlPerimeterColor);
             this.PnlP5TopNav.Controls.Add(this.LblAlto);
             this.PnlP5TopNav.Controls.Add(this.LblAncho);
             this.PnlP5TopNav.Controls.Add(this.TbxAlto);
             this.PnlP5TopNav.Controls.Add(this.TbxAncho);
-            this.PnlP5TopNav.Controls.Add(this.FBtnTriangulo);
-            this.PnlP5TopNav.Controls.Add(this.FBtnCirculo);
-            this.PnlP5TopNav.Controls.Add(this.FBtnCuadrado);
             this.PnlP5TopNav.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlP5TopNav.Location = new System.Drawing.Point(0, 0);
             this.PnlP5TopNav.Name = "PnlP5TopNav";
             this.PnlP5TopNav.Size = new System.Drawing.Size(1006, 68);
             this.PnlP5TopNav.TabIndex = 2;
             // 
+            // CmbFiguras
+            // 
+            this.CmbFiguras.BackColor = System.Drawing.Color.White;
+            this.CmbFiguras.Cursor = System.Windows.Forms.Cursors.Default;
+            this.CmbFiguras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbFiguras.FormattingEnabled = true;
+            this.CmbFiguras.Items.AddRange(new object[] {
+            "Cuadrado",
+            "Circulo",
+            "Triangulo",
+            "Rectangulo"});
+            this.CmbFiguras.Location = new System.Drawing.Point(462, 23);
+            this.CmbFiguras.Name = "CmbFiguras";
+            this.CmbFiguras.Size = new System.Drawing.Size(129, 28);
+            this.CmbFiguras.TabIndex = 9;
+            this.CmbFiguras.SelectionChangeCommitted += new System.EventHandler(this.CmbFiguras_SelectionChangeCommitted);
+            // 
             // PnlAreaColor
             // 
             this.PnlAreaColor.BackColor = System.Drawing.Color.White;
-            this.PnlAreaColor.Location = new System.Drawing.Point(678, 5);
+            this.PnlAreaColor.Location = new System.Drawing.Point(397, 3);
             this.PnlAreaColor.Name = "PnlAreaColor";
             this.PnlAreaColor.Size = new System.Drawing.Size(59, 56);
             this.PnlAreaColor.TabIndex = 8;
@@ -602,7 +617,7 @@
             // PnlPerimeterColor
             // 
             this.PnlPerimeterColor.BackColor = System.Drawing.Color.White;
-            this.PnlPerimeterColor.Location = new System.Drawing.Point(613, 5);
+            this.PnlPerimeterColor.Location = new System.Drawing.Point(332, 3);
             this.PnlPerimeterColor.Name = "PnlPerimeterColor";
             this.PnlPerimeterColor.Size = new System.Drawing.Size(59, 56);
             this.PnlPerimeterColor.TabIndex = 7;
@@ -611,7 +626,7 @@
             // LblAlto
             // 
             this.LblAlto.AutoSize = true;
-            this.LblAlto.Location = new System.Drawing.Point(293, 35);
+            this.LblAlto.Location = new System.Drawing.Point(12, 35);
             this.LblAlto.Name = "LblAlto";
             this.LblAlto.Size = new System.Drawing.Size(123, 20);
             this.LblAlto.TabIndex = 6;
@@ -620,7 +635,7 @@
             // LblAncho
             // 
             this.LblAncho.AutoSize = true;
-            this.LblAncho.Location = new System.Drawing.Point(293, 5);
+            this.LblAncho.Location = new System.Drawing.Point(12, 5);
             this.LblAncho.Name = "LblAncho";
             this.LblAncho.Size = new System.Drawing.Size(141, 20);
             this.LblAncho.TabIndex = 5;
@@ -631,7 +646,7 @@
             this.TbxAlto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(66)))), ((int)(((byte)(76)))));
             this.TbxAlto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbxAlto.ForeColor = System.Drawing.Color.White;
-            this.TbxAlto.Location = new System.Drawing.Point(422, 35);
+            this.TbxAlto.Location = new System.Drawing.Point(141, 35);
             this.TbxAlto.Name = "TbxAlto";
             this.TbxAlto.Size = new System.Drawing.Size(185, 26);
             this.TbxAlto.TabIndex = 4;
@@ -643,69 +658,12 @@
             this.TbxAncho.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(66)))), ((int)(((byte)(76)))));
             this.TbxAncho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TbxAncho.ForeColor = System.Drawing.Color.White;
-            this.TbxAncho.Location = new System.Drawing.Point(440, 3);
+            this.TbxAncho.Location = new System.Drawing.Point(159, 3);
             this.TbxAncho.Name = "TbxAncho";
             this.TbxAncho.Size = new System.Drawing.Size(167, 26);
             this.TbxAncho.TabIndex = 3;
             this.TbxAncho.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbxAncho_KeyPress);
             this.TbxAncho.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TbxAncho_KeyUp);
-            // 
-            // FBtnTriangulo
-            // 
-            this.FBtnTriangulo.ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.FBtnTriangulo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.FBtnTriangulo.FlatAppearance.BorderSize = 0;
-            this.FBtnTriangulo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FBtnTriangulo.HoverColor = System.Drawing.Color.Empty;
-            this.FBtnTriangulo.IsActive = false;
-            this.FBtnTriangulo.Location = new System.Drawing.Point(194, 0);
-            this.FBtnTriangulo.Name = "FBtnTriangulo";
-            this.FBtnTriangulo.OldColor = System.Drawing.Color.Empty;
-            this.FBtnTriangulo.OverrideMethod = false;
-            this.FBtnTriangulo.Size = new System.Drawing.Size(97, 68);
-            this.FBtnTriangulo.TabIndex = 2;
-            this.FBtnTriangulo.Tag = "2";
-            this.FBtnTriangulo.Text = "Triangulo";
-            this.FBtnTriangulo.UseVisualStyleBackColor = true;
-            this.FBtnTriangulo.Click += new System.EventHandler(this.FBtnTriangulo_Click);
-            // 
-            // FBtnCirculo
-            // 
-            this.FBtnCirculo.ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.FBtnCirculo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.FBtnCirculo.FlatAppearance.BorderSize = 0;
-            this.FBtnCirculo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FBtnCirculo.HoverColor = System.Drawing.Color.Empty;
-            this.FBtnCirculo.IsActive = false;
-            this.FBtnCirculo.Location = new System.Drawing.Point(97, 0);
-            this.FBtnCirculo.Name = "FBtnCirculo";
-            this.FBtnCirculo.OldColor = System.Drawing.Color.Empty;
-            this.FBtnCirculo.OverrideMethod = false;
-            this.FBtnCirculo.Size = new System.Drawing.Size(97, 68);
-            this.FBtnCirculo.TabIndex = 1;
-            this.FBtnCirculo.Tag = "1";
-            this.FBtnCirculo.Text = "Circulo";
-            this.FBtnCirculo.UseVisualStyleBackColor = true;
-            this.FBtnCirculo.Click += new System.EventHandler(this.FBtnCirculo_Click);
-            // 
-            // FBtnCuadrado
-            // 
-            this.FBtnCuadrado.ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(228)))), ((int)(((byte)(228)))));
-            this.FBtnCuadrado.Dock = System.Windows.Forms.DockStyle.Left;
-            this.FBtnCuadrado.FlatAppearance.BorderSize = 0;
-            this.FBtnCuadrado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FBtnCuadrado.HoverColor = System.Drawing.Color.Empty;
-            this.FBtnCuadrado.IsActive = false;
-            this.FBtnCuadrado.Location = new System.Drawing.Point(0, 0);
-            this.FBtnCuadrado.Name = "FBtnCuadrado";
-            this.FBtnCuadrado.OldColor = System.Drawing.Color.Empty;
-            this.FBtnCuadrado.OverrideMethod = false;
-            this.FBtnCuadrado.Size = new System.Drawing.Size(97, 68);
-            this.FBtnCuadrado.TabIndex = 0;
-            this.FBtnCuadrado.Tag = "0";
-            this.FBtnCuadrado.Text = "Cuadrado";
-            this.FBtnCuadrado.UseVisualStyleBackColor = true;
-            this.FBtnCuadrado.Click += new System.EventHandler(this.FBtnCuadrado_Click);
             // 
             // TbpPractice6
             // 
@@ -908,6 +866,7 @@
             this.PnlP4Generator.ResumeLayout(false);
             this.PnlP4Generator.PerformLayout();
             this.TbpPractice5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PnlPrueba)).EndInit();
             this.PnlP5TopNav.ResumeLayout(false);
             this.PnlP5TopNav.PerformLayout();
             this.PnlSidebar.ResumeLayout(false);
@@ -967,17 +926,15 @@
         private System.Windows.Forms.Button BtnUpdateOxygenLimit;
         private src.FToggleButton.FlatToggleButton FBtnOverflow;
         private src.FButton.FlatButton FBtnPX;
-        private System.Windows.Forms.Panel PnlPrueba;
+        private System.Windows.Forms.PictureBox PnlPrueba;
         private System.Windows.Forms.Panel PnlP5TopNav;
-        private src.FToggleButton.FlatToggleButton FBtnCuadrado;
-        private src.FToggleButton.FlatToggleButton FBtnCirculo;
-        private src.FToggleButton.FlatToggleButton FBtnTriangulo;
         private System.Windows.Forms.TextBox TbxAlto;
         private System.Windows.Forms.TextBox TbxAncho;
         private System.Windows.Forms.Label LblAncho;
         private System.Windows.Forms.Label LblAlto;
-        private System.Windows.Forms.Panel PnlPerimeterColor;
         private System.Windows.Forms.Panel PnlAreaColor;
+        private System.Windows.Forms.Panel PnlPerimeterColor;
+        private System.Windows.Forms.ComboBox CmbFiguras;
     }
 }
 
