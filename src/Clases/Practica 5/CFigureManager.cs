@@ -19,10 +19,11 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         // |  Atributos                                                       |
         // +------------------------------------------------------------------+
         private CCuadrado Cuadrado;
-        private Control Container;
         private CTriangulo Triangulo;
+        private CCirculo Circulo;
+        private Control Container;
         private DlgPropiedadesFigura FigureProps;
-        private DialogResult DResult;
+        public DialogResult DResult;
         private enum Figura
         {
             Cuadrado = 0,
@@ -30,7 +31,7 @@ namespace POO22B_MZJA.src.Clases.Practica_5
             Triangulo = 2,
             Rectangulo = 3
         }
-        
+
         public int FiguraAlto;
         public int FiguraAncho;
         public int PerimetroSize;
@@ -49,9 +50,9 @@ namespace POO22B_MZJA.src.Clases.Practica_5
                 return _TipoFigura;
             }
 
-            private set
+            set
             {
-                // Establecer valor
+                // Establecer tipo de figura
                 _TipoFigura = value;
 
                 // Abrir diálogo de propiedades
@@ -62,34 +63,92 @@ namespace POO22B_MZJA.src.Clases.Practica_5
 
                 if (DResult != DialogResult.OK)
                 {
-                    MessageBox.Show($"Necesitas llenar las propieadades para utilizar la figura {FigureProps.NombreFigura[TipoFigura]}", 
-                                    "¡Atención!", 
-                                    MessageBoxButtons.OK, 
+                    MessageBox.Show($"Necesitas llenar las propieadades para utilizar la figura {FigureProps.NombreFigura[TipoFigura]}",
+                                    "¡Atención!",
+                                    MessageBoxButtons.OK,
                                     MessageBoxIcon.Information);
 
                     return;
                 }
 
-                FigureProps.ObtenerPropiedadesFigura(out FiguraAlto, 
-                                                     out FiguraAncho, 
-                                                     out Area, 
-                                                     out Perimetro, 
-                                                     out PerimetroSize);
 
-                Debug.Print($"Variables {FiguraAlto}, {FiguraAncho}, {Area}, {Perimetro}, {PerimetroSize}");
 
-                switch(_TipoFigura)
+                Debug.Print($"Variables {Container} {FiguraAlto}, {FiguraAncho}, {Area}, {Perimetro}, {PerimetroSize}");
+
+                switch (_TipoFigura)
                 {
                     case (int)Figura.Cuadrado:
+
+                        FigureProps.ObtenerPropiedadesFigura(out FiguraAlto,
+                                                     out FiguraAncho,
+                                                     out Area,
+                                                     out Perimetro,
+                                                     out PerimetroSize);
+
+                        Cuadrado = new CCuadrado(Container,
+                                                           FiguraAncho,
+                                                           FiguraAlto,
+                                                           Perimetro,
+                                                           Area,
+                                                           PerimetroSize);
+                        Cuadrado.Inicializar();
+
                         break;
 
                     case (int)Figura.Circulo:
+
+                        FigureProps.ObtenerPropiedadesFigura(out FiguraAlto,
+                                                     out FiguraAncho,
+                                                     out Area,
+                                                     out Perimetro,
+                                                     out PerimetroSize);
+
+                        Circulo = new CCirculo(Container,
+                                                         FiguraAncho,
+                                                         FiguraAlto,
+                                                         Perimetro,
+                                                         Area,
+                                                         PerimetroSize);
+                        Circulo.Inicializar();
+
                         break;
 
                     case (int)Figura.Triangulo:
+
+                        FigureProps.ObtenerPropiedadesFigura(out Base,
+                                                             out Altura,
+                                                             out PerimetroSize,
+                                                             out Area,
+                                                             out Perimetro);
+
+                        Triangulo = new CTriangulo(Container,
+                                                              Base,
+                                                              Altura,
+                                                              Perimetro,
+                                                              Area,
+                                                              PerimetroSize);
+
+                        Triangulo.Inicializar();
+
                         break;
 
                     case (int)Figura.Rectangulo:
+
+                        FigureProps.ObtenerPropiedadesFigura(out FiguraAlto,
+                                                             out FiguraAncho,
+                                                             out Area,
+                                                             out Perimetro,
+                                                             out PerimetroSize);
+
+                        CCuadrado Rectangulo = new CCuadrado(Container,
+                                                             FiguraAncho,
+                                                             FiguraAlto,
+                                                             Perimetro,
+                                                             Area,
+                                                             PerimetroSize);
+
+                        Rectangulo.Inicializar();
+
                         break;
                 }
 
@@ -99,10 +158,9 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         // +------------------------------------------------------------------+
         // |  Constructor                                                     |
         // +------------------------------------------------------------------+
-        public CFigureManager(Control Container, int TipoFigura)
+        public CFigureManager(Control Container)
 
         {
-            this.TipoFigura = TipoFigura;
             this.Container = Container;
         }
 
