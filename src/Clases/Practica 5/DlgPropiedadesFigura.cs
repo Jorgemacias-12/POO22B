@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -85,6 +86,61 @@ namespace POO22B_MZJA.src.Clases.Practica_5
             // Cargar tipo de figura en caracteristicas
             LblFiguraAlto.Text += $" {NombreFigura[TipoFigura]}: ";
             LblFiguraAncho.Text += $" {NombreFigura[TipoFigura]}: ";
+
+            switch (TipoFigura)
+            {
+                // Cuadrado
+                case 0:
+
+                    LblRadio.Visible = false;
+                    LblBase.Visible = false;
+                    LblAltura.Visible = false;
+
+                    TbxRadio.Visible = false;
+                    TbxBase.Visible = false;
+                    TbxAltura.Visible = false;
+
+                    break;
+
+                // Circulo
+                case 1:
+
+                    LblBase.Visible = false;
+                    LblAltura.Visible = false;
+
+                    TbxBase.Visible = false;
+                    TbxAltura.Visible = false;
+
+                    break;
+
+                // Triangulo
+                case 2:
+
+                    LblFiguraAlto.Visible = false;
+                    LblFiguraAncho.Visible = false;
+                    LblRadio.Visible = false;
+
+                    TbxAlto.Visible = false;
+                    TbxAncho.Visible = false;
+                    TbxRadio.Visible = false;
+                        
+
+                    break;
+
+                // Rectangulo
+                case 3:
+
+                    LblRadio.Visible = false;
+                    LblBase.Visible = false;
+                    LblAltura.Visible = false;
+
+                    TbxRadio.Visible = false;
+                    TbxBase.Visible = false;
+                    TbxAltura.Visible = false;
+
+                    break;
+            }
+
         }
 
         private void SetColorDialogForeground(object sender)
@@ -116,21 +172,13 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         {
             // Validar datos aquí
 
-            if (TbxAlto.Text == string.Empty ||
-                TbxAncho.Text == string.Empty)
+            Debug.Print($"Tipo de figura {NombreFigura[TipoFigura]}");
+
+            if (TipoFigura == 0 &&
+                (TbxAlto.Text == string.Empty ||
+                TbxAncho.Text == string.Empty))
             {
                 MessageBox.Show("Llene los campos de altura y anchura para continuar",
-                                "¡Atención!",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-
-                return;
-            }
-
-            if (Area == Color.Empty ||
-                Perimetro == Color.Empty)
-            {
-                MessageBox.Show("Eliga un color valido para el perímetro y el área de la figura",
                                 "¡Atención!",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Information);
@@ -148,6 +196,52 @@ namespace POO22B_MZJA.src.Clases.Practica_5
                 return;
             }
 
+            // Validación datos de Circulo
+
+            if (TipoFigura == 1 && 
+                TbxRadio.Text == string.Empty)
+            {
+                MessageBox.Show("El radio no puede ser 0 o no existente, introduzca un valor válido.",
+                                "¡Atención!",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+
+                return;
+            }
+
+            if (Area == Color.Empty ||
+                Area == Color.White)
+            {
+                MessageBox.Show("Eliga un color valido para el área de la figura",
+                                "¡Atención!",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+
+                return;
+            }
+
+            if (Perimetro == Color.Empty ||
+                Perimetro == Color.White)
+            {
+                MessageBox.Show("Eliga un color valido para el perimetro de la figura",
+                                "¡Atención!",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+
+                return;
+            }
+
+            if (Area == Color.Empty ||
+                Perimetro == Color.Empty)
+            {
+                MessageBox.Show("Eliga un color valido para el perímetro y el área de la figura",
+                                "¡Atención!",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+
+                return;
+            }
+         
             // Estado del diálogo exitoso!
             DialogResult = DialogResult.OK;
 
@@ -190,6 +284,45 @@ namespace POO22B_MZJA.src.Clases.Practica_5
             if (TbxPerimeterSize.Text != String.Empty)
             {
                 PerimeterSize = Convert.ToInt32(TbxPerimeterSize.Text);
+            }
+        }
+
+        private void TbxRadio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UI.ValidateTextBox(sender, e);
+        }
+
+        private void TbxRadio_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (TbxRadio.Text != string.Empty)
+            {
+                Radio = Convert.ToInt32(TbxRadio.Text);
+            }
+        }
+
+        private void TbxBase_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UI.ValidateTextBox(sender, e);
+        }
+
+        private void TbxBase_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (TbxBase.Text != string.Empty)
+            {
+                Base = Convert.ToInt32(TbxBase.Text);
+            }
+        }
+
+        private void TbxAltura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UI.ValidateTextBox(sender, e);
+        }
+
+        private void TbxAltura_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (TbxAltura.Text != string.Empty)
+            {
+                Altura = Convert.ToInt32(TbxAltura.Text);
             }
         }
     }
