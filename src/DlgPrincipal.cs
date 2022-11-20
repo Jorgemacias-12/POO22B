@@ -339,7 +339,15 @@ namespace POO22B_MZJA
 
         private void CmbFiguras_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            Manager = new CFigureManager(PnlPrueba, CmbFiguras.SelectedIndex);
+            Manager = new CFigureManager(PnlPrueba);
+
+            Manager.TipoFigura = CmbFiguras.SelectedIndex;
+
+            if (Manager.DResult != DialogResult.OK)
+            {
+                CmbFiguras.SelectedIndex = -1;
+            }
+
         }
     }
 }

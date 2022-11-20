@@ -70,7 +70,7 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         {
             Base = this.Base;
             Altura = this.Altura;
-            PerimetroSize = this.PerimeterSize;
+            PerimetroSize = PerimeterSize;
             Area = this.Area;
             Perimetro = this.Perimetro;
         }
@@ -259,6 +259,9 @@ namespace POO22B_MZJA.src.Clases.Practica_5
             {
                 FiguraAlto = Convert.ToInt32(TbxAlto.Text);
             }
+
+            TbxAncho.Text = TipoFigura == 3 ? $"{FiguraAlto * 3}" : $"{FiguraAlto}";
+
         }
 
         private void TbxAncho_KeyPress(object sender, KeyPressEventArgs e)
@@ -272,6 +275,9 @@ namespace POO22B_MZJA.src.Clases.Practica_5
             {
                 FiguraAncho = Convert.ToInt32(TbxAncho.Text);
             }
+
+            TbxAlto.Text = TipoFigura == 3 ? $"{FiguraAncho * 3}" : $"{FiguraAncho}";
+
         }
 
         private void TbxPerimeterSize_KeyPress(object sender, KeyPressEventArgs e)

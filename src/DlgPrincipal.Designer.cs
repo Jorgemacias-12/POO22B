@@ -63,6 +63,7 @@
             this.TbpPractice5 = new System.Windows.Forms.TabPage();
             this.PnlPrueba = new System.Windows.Forms.PictureBox();
             this.PnlP5TopNav = new System.Windows.Forms.Panel();
+            this.LblP5Titulo = new System.Windows.Forms.Label();
             this.CmbFiguras = new System.Windows.Forms.ComboBox();
             this.TbpPractice6 = new System.Windows.Forms.TabPage();
             this.TbpPractice7 = new System.Windows.Forms.TabPage();
@@ -79,7 +80,6 @@
             this.FBtnOptions = new POO22B_MZJA.src.FButton.FlatButton();
             this.FBtnSidebar = new POO22B_MZJA.src.FToggleButton.FlatToggleButton();
             this.TmrTime = new System.Windows.Forms.Timer(this.components);
-            this.LblP5Titulo = new System.Windows.Forms.Label();
             this.PnlAppContainer.SuspendLayout();
             this.TpbPractices.SuspendLayout();
             this.TbpPractice2.SuspendLayout();
@@ -578,6 +578,15 @@
             this.PnlP5TopNav.Size = new System.Drawing.Size(1006, 51);
             this.PnlP5TopNav.TabIndex = 2;
             // 
+            // LblP5Titulo
+            // 
+            this.LblP5Titulo.AutoSize = true;
+            this.LblP5Titulo.Location = new System.Drawing.Point(3, 14);
+            this.LblP5Titulo.Name = "LblP5Titulo";
+            this.LblP5Titulo.Size = new System.Drawing.Size(58, 20);
+            this.LblP5Titulo.TabIndex = 10;
+            this.LblP5Titulo.Text = "Figura:";
+            // 
             // CmbFiguras
             // 
             this.CmbFiguras.BackColor = System.Drawing.Color.White;
@@ -769,15 +778,6 @@
             this.TmrTime.Enabled = true;
             this.TmrTime.Interval = 500;
             this.TmrTime.Tick += new System.EventHandler(this.TmrTime_Tick);
-            // 
-            // LblP5Titulo
-            // 
-            this.LblP5Titulo.AutoSize = true;
-            this.LblP5Titulo.Location = new System.Drawing.Point(3, 14);
-            this.LblP5Titulo.Name = "LblP5Titulo";
-            this.LblP5Titulo.Size = new System.Drawing.Size(58, 20);
-            this.LblP5Titulo.TabIndex = 10;
-            this.LblP5Titulo.Text = "Figura:";
             // 
             // DlgPrincipal
             // 
