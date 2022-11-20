@@ -261,7 +261,8 @@ namespace POO22B_MZJA.src.Clases.Practica_5
             }
 
             TbxAncho.Text = TipoFigura == 3 ? $"{FiguraAlto * 3}" : $"{FiguraAlto}";
-
+            
+            FiguraAncho = Convert.ToInt32(TbxAncho.Text);
         }
 
         private void TbxAncho_KeyPress(object sender, KeyPressEventArgs e)
@@ -278,6 +279,7 @@ namespace POO22B_MZJA.src.Clases.Practica_5
 
             TbxAlto.Text = TipoFigura == 3 ? $"{FiguraAncho * 3}" : $"{FiguraAncho}";
 
+            FiguraAlto = Convert.ToInt32(TbxAlto.Text);
         }
 
         private void TbxPerimeterSize_KeyPress(object sender, KeyPressEventArgs e)
