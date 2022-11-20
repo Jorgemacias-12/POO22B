@@ -9,112 +9,65 @@ using System.Windows.Forms;
 
 namespace POO22B_MZJA.src.Clases.Practica_5
 {
-
-    public enum TypeOfTriangle
-    {
-        Right,
-        Obtuse,
-        Normal
-    }
-
     public class CTriangulo : CFigura
     {
-        TypeOfTriangle Type;
-        public int Base;
-        public int Altura;
 
-        public CTriangulo(Control Container, int Ancho, int Alto, Color ColorPerimetro, Color ColorArea, int PerimetroSize) : base(Container, Ancho, Alto, ColorPerimetro, ColorArea, PerimetroSize)
+        public PointF Vertice;
+        public PointF Vertice2;
+        private int Base;
+        private int Altura;
+
+        public CTriangulo(Control Container,
+                          int Base,
+                          int Altura,
+                          Color ColorPerimetro,
+                          Color ColorArea,
+                          int PerimetroSize) : base(Container,
+                                                    Base,
+                                                    Altura,
+                                                    ColorPerimetro,
+                                                    ColorArea,
+                                                    PerimetroSize)
         {
+            this.Base = Base;
+            this.Altura = Altura;
         }
-
-        //public CTriangulo(Control Container,
-        //                  Color FigureColor,
-        //                  int FigureWidth,
-        //                  int FigureHeight,
-        //                  TypeOfTriangle Type) : base(Container,
-        //                                            FigureColor,
-        //                                            FigureWidth,
-        //                                            FigureHeight)
-        //{
-        //    this.Base = FigureWidth;
-        //    this.Altura = FigureHeight;
-        //    this.Type = Type;
-        //}
 
         public override int CalcularArea()
         {
-            // Base * Altura / 2
             throw new NotImplementedException();
         }
 
         public override int CalcularPerimetro()
         {
-            // Pitagoras padrino xD a^2 + b^2 con raiz cuadrada
-            // Y sumar con base + altura
             throw new NotImplementedException();
         }
 
         private void CalcularPuntos(out PointF Vertice, out PointF Vertice2)
         {
-            // Punto de vertice por defecto
+            // Inicializar puntos
             Vertice = new PointF(0, 0);
             Vertice2 = new PointF(0, 0);
 
-            switch(Type)
-            {
-                case TypeOfTriangle.Normal:
+            Vertice.X = Coordenadas.X - Base;
+            Vertice.Y = (float)(Coordenadas.Y + (Altura * Math.Sqrt(3)));
 
-                    Vertice.X = Coordenadas.X - Base;
-                    Vertice.Y = (float)(Coordenadas.Y + (Base * Math.Sqrt(3)));
-
-                    Vertice2.X = Coordenadas.X + Base;
-                    Vertice2.Y = Coordenadas.Y + (float)(Base * Math.Sqrt(3));
-
-                    break;
-
-                case TypeOfTriangle.Obtuse:
-
-                    Vertice.X = Coordenadas.X - Base;
-                    Vertice.Y = Coordenadas.Y + Altura;
-
-                    Vertice2.X = Coordenadas.X + Base;
-                    Vertice2.Y = Coordenadas.Y + Altura;
-
-                    break;
-                
-                case TypeOfTriangle.Right:
-
-                    Vertice.X = Coordenadas.X;
-                    Vertice.Y = (float)(Coordenadas.Y + (Base * Math.Sqrt(3)));
-
-                    Vertice2.X = Coordenadas.X + Base;
-                    Vertice2.Y = Coordenadas.Y + Base * 2;
-
-                    break;
-
-                default:
-                    break;
-            }
-
-
+            Vertice2.X = Coordenadas.X + Base;
+            Vertice2.Y = Coordenadas.Y + (float)(Altura * Math.Sqrt(3));
         }
 
         protected override void Dibujar()
         {
-            // Dibujar triángulo
             using (Graphics graficos = Graphics.FromImage(Lienzo))
             {
-                PointF Vertice;
-                PointF Vertice2;
+                graficos.SmoothingMode = SmoothingMode.AntiAlias;
 
                 CalcularPuntos(out Vertice, out Vertice2);
 
                 graficos.FillPolygon(FigureBrush, new PointF[] { Coordenadas, Vertice, Vertice2 });
-                graficos.SmoothingMode = SmoothingMode.HighQuality;
-
+                graficos.DrawPolygon(FigurePen, new PointF[] { Coordenadas, Vertice, Vertice2 });
             }
 
-            // Actualizar imagen
             Container.Invalidate();
         }
     }
