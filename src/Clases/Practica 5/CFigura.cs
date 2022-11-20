@@ -44,6 +44,13 @@ namespace POO22B_MZJA.src.Clases.Practica_5
                        Color ColorArea,
                        int PerimetroSize)
         {
+
+            if (Container is null)
+            {
+                Debug.Print("Contenedor nulo :C");
+                return;
+            }
+
             // Almacenar contenedor
             this.Container = Container;
 
@@ -112,14 +119,18 @@ namespace POO22B_MZJA.src.Clases.Practica_5
         // +------------------------------------------------------------------+
         private void Container_Click(object sender, EventArgs e)
         {
-            // Guardar coordenadas donde se hace el click
-            MouseEventArgs _ = (MouseEventArgs)e;
+            MouseEventArgs _ = (MouseEventArgs)e; // Eventos
 
-            Coordenadas = _.Location;
+            if (_.Button == MouseButtons.Left)
+            {
+                // Guardar coordenadas donde se hace el click
+                Coordenadas = _.Location;
 
-            Debug.Print($"{sender} - {Coordenadas} - {graficos}");
-            // Dibujar la figura 
-            Dibujar();
+                Debug.Print($"{sender} - {Coordenadas} - {graficos}");
+                
+                // Dibujar la figura 
+                Dibujar();
+            }
         }
 
         // +------------------------------------------------------------------+
@@ -132,21 +143,8 @@ namespace POO22B_MZJA.src.Clases.Practica_5
 
         private void Container_Resize(object sender, EventArgs e)
         {
-            // Reiniciar coordenadas
-            Coordenadas = Container.PointToClient(Cursor.Position);
-
-            Debug.Print($"Nuevas coordenadas {Coordenadas}");
-
-            Bitmap newImage;
-
-            newImage = new Bitmap(Container.Width, Container.Height);
-
-            using (Graphics g = Graphics.FromImage(newImage))
-            {
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
-
-                g.DrawImage(Lienzo, 0, 0, Container.Width, Container.Height);
-            }
+            Debug.Print("Se volvio a dibujar todo");
+            
         }
     }
 }
